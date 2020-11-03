@@ -3,8 +3,10 @@ namespace LearningCenter.Data.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     using LearningCenter.Data.Common.Models;
+    using LearningCenter.Data.Models.Enums;
 
     using Microsoft.AspNetCore.Identity;
 
@@ -16,7 +18,27 @@ namespace LearningCenter.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            this.Courses = new HashSet<UserCourses>();
         }
+
+        public string FirstName { get; set; }
+
+        public string MiddleName { get; set; }
+
+        public string LastName { get; set; }
+
+        public DateTime BirthDate { get; set; }
+
+        public string Address { get; set; }
+
+        public GenderEnum Gender { get; set; }
+
+        [ForeignKey(nameof(Country))]
+        public int CountryId { get; set; }
+
+        public Country Country { get; set; }
+
+        public virtual ICollection<UserCourses> Courses { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }

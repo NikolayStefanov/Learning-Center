@@ -26,6 +26,24 @@
 
         public DbSet<Setting> Settings { get; set; }
 
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<SubCategory> SubCategories { get; set; }
+
+        public DbSet<Topic> Topics { get; set; }
+
+        public DbSet<Country> Countries { get; set; }
+
+        public DbSet<Language> Languages { get; set; }
+
+        public DbSet<Course> Courses { get; set; }
+
+        public DbSet<Lecture> Lectures { get; set; }
+
+        public DbSet<Review> Reviews { get; set; }
+
+        public DbSet<UserCourses> UserCourses { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
