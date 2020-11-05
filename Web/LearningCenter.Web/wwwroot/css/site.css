@@ -12,6 +12,7 @@ a.navbar-brand {
 html {
     font-size: 14px;
 }
+
 @media (min-width: 768px) {
     html {
         font-size: 16px;
@@ -21,6 +22,7 @@ html {
 .border-top {
     border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
     border-bottom: 1px solid #e5e5e5;
 }
@@ -45,6 +47,23 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
 }
+
+.navbar-brand {
+    padding: 0px;
+}
+
+.navbar-brand .logo {
+    margin-left: 30px;
+}
+
+ .navbar-brand .logo > img {
+     max-height: 65px;
+ }
+.navbar-header > div > a > img{
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
 .footer {
     position: absolute;
     bottom: 0;
