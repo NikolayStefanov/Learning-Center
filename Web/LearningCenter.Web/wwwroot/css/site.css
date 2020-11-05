@@ -42,12 +42,20 @@ html {
     position: relative;
     min-height: 100%;
 }
-
+#nav{
+    padding-left:15px;
+    padding-right: 75px;
+}
+.home-wrapper > .container{
+    padding-left: 50px;
+}
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
 }
 
+
+/*LOGO*/
 .navbar-brand {
     padding: 0px;
 }
@@ -64,7 +72,12 @@ body {
     border-bottom-right-radius: 15px;
 }
 
+/*LOGO*/
+
+
+
 .footer {
+    padding-left:50px;
     position: absolute;
     bottom: 0;
     width: 100%;

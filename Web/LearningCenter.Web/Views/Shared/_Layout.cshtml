@@ -59,7 +59,7 @@
             <nav id="nav">
                 <partial name="_LoginPartial" />
                 <ul class="main-menu nav navbar-nav navbar-right d-inline-flex">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a asp-action="Index" asp-controller="Home">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Categories</a></li>
                     <li><a href="blog.html">Blog</a></li>
@@ -70,29 +70,11 @@
 
         </div>
     </header>
-    <div id="home" class="hero-area">
-
-        <!-- Backgound Image -->
-        <div class="bg-image bg-parallax overlay" style="background-image:url(./img/home-background.jpg)"></div>
-        <!-- /Backgound Image -->
-        <div class="container">
-            <partial name="_CookieConsentPartial" />
-            <main role="main" class="pb-3">
-                @this.RenderBody()
-            </main>
-        </div>
-        <div class="home-wrapper">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8">
-                        <h1 class="white-text">Edusite Free Online Training Courses</h1>
-                        <p class="lead white-text">Libris vivendo eloquentiam ex ius, nec id splendide abhorreant, eu pro alii error homero.</p>
-                        <a class="main-button icon-button" href="#">Get Started!</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+      <div class="container">
+        <partial name="_CookieConsentPartial" />
+        <main role="main" class="pb-3">
+            @this.RenderBody()
+        </main>
     </div>
     <footer class="border-top footer text-muted transparent">
         <div class="container">

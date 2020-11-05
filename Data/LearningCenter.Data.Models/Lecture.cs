@@ -8,12 +8,17 @@
 
     public class Lecture : BaseDeletableModel<int>
     {
+        [Required]
         public string Title { get; set; }
 
+        [Required]
         public string Description { get; set; }
 
+        [Required]
         public TimeSpan Duration { get; set; }
+        
 
+        [Required]
         [ForeignKey(nameof(Author))]
         public string AuthorId { get; set; }
 

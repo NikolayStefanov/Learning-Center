@@ -3,6 +3,7 @@ namespace LearningCenter.Data.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     using LearningCenter.Data.Common.Models;
@@ -21,24 +22,33 @@ namespace LearningCenter.Data.Models
             this.Courses = new HashSet<UserCourses>();
         }
 
+        [Required]
         public string FirstName { get; set; }
 
         public string MiddleName { get; set; }
 
+        [Required]
         public string LastName { get; set; }
 
+        [Required]
         public DateTime BirthDate { get; set; }
 
+        [Required]
         public string Address { get; set; }
 
+        [Required]
         public GenderEnum Gender { get; set; }
 
+        [ForeignKey(nameof(ProfilePicture))]
+        public int ProfilePictureId { get; set; }
+
+        public ProfilePicture ProfilePicture { get; set; }
+
+        [Required]
         [ForeignKey(nameof(Country))]
         public int CountryId { get; set; }
 
         public Country Country { get; set; }
-
-        public virtual ICollection<UserCourses> Courses { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }
@@ -49,6 +59,8 @@ namespace LearningCenter.Data.Models
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        public virtual ICollection<UserCourses> Courses { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
