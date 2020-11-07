@@ -4,22 +4,23 @@
 @{
     ViewData["Title"] = "Log in";
 }
-<h2>@ViewData["Title"]</h2>
-<div id="loginPage" class="row bg-image bg-parallax overlay">
+
+<div id="loginRegisterPage" class="row bg-image bg-parallax overlay">
     <div class="col-md-4">
         <section>
             <form id="account" method="post">
-                <h4 class="loginTextColor">Use a local account to log in.</h4>
+                <h2 class="loginRegisterTextColor">@ViewData["Title"]</h2>
+                <h4 class="loginRegisterTextColor">Use a local account to log in.</h4>
                 <hr />
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Input.Email"></label>
-                    <input asp-for="Input.Email" class="form-control" />
+                    <input asp-for="Input.Email" class="form-control loginRegisterTextColor" />
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Input.Password"></label>
-                    <input asp-for="Input.Password" class="form-control" />
+                    <input asp-for="Input.Password" class="form-control loginRegisterTextColor" />
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -35,10 +36,10 @@
                 </div>
                 <div class="form-group">
                     <p>
-                        <a class="loginTextColor" id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                        <a class="loginRegisterTextColor" id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
                     </p>
                     <p>
-                        <a class="loginTextColor" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                        <a class="loginRegisterTextColor" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
                     </p>
                 </div>
             </form>
@@ -46,14 +47,14 @@
     </div>
     <div class="col-md-6 col-md-offset-2">
         <section>
-            <h4 class="loginTextColor">Use another service to log in.</h4>
+            <h4 class="loginRegisterTextColor">Use another service to log in.</h4>
             <hr />
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
                 {
                     <div>
                         <p>
-                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                            There are no external authentication services configured. See <a class="loginRegisterTextColor" href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
                             for details on setting up this ASP.NET application to support logging in via external services.
                         </p>
                     </div>

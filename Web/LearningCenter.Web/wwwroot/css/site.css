@@ -79,14 +79,14 @@ body {
 /*LOGO*/
 
 /*Login page CSS*/
-#loginPage {
+#loginRegisterPage {
     background-image: url("../img/login-background.jpg");
     padding-top: 150px;
     padding-left: 75px;
     margin-bottom: 75px;
     color: white;
 }
-.loginTextColor{
+.loginRegisterTextColor{
     color: white;
 }
 /*Login page CSS*/
