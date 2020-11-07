@@ -44,6 +44,10 @@
 
         public DbSet<UserCourses> UserCourses { get; set; }
 
+        public DbSet<Lecturer> Lecturers { get; set; }
+
+        public DbSet<Student> Students { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

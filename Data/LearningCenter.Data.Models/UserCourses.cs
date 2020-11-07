@@ -18,5 +18,7 @@
         public string StudentId { get; set; }
 
         public virtual ApplicationUser Student { get; set; }
+
+        public int? Grade { get; set; }
     }
 }

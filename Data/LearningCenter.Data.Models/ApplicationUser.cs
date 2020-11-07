@@ -39,16 +39,22 @@ namespace LearningCenter.Data.Models
         [Required]
         public GenderEnum Gender { get; set; }
 
-        [ForeignKey(nameof(ProfilePicture))]
-        public int ProfilePictureId { get; set; }
-
-        public ProfilePicture ProfilePicture { get; set; }
-
         [Required]
         [ForeignKey(nameof(Country))]
         public int CountryId { get; set; }
 
         public Country Country { get; set; }
+
+        // Users role addition
+        [ForeignKey(nameof(Student))]
+        public string StudentId { get; set; }
+
+        public Student Student { get; set; }
+
+        [ForeignKey(nameof(Lecturer))]
+        public string LecturerId { get; set; }
+
+        public Lecturer Lecturer { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }
