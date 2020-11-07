@@ -42,13 +42,16 @@ html {
     position: relative;
     min-height: 100%;
 }
-#nav{
-    padding-left:15px;
+
+#nav {
+    padding-left: 15px;
     padding-right: 75px;
 }
-.home-wrapper > .container{
+
+.home-wrapper > .container {
     padding-left: 50px;
 }
+
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
@@ -60,24 +63,35 @@ body {
     padding: 0px;
 }
 
-.navbar-brand .logo {
-    margin-left: 30px;
-}
+    .navbar-brand .logo {
+        margin-left: 30px;
+    }
 
- .navbar-brand .logo > img {
-     max-height: 65px;
- }
-.navbar-header > div > a > img{
+        .navbar-brand .logo > img {
+            max-height: 65px;
+        }
+
+.navbar-header > div > a > img {
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 }
 
 /*LOGO*/
 
-
-
+/*Login page CSS*/
+#loginPage {
+    background-image: url("../img/login-background.jpg");
+    padding-top: 150px;
+    padding-left: 75px;
+    margin-bottom: 75px;
+    color: white;
+}
+.loginTextColor{
+    color: white;
+}
+/*Login page CSS*/
 .footer {
-    padding-left:50px;
+    padding-left: 50px;
     position: absolute;
     bottom: 0;
     width: 100%;
