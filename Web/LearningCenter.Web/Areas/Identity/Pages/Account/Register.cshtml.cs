@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using LearningCenter.Data.Models.Enums;
 
 namespace LearningCenter.Web.Areas.Identity.Pages.Account
 {
@@ -50,6 +51,29 @@ namespace LearningCenter.Web.Areas.Identity.Pages.Account
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
+
+            [Required]
+            [MinLength(3)]
+            [MaxLength(30)]
+            [Display(Name = "First Name:")]
+            public string FirstName { get; set; }
+
+            [Required]
+            [MinLength(3)]
+            [MaxLength(30)]
+            [Display(Name ="Last Name:")]
+            public string LastName { get; set; }
+
+            [Required]
+            [DataType(DataType.Date)]
+            [Display(Name = "Birth Date:")]
+            public DateTime BirthDate { get; set; }
+
+            [Required]
+            public GenderEnum Gender { get; set; }
+
+            [Required]
+            public CountriesEnum Country { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]

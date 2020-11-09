@@ -34,16 +34,10 @@ namespace LearningCenter.Data.Models
         public DateTime BirthDate { get; set; }
 
         [Required]
-        public string Address { get; set; }
-
-        [Required]
         public GenderEnum Gender { get; set; }
 
         [Required]
-        [ForeignKey(nameof(Country))]
-        public int CountryId { get; set; }
-
-        public Country Country { get; set; }
+        public CountriesEnum Country { get; set; }
 
         // Users role addition
         [ForeignKey(nameof(Student))]

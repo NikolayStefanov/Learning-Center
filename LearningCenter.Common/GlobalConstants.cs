@@ -6,5 +6,6 @@
 
         public const string AdministratorRoleName = "Administrator";
         public const string LecturerRoleName = "Lecturer";
+        public const int CountriesCount = 249;
     }
 }

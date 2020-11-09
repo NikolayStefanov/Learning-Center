@@ -3,7 +3,6 @@
     using System.Diagnostics;
 
     using LearningCenter.Web.ViewModels;
-    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController

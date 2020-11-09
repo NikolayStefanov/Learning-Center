@@ -16,7 +16,6 @@
 
         [Required]
         public TimeSpan Duration { get; set; }
-        
 
         [Required]
         [ForeignKey(nameof(Author))]

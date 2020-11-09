@@ -32,8 +32,6 @@
 
         public DbSet<Topic> Topics { get; set; }
 
-        public DbSet<Country> Countries { get; set; }
-
         public DbSet<Language> Languages { get; set; }
 
         public DbSet<Course> Courses { get; set; }

@@ -12,33 +12,10 @@
     <link rel="stylesheet" href="~/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="~/css/style.css" />
     <link href="~/css/site.min.css" rel="stylesheet" asp-append-version="true" />
+    <script src="https://kit.fontawesome.com/dcdf1db5f7.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
-    @*<header>
-            <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <partial name="_LoginPartial" />
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Settings" asp-action="Index">Settings</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>*@
     <header id="header" class="transparent-nav">
         <div class="navbar-header">
             <!-- Logo -->
@@ -57,13 +34,42 @@
         <div class="container">
             <!-- Navigation -->
             <nav id="nav">
-                <partial name="_LoginPartial" />
+               
+                <div class="btn-group col-md-2" role="group" aria-label="Button group with nested dropdown">
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                            CATEGORIES <i class="fas fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item">Dropdown link</a>
+                            <a class="dropdown-item" href="#">Dropdown link</a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="searchField" class="form-inline col-md-4">
+                    <form >
+                        <div class="">
+                            <i class="fas fa-search loginRegisterTextColor" aria-hidden="true"></i>
+                            <input class="form-control loginRegisterTextColor form-control-sm ml-4" type="text" placeholder="Search"
+                                   aria-label="Search">
+                        </div>
+                    </form>
+                </div>
                 <ul class="main-menu nav navbar-nav navbar-right d-inline-flex">
                     <li><a asp-action="Index" asp-controller="Home">Home</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Categories</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    @if (this.User == null)
+                    {
+                        <partial name="_LoginPartial" />
+                    }
+                    else
+                    {
+                        <li><a href="blog.html">My Account</a></li>
+                    }
+
+
                 </ul>
             </nav>
             <!-- /Navigation -->
