@@ -1,4 +1,6 @@
 ﻿@using LearningCenter.Common
+@using LearningCenter.Services.Data
+@inject ICategoriesService categoryService
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +13,7 @@
     <link type="text/css" rel="stylesheet" href="~/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="~/css/style.css" />
+   
     <link href="~/css/site.min.css" rel="stylesheet" asp-append-version="true" />
     <script src="https://kit.fontawesome.com/dcdf1db5f7.js" crossorigin="anonymous"></script>
 
@@ -31,42 +34,30 @@
             </button>
             <!-- /Mobile toggle -->
         </div>
+        <div id="searchField">
+
+            <div class="active-cyan-4 mb-4 col-md-3 form-group">
+                <input class="form-control loginRegisterTextColor" type="text" placeholder="Search..." aria-label="Search">
+            </div>
+            <div id="searchIcon" class="col-md-1">
+                <i class="fas fa-search loginRegisterTextColor"></i>
+            </div>
+        </div>
         <div class="container">
             <!-- Navigation -->
             <nav id="nav">
-               
-                <div class="btn-group col-md-2" role="group" aria-label="Button group with nested dropdown">
-                    <div class="btn-group" role="group">
-                        <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-                            CATEGORIES <i class="fas fa-caret-down"></i>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item">Dropdown link</a>
-                            <a class="dropdown-item" href="#">Dropdown link</a>
-                        </div>
-                    </div>
-                </div>
-
-                
-                <div id="searchField" class="form-inline col-md-4">
-                    <form >
-                        <div class="">
-                            <i class="fas fa-search loginRegisterTextColor" aria-hidden="true"></i>
-                            <input class="form-control loginRegisterTextColor form-control-sm ml-4" type="text" placeholder="Search"
-                                   aria-label="Search">
-                        </div>
-                    </form>
-                </div>
                 <ul class="main-menu nav navbar-nav navbar-right d-inline-flex">
+                    <li><a asp-action="Index" asp-controller="Categories">Categories</a></li>
                     <li><a asp-action="Index" asp-controller="Home">Home</a></li>
                     <li><a href="#">About</a></li>
                     @if (this.User == null)
                     {
-                        <partial name="_LoginPartial" />
+
+                        <li><a href="blog.html">My Account</a></li>
                     }
                     else
                     {
-                        <li><a href="blog.html">My Account</a></li>
+                        <partial name="_LoginPartial" />
                     }
 
 
@@ -76,14 +67,14 @@
 
         </div>
     </header>
-      <div class="container bg-secondary">
+    <div class="container bg-secondary">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @this.RenderBody()
         </main>
     </div>
     <footer class="border-top footer text-muted transparent">
-        <div class="container">
+        <div class="container loginRegisterTextColor">
             &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>

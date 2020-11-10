@@ -52,7 +52,7 @@ html {
 }
 
 .home-wrapper > .container {
-    padding-left: 50px;
+    padding-left: 100px;
 }
 
 body {
@@ -68,6 +68,7 @@ body {
 
     .navbar-brand .logo {
         margin-left: 30px;
+        margin-right: 30px;
     }
 
         .navbar-brand .logo > img {
@@ -79,24 +80,8 @@ body {
     border-bottom-right-radius: 15px;
 }
 .container{
-    display: inline;
-}
-#searchField{
-    padding-top: 15px;
-    padding-right: 20px;
-    display: inline-block;
-    color: white;
 }
 /*LOGO*/
-#btnGroupDrop1 {
-    background-color: transparent;
-    font-size: 15px;
-    color: white;
-    font-family: 'Lato', sans-serif;
-    font-weight: 700;
-    padding-left: 25px;
-    padding-top: 17px;
-}
 /*Login page CSS*/
 #loginRegisterPage {
     background-image: url("../img/login-background.jpg");
@@ -118,4 +103,28 @@ body {
     /* Set the fixed height of the footer here */
     height: 60px;
     line-height: 60px; /* Vertically center the text there */
+}
+
+#searchField{
+    padding-top:17px;
+}
+#searchIcon{
+    padding-top: 10px;
+    padding-left: 0px !important;
+}
+.active-cyan-4 input[type=text]:focus:not([readonly]) {
+    border: 1px solid #4dd0e1;
+    box-shadow: 0 0 0 1px #4dd0e1;
+}
+input::-webkit-input-placeholder{
+    color: white !important;
+    text-decoration-color: white;
+}
+
+#categoryCards{
+    padding-top: 12%;
+}
+
+#categoryCards .card-img-top{
+    border-radius: 15px;
 }

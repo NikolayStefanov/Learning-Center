@@ -2,20 +2,20 @@
 @{
     this.ViewData["Title"] = "Home Page";
 }
-
+<!-- Backgound Image -->
+<div class="bg-image bg-parallax overlay" style="background-image:url(./img/home-background.jpg)"></div>
+<!-- /Backgound Image -->
 <div id="home" class="hero-area">
 
-    <!-- Backgound Image -->
-    <div class="bg-image bg-parallax overlay" style="background-image:url(./img/home-background.jpg)"></div>
-    <!-- /Backgound Image -->
-  
+
+
     <div class="home-wrapper">
         <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <h1 class="white-text">Edusite Free Online Training Courses</h1>
-                    <p class="lead white-text">Libris vivendo eloquentiam ex ius, nec id splendide abhorreant, eu pro alii error homero.</p>
-                    <a class="main-button icon-button" href="#">Get Started!</a>
+            <div class="row text-center justify-content-center">
+                <div class="col-md-10">
+                    <h1 class="white-text">Increase your knowledge & explore your creativity!</h1>
+                    <p class="lead white-text">Join Learning Center to watch, play, learn, make and discover!</p>
+                    <a class="main-button icon-button" asp-area="Identity" asp-page="/Account/Register">Get Started for Free!</a>
                 </div>
             </div>
         </div>

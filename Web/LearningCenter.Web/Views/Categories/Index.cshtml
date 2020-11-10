@@ -1,0 +1,22 @@
+﻿@model LearningCenter.Web.ViewModels.Categories.IndexViewModel
+@{
+    this.ViewData["Title"] = "Categories";
+}
+<!-- Backgound Image -->
+<div class="bg-image bg-parallax overlay" style=" background-image: url(./img/cta2-background.jpg)"></div>
+<!-- /Backgound Image -->
+<div id="home" class="hero-area text-center ">
+
+    <div id="categoryCards" class="row center-block">
+        @foreach (var category in Model.Categories)
+        {
+            <div class="col-md-4" style="width: 18rem;">
+                <img class="card-img-top" width="175px" height="175px" src="@category.ImageUrl" alt="Card image cap">
+                <div class="card-body">
+                    <a class="card-text loginRegisterTextColor" asp->@category.Title</a>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
