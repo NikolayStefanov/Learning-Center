@@ -35,7 +35,8 @@ button.accept-policy {
     font-size: 1rem;
     line-height: inherit;
 }
-.btn-primary{
+
+.btn-primary {
     padding: 15px 25px;
 }
 
@@ -79,7 +80,8 @@ body {
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 }
-.container{
+
+.container {
 }
 /*LOGO*/
 /*Login page CSS*/
@@ -90,10 +92,32 @@ body {
     margin-bottom: 75px;
     color: white;
 }
-.loginRegisterTextColor{
+
+.loginRegisterTextColor {
     color: white;
 }
 /*Login page CSS*/
+
+/*Target Category Page CSS*/
+#targetCategoryPage {
+    background-image: url("../img/cta2-background.jpg");
+    opacity: inherit;
+}
+
+#sunCategoryItems {
+    padding-top: 30px;
+    margin-top: 7%;
+    border: 2px solid;
+    border-bottom: none;
+    border-left: none;
+    border-top: none;
+}
+
+#sunCategoryItems h3 {
+        color: #dce6cf;
+}
+
+/*Target Category Page CSS*/
 .footer {
     padding-left: 50px;
     position: absolute;
@@ -105,29 +129,34 @@ body {
     line-height: 60px; /* Vertically center the text there */
 }
 
-#searchField{
-    padding-top:17px;
+#searchField {
+    padding-top: 17px;
 }
-#searchIcon{
+
+#searchIcon {
     padding-top: 10px;
     padding-left: 0px !important;
 }
+
 .active-cyan-4 input[type=text]:focus:not([readonly]) {
     border: 1px solid #4dd0e1;
     box-shadow: 0 0 0 1px #4dd0e1;
 }
-input::-webkit-input-placeholder{
+
+input::-webkit-input-placeholder {
     color: white !important;
     text-decoration-color: white;
 }
 
-#categoryCards{
+#categoryCards {
     padding-top: 15%;
     padding-left: 4%;
 }
-#categoryCards .categoryElement{
-    margin-bottom: 5%;
-}
-#categoryCards .card-img-top {
+
+    #categoryCards .categoryElement {
+        margin-bottom: 5%;
+    }
+
+.card-img-top {
     border-radius: 15px;
 }

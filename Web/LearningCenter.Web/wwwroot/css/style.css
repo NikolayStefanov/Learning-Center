@@ -64,17 +64,17 @@ h4 {
 
 a {
 	font-family: 'Lato', sans-serif;
-	color: #374050;
+	color: #d49da9;
 	font-weight: 700;
 }
 
-a:hover,
-a:focus{
-    text-decoration: none;
-    outline: none;
-	color: #374050;
-	opacity: 0.9;
-}
+	a:hover,
+	a:focus {
+		text-decoration: none;
+		outline: none;
+		color: #d49da9;
+		opacity: 0.9;
+	}
 
 ul,ol{
     margin: 0;

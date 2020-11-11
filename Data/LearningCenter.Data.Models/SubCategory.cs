@@ -11,7 +11,6 @@
         public SubCategory()
         {
             this.Courses = new HashSet<Course>();
-            this.Topics = new HashSet<Topic>();
         }
 
         [Required]
@@ -24,7 +23,5 @@
         public virtual Category Category { get; set; }
 
         public virtual ICollection<Course> Courses { get; set; }
-
-        public virtual ICollection<Topic> Topics { get; set; }
     }
 }

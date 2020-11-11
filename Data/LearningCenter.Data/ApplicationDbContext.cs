@@ -30,8 +30,6 @@
 
         public DbSet<SubCategory> SubCategories { get; set; }
 
-        public DbSet<Topic> Topics { get; set; }
-
         public DbSet<Language> Languages { get; set; }
 
         public DbSet<Course> Courses { get; set; }

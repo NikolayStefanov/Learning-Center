@@ -23,5 +23,11 @@
 
             return this.View(categoriesViewModel);
         }
+
+        public IActionResult TargetCategoryPage(int id)
+        {
+            var viewModel = this.categoriesService.GetTatgerCategory<TargetCategoryViewModel>(id);
+            return this.View(viewModel);
+        }
     }
 }

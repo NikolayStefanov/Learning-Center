@@ -6,7 +6,6 @@
     {
         public IActionResult SubCategories(int id)
         {
-            return this.Json(id);
             return this.View();
         }
     }

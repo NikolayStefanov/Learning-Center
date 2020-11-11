@@ -42,12 +42,6 @@
 
         public virtual SubCategory SubCategory { get; set; }
 
-        [Required]
-        [ForeignKey(nameof(Topic))]
-        public int TopicId { get; set; }
-
-        public virtual Topic Topic { get; set; }
-
         public virtual ICollection<Lecture> Lectures { get; set; }
 
         public virtual ICollection<UserCourses> Students { get; set; }

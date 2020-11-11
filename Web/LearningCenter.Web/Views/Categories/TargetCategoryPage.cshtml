@@ -1,0 +1,19 @@
+﻿@model LearningCenter.Web.ViewModels.Categories.TargetCategoryViewModel
+@{
+    this.ViewData["Title"] = "Categories";
+}
+<div id="targetCategoryPage" class="bg-image bg-parallax overlay"></div>
+<div id="sunCategoryItems" class="col-md-2">
+    <div class="text-center">
+        <img class="card-img-top" width="175px" height="175px" src="@Model.ImageUrl" alt="Card image cap">
+        <h3>@Model.Title</h3>
+
+        <ul class="list-group">
+            @foreach (var subCategory in Model.SubCategories)
+            {
+                <li href="" class="list-group-item list-group-item-success">@subCategory.Title</li>
+
+            }
+        </ul>
+    </div>
+</div>
