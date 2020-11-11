@@ -122,9 +122,12 @@ input::-webkit-input-placeholder{
 }
 
 #categoryCards{
-    padding-top: 12%;
+    padding-top: 15%;
+    padding-left: 4%;
 }
-
-#categoryCards .card-img-top{
+#categoryCards .categoryElement{
+    margin-bottom: 5%;
+}
+#categoryCards .card-img-top {
     border-radius: 15px;
 }

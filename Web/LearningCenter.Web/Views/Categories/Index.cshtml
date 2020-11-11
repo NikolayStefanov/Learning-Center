@@ -5,15 +5,15 @@
 <!-- Backgound Image -->
 <div class="bg-image bg-parallax overlay" style=" background-image: url(./img/cta2-background.jpg)"></div>
 <!-- /Backgound Image -->
-<div id="home" class="hero-area text-center ">
+<div id="home" class="hero-area text-center">
 
-    <div id="categoryCards" class="row center-block">
+    <div id="categoryCards" class="">
         @foreach (var category in Model.Categories)
         {
-            <div class="col-md-4" style="width: 18rem;">
+            <div class="col-md-1 categoryElement" style="width: 18rem;">
                 <img class="card-img-top" width="175px" height="175px" src="@category.ImageUrl" alt="Card image cap">
                 <div class="card-body">
-                    <a class="card-text loginRegisterTextColor" asp->@category.Title</a>
+                    <a class="card-text loginRegisterTextColor" asp-controller="Courses" asp-action="SubCategories" asp-route-id="@category.Id">@category.Title</a>
                 </div>
             </div>
         }
