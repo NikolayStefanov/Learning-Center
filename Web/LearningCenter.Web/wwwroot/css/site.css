@@ -106,7 +106,7 @@ body {
 
 #sunCategoryItems {
     padding-top: 30px;
-    margin-top: 7%;
+    margin-top: 5.8%;
     border: 2px solid;
     border-bottom: none;
     border-left: none;
@@ -147,10 +147,11 @@ input::-webkit-input-placeholder {
     color: white !important;
     text-decoration-color: white;
 }
-
+/*Category Cards Page*/
 #categoryCards {
-    padding-top: 15%;
-    padding-left: 4%;
+    padding-top: 12%;
+    padding-left: 10%;
+    padding-right: 4%;
 }
 
     #categoryCards .categoryElement {
@@ -160,3 +161,4 @@ input::-webkit-input-placeholder {
 .card-img-top {
     border-radius: 15px;
 }
+/*Category Cards Page*/
