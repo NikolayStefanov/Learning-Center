@@ -46,7 +46,17 @@ html {
     position: relative;
     min-height: 100%;
 }
-
+#errorPageBg {
+    background-image: url("../img/login-background.jpg");
+    opacity: inherit;
+}
+#errorId {
+    margin-top: 10%;
+    margin-left: 25%;
+}
+#errorId > img{
+    border-radius: 15px;
+}
 #nav {
     padding-left: 5px;
     padding-right: 50px;
@@ -104,16 +114,15 @@ body {
     opacity: inherit;
 }
 
-#sunCategoryItems {
-    padding-top: 30px;
-    margin-top: 5.8%;
+#subCategoryItems {
+    margin-top: 8%;
     border: 2px solid;
     border-bottom: none;
     border-left: none;
     border-top: none;
 }
 
-#sunCategoryItems h3 {
+#subCategoryItems h3 {
         color: #dce6cf;
 }
 

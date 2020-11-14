@@ -23,5 +23,12 @@
             return this.View(
                 new ErrorViewModel { RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier });
         }
+
+        public IActionResult StatusCodeError(int errorCode)
+        {
+            this.ViewData["statusCode"] = errorCode;
+            this.ViewData["requestId"] = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier;
+            return this.View();
+        }
     }
 }

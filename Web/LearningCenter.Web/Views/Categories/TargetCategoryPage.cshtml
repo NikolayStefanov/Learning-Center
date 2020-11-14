@@ -3,7 +3,7 @@
     this.ViewData["Title"] = "Categories";
 }
 <div id="targetCategoryPage" class="bg-image bg-parallax overlay"></div>
-<div id="sunCategoryItems" class="col-md-2">
+<div id="subCategoryItems" class="col-md-2">
     <div class="text-center">
         <img class="card-img-top" width="175px" height="175px" src="@Model.ImageUrl" alt="Card image cap">
         <h3>@Model.Title</h3>
@@ -15,5 +15,11 @@
 
             }
         </ul>
+        @*<table class="table-striped">
+            @foreach (var subCategory in Model.SubCategories)
+            {
+                <tr> <th class="">@subCategory.Title</th></tr>
+            }
+        </table>*@
     </div>
 </div>

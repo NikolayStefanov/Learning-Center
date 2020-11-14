@@ -19,7 +19,7 @@
 
             var categoriesDictionary = new Dictionary<string, string>
             {
-                { "Personal Development", "https://lh3.googleusercontent.com/proxy/v4LTi-UHmJwwKYHC5toGLaqH4MDvRPCoiGVAhEfdzuQmeJdfnoINoR0foB733z2zaCzoODJ_yHzXFzT-GmgMs1I3-8vbGIxwSVdtOiSpYrOgHiFxweRcr0g159UI_XpzEu4c34_RI7NXIC_n" },
+                { "Personal Development", "https://lh3.googleusercontent.com/proxy/6_UkcxOMHnu5RDFvM2n62sdBuf9OvdCCfBrhJ5hc7THre-ATW8n48m72A9vuQq3tIiymfnQQaJk2OReeP0cngmdQ-tUOHchaW8Qaj2NuWkrLE12ka_GuKOO-IktU2br8_6gopFvPZ5ht" },
                 { "Business", "https://eduadvisor.my/articles/wp-content/uploads/2018/04/Types-of-business-degrees-Feature.png" },
                 { "IT & Software", "https://www.riscure.com/uploads/2020/03/software-development-resized-600x600-c-1.jpg" },
                 { "Design", "https://iotgossiper.files.wordpress.com/2019/08/design-thinking-edited.jpg" },

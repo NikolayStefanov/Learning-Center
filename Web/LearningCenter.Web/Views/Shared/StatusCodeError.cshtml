@@ -1,0 +1,16 @@
+﻿<div id="errorPageBg" class="bg-image bg-parallax overlay"></div>>
+
+<div id="errorId" class="col-md-6 text-center">
+    <h1 class="text-danger">ERROR @this.ViewData["statusCode"].</h1>
+    <h3 class="loginRegisterTextColor">Request ID: @this.ViewData["requestId"]</h3>
+    @if ((int)this.ViewData["statusCode"] == 404)
+    {
+        <img src="https://media.giphy.com/media/Qxkf4LQ1xIbXpH8z0I/giphy.gif" />
+    }
+    else
+    {
+        <img src="~/img/0_lmhc2x2nf-7oN-RK.jpg" width="500px" height="500px" />
+    }
+
+
+</div>
