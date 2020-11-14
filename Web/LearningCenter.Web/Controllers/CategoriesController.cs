@@ -24,9 +24,9 @@
             return this.View(categoriesViewModel);
         }
 
-        public IActionResult TargetCategoryPage(int id)
+        public IActionResult ChosenCategory(int id)
         {
-            var viewModel = this.categoriesService.GetTatgerCategory<TargetCategoryViewModel>(id);
+            var viewModel = this.categoriesService.GetTatgerCategory<ChosenCategory>(id);
             return this.View(viewModel);
         }
     }

@@ -1,7 +1,7 @@
 ﻿namespace LearningCenter.Web
 {
     using System.Reflection;
-
+    using CloudinaryDotNet;
     using LearningCenter.Data;
     using LearningCenter.Data.Common;
     using LearningCenter.Data.Common.Repositories;
@@ -57,6 +57,15 @@
 
             services.AddSingleton(this.configuration);
 
+            Account account = new Account(
+                        this.configuration["Cloudinary:ApiName"],
+                        this.configuration["Cloudinary:ApiKey"],
+                        this.configuration["Cloudinary:ApiSecret"]);
+
+            Cloudinary cloudinary = new Cloudinary(account);
+
+            services.AddSingleton(cloudinary);
+
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
@@ -91,7 +100,7 @@
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-            app.UseStatusCodePagesWithRedirects("/Home/StatusCodeError?errorCode={0}");
+            // app.UseStatusCodePagesWithRedirects("/Home/StatusCodeError?errorCode={0}");
 
 
             app.UseHttpsRedirection();

@@ -17,7 +17,7 @@
         public string Title { get; set; }
 
         [Required]
-        public string ImageUrl { get; set; }
+        public string ImageName { get; set; }
 
         public virtual ICollection<SubCategory> SubCategories { get; set; }
 
