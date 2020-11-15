@@ -2,6 +2,8 @@
 @{
     this.ViewData["Title"] = "Categories";
 }
+
+
 <!-- Backgound Image -->
 <div class="bg-image bg-parallax overlay" style=" background-image: url(./img/cta2-background.jpg)"></div>
 <!-- /Backgound Image -->
@@ -9,12 +11,12 @@
     <div id="categoryCards">
         @foreach (var category in Model.Categories)
         {
-            <div class="col-md-3 categoryElement" style="width: 18rem;">
-                <img class="card-img-top" width="175px" height="175px" src="~/img/@category.ImageName" alt="Card image cap">
-                <div class="card-body">
-                    <h3><a class="card-text loginRegisterTextColor" asp-controller="Categories" asp-action="ChosenCategory" asp-route-id="@category.Id">@category.Title</a></h3>
-                </div>
+        <div class="col-md-3 categoryElement" style="width: 18rem;">
+            <img class="card-img-top" width="175px" height="175px" src="~/img/@category.ImageName" alt="Card image cap">
+            <div class="card-body">
+                <h3><a class="card-text loginRegisterTextColor" asp-controller="Categories" asp-action="ChosenCategory" asp-route-id="@category.Id">@category.Title</a></h3>
             </div>
+        </div>
         }
     </div>
 </div>

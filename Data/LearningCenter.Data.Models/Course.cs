@@ -5,6 +5,7 @@
     using System.ComponentModel.DataAnnotations.Schema;
 
     using LearningCenter.Data.Common.Models;
+    using LearningCenter.Data.Models.Enums;
 
     public class Course : BaseDeletableModel<int>
     {
@@ -13,6 +14,7 @@
             this.Lectures = new HashSet<Lecture>();
             this.Students = new HashSet<UserCourses>();
             this.Reviews = new HashSet<Review>();
+            this.Ratings = new HashSet<CoursesRatings>();
         }
 
         [Required]
@@ -41,6 +43,8 @@
         public int SubCategoryId { get; set; }
 
         public virtual SubCategory SubCategory { get; set; }
+
+        public virtual ICollection<CoursesRatings> Ratings { get; set; }
 
         public virtual ICollection<Lecture> Lectures { get; set; }
 

@@ -4,9 +4,5 @@
 
     public class CoursesController : Controller
     {
-        public IActionResult SubCategories(int id)
-        {
-            return this.View();
-        }
     }
 }

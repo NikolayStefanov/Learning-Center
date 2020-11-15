@@ -5,5 +5,7 @@
     public interface ICoursesService
     {
         IEnumerable<T> GetAll<T>();
+
+        IEnumerable<T> GetTopCourses<T>();
     }
 }

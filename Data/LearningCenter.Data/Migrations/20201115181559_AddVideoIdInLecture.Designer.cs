@@ -4,14 +4,16 @@ using LearningCenter.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LearningCenter.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201115181559_AddVideoIdInLecture")]
+    partial class AddVideoIdInLecture
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -255,42 +257,6 @@ namespace LearningCenter.Data.Migrations
                     b.ToTable("Courses");
                 });
 
-            modelBuilder.Entity("LearningCenter.Data.Models.CoursesRatings", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("RatingId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CourseId");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("RatingId");
-
-                    b.ToTable("CoursesRatings");
-                });
-
             modelBuilder.Entity("LearningCenter.Data.Models.Language", b =>
                 {
                     b.Property<int>("Id")
@@ -445,35 +411,6 @@ namespace LearningCenter.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("ProfilePictures");
-                });
-
-            modelBuilder.Entity("LearningCenter.Data.Models.Rating", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Value")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("Ratings");
                 });
 
             modelBuilder.Entity("LearningCenter.Data.Models.Review", b =>
@@ -794,21 +731,6 @@ namespace LearningCenter.Data.Migrations
                     b.HasOne("LearningCenter.Data.Models.SubCategory", "SubCategory")
                         .WithMany("Courses")
                         .HasForeignKey("SubCategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("LearningCenter.Data.Models.CoursesRatings", b =>
-                {
-                    b.HasOne("LearningCenter.Data.Models.Course", "Course")
-                        .WithMany("Ratings")
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("LearningCenter.Data.Models.Rating", "Rating")
-                        .WithMany("Courses")
-                        .HasForeignKey("RatingId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

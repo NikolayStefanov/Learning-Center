@@ -9,6 +9,9 @@
     public class Lecture : BaseDeletableModel<int>
     {
         [Required]
+        public string VideoId { get; set; }
+
+        [Required]
         public string Title { get; set; }
 
         [Required]

@@ -1,6 +1,7 @@
 ﻿namespace LearningCenter.Web
 {
     using System.Reflection;
+
     using CloudinaryDotNet;
     using LearningCenter.Data;
     using LearningCenter.Data.Common;
@@ -12,7 +13,6 @@
     using LearningCenter.Services.Mapping;
     using LearningCenter.Services.Messaging;
     using LearningCenter.Web.ViewModels;
-
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -75,6 +75,7 @@
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<ICategoriesService, CategoriesService>();
+            services.AddTransient<ICoursesService, CoursesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -100,8 +101,8 @@
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-            // app.UseStatusCodePagesWithRedirects("/Home/StatusCodeError?errorCode={0}");
 
+            // app.UseStatusCodePagesWithRedirects("/Home/StatusCodeError?errorCode={0}");
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

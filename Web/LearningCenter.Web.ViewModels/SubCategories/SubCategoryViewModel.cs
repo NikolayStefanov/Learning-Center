@@ -9,5 +9,6 @@
 
         public string Title { get; set; }
 
+        public int CoursesCount { get; set; }
     }
 }
