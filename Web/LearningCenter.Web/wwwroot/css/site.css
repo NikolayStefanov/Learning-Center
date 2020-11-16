@@ -173,6 +173,20 @@ input::-webkit-input-placeholder {
 }
 /*Category Cards Page*/
 
+/*Create Course*/
+#createCourseBg {
+    background-image: url("../img/create-page-bg.jpg");
+    opacity: inherit;
+}
+#createCourse {
+    padding-top: 10%;
+    padding-left: 15%;
+    padding-right: 4%;
+}
+.courseSelections{
+    margin-bottom: 22px;
+}
+/*Create Course*/
 
 /*STAR RATINGS*/
 body {

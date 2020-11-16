@@ -1,0 +1,53 @@
+﻿@model LearningCenter.Web.ViewModels.Courses.CourseInputModel
+@{
+    ViewData["Title"] = "Create course: ";
+}
+
+<div id="createCourseBg" class="bg-image bg-parallax overlay"></div>
+<div id="createCourse" class="col-md-12 text-center">
+    <section>
+        <form>
+            <h1 class="white-text">@this.ViewData["Title"]</h1>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label asp-for="@Model.Title" class="white-text"></label>
+                    <input asp-for="@Model.Title" class="form-control white-text" />
+                    <span asp-validation-for="@Model.Title" class="bg-danger text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Description" class="white-text"></label>
+                    <input asp-for="@Model.Description" class="form-control white-text" />
+                    <span asp-validation-for="@Model.Description" class="bg-danger text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Price" class="white-text"></label>
+                    <input asp-for="@Model.Price" class="form-control white-text" />
+                    <span asp-validation-for="@Model.Price" class="bg-danger text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-5 courseSelections">
+                <div class="form-group">
+                    <label asp-for="@Model.LanguageId" class="white-text"></label>
+                    <select asp-for="@Model.LanguageId" class="form-control"></select>
+                    <span asp-validation-for="@Model.LanguageId" class="bg-danger text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.CategoryId" class="white-text"></label>
+                    <select asp-for="@Model.CategoryId" class="form-control"></select>
+                    <span asp-validation-for="@Model.CategoryId" class="bg-danger text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.SubcategoryId" class="white-text"></label>
+                    <select asp-for="@Model.SubcategoryId" class="form-control"></select>
+                    <span asp-validation-for="@Model.SubcategoryId" class="bg-danger text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary pull-right">Register</button>
+            </div>
+
+        </form>
+    </section>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
