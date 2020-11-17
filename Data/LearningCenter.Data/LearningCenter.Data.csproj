@@ -44,4 +44,8 @@
     <ProjectReference Include="..\LearningCenter.Data.Models\LearningCenter.Data.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

@@ -36,9 +36,6 @@ namespace LearningCenter.Data.Models
         [Required]
         public GenderEnum Gender { get; set; }
 
-        [Required]
-        public CountriesEnum Country { get; set; }
-
         // Users role addition
         [ForeignKey(nameof(Student))]
         public string StudentId { get; set; }

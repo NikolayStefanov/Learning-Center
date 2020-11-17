@@ -40,13 +40,6 @@
             </div>
             <div class="col-md-5">
                 <div class="form-group">
-                    <label asp-for="Input.Country"></label>
-                    <select asp-for="Input.Country" asp-items="@Html.GetEnumSelectList<CountriesEnum>()" class="form-control">
-                        <option selected="selected" value="">Select Country</option>
-                    </select>
-                    <span asp-validation-for="Input.Country" class="bg-danger text-danger"></span>
-                </div>
-                <div class="form-group">
                     <label asp-for="Input.Email"></label>
                     <input asp-for="Input.Email" class="form-control loginRegisterTextColor" />
                     <span asp-validation-for="Input.Email" class="bg-danger text-danger"></span>

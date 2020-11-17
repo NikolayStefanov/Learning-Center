@@ -3,6 +3,7 @@
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+
     using LearningCenter.Data.Common.Models;
 
     public class Lecturer : BaseDeletableModel<string>
