@@ -42,10 +42,6 @@
 
         public DbSet<ProfilePicture> ProfilePictures { get; set; }
 
-        public DbSet<Lecturer> Lecturers { get; set; }
-
-        public DbSet<Student> Students { get; set; }
-
         public DbSet<Rating> Ratings { get; set; }
 
         public DbSet<CoursesRatings> CoursesRatings { get; set; }

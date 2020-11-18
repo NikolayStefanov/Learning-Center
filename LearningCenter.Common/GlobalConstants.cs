@@ -18,5 +18,7 @@ namespace LearningCenter.Common
 
         public const string AdminLastName = "Adminov";
 
+        public const string DefaultProfilePicturePath = "~/img/avatar.png";
+
     }
 }

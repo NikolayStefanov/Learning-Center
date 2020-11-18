@@ -1,7 +1,6 @@
 ﻿namespace LearningCenter.Data.Seeding
 {
     using System;
-    using System.Linq;
     using System.Threading.Tasks;
 
     using LearningCenter.Data.Models;
@@ -30,6 +29,7 @@
                 Email = AdminEmail,
                 BirthDate = new DateTime(1997, 3, 17),
                 Gender = Models.Enums.GenderEnum.Male,
+                ProfilePicture = new ProfilePicture { Url = DefaultProfilePicturePath },
             };
 
             var result = await userManager.CreateAsync(admin, AdminPassword);

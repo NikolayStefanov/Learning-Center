@@ -9,25 +9,24 @@
 
 <div id="loginRegisterPage" class="row bg-image bg-parallax overlay">
     <div class="col-md-12">
-        <h2 class="loginRegisterTextColor">@ViewData["Title"]</h2>
+        <h2 class="white-text">@ViewData["Title"]</h2>
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <h4 class="loginRegisterTextColor">Create a new account.</h4>
             <hr />
-            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="col-md-5">
                 <div class="form-group">
                     <label asp-for="Input.FirstName"></label>
-                    <input asp-for="Input.FirstName" class="form-control loginRegisterTextColor" />
+                    <input asp-for="Input.FirstName" class="form-control white-text" />
                     <span asp-validation-for="Input.FirstName" class="bg-danger text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Input.LastName"></label>
-                    <input asp-for="Input.LastName" class="form-control loginRegisterTextColor" />
+                    <input asp-for="Input.LastName" class="form-control white-text" />
                     <span asp-validation-for="Input.LastName" class="bg-danger text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Input.BirthDate"></label>
-                    <input asp-for="Input.BirthDate" class="form-control loginRegisterTextColor" />
+                    <input asp-for="Input.BirthDate" class="form-control white-text" />
                     <span asp-validation-for="Input.BirthDate" class="bg-danger text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -41,53 +40,34 @@
             <div class="col-md-5">
                 <div class="form-group">
                     <label asp-for="Input.Email"></label>
-                    <input asp-for="Input.Email" class="form-control loginRegisterTextColor" />
+                    <input asp-for="Input.Email" class="form-control white-text" />
                     <span asp-validation-for="Input.Email" class="bg-danger text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Input.Password"></label>
-                    <input asp-for="Input.Password" class="form-control loginRegisterTextColor" />
+                    <input asp-for="Input.Password" class="form-control white-text" />
                     <span asp-validation-for="Input.Password" class="bg-danger text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Input.ConfirmPassword"></label>
-                    <input asp-for="Input.ConfirmPassword" class="form-control loginRegisterTextColor" />
+                    <input asp-for="Input.ConfirmPassword" class="form-control white-text" />
                     <span asp-validation-for="Input.ConfirmPassword" class="bg-danger text-danger"></span>
+                </div>
+                <div id="userType" class="form-group">
+                    <label asp-for="Input.UserType"></label>
+                    @foreach (var type in System.Enum.GetValues(typeof(UserTypeEnum)))
+                    {
+                        <label asp-for="Input.UserType">@type.ToString()</label>
+                        <input type="radio" asp-for="Input.UserType" value="@((int)type)" />
+                    }
+                    <span asp-validation-for="Input.UserType" class="bg-danger text-danger"></span>
                 </div>
                 <button type="submit" class="btn btn-primary pull-right">Register</button>
             </div>
+
         </form>
     </div>
-    @*<div class="col-md-6 col-md-offset-2">
-        <section>
-            <h4 class="loginRegisterTextColor">Use another service to register.</h4>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See <a class="loginRegisterTextColor" href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                            for details on setting up this ASP.NET application to support logging in via external services.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins)
-                                {
-                                    <button type="submit" class="btn btn-default" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
-            }
-        </section>
-    </div>*@
+
 </div>
 
 @section Scripts {

@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using LearningCenter.Data.Models.Enums;
+using static LearningCenter.Common.GlobalConstants;
 
 namespace LearningCenter.Web.Areas.Identity.Pages.Account
 {
@@ -53,24 +54,24 @@ namespace LearningCenter.Web.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            [MinLength(3)]
-            [MaxLength(30)]
-            [Display(Name = "First Name:")]
+            [Display(Name = "First Name")]
             public string FirstName { get; set; }
 
             [Required]
-            [MinLength(3)]
-            [MaxLength(30)]
-            [Display(Name ="Last Name:")]
+            [Display(Name = "Last Name")]
             public string LastName { get; set; }
 
             [Required]
-            [DataType(DataType.Date)]
-            [Display(Name = "Birth Date:")]
-            public DateTime BirthDate { get; set; }
+            public GenderEnum Gender { get; set; }
 
             [Required]
-            public GenderEnum Gender { get; set; }
+            [Display(Name = "Birth Date")]
+            [DataType(DataType.Date)]
+            public DateTime BirthDate { get; set; }
+
+            [Required(ErrorMessage = "You should choose profile type!")]
+            [Display(Name = "You are: ")]
+            public UserTypeEnum UserType { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
@@ -96,10 +97,29 @@ namespace LearningCenter.Web.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                var user = new ApplicationUser 
+                {
+                    UserName = Input.Email,
+                    Email = Input.Email,
+                    FirstName = Input.FirstName,
+                    LastName = Input.LastName,
+                    BirthDate = Input.BirthDate,
+                    Gender = Input.Gender,
+                    UserType = Input.UserType,
+                    ProfilePicture = new ProfilePicture { Url = DefaultProfilePicturePath},
+                };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
+                    switch (user.UserType)
+                    {
+                        case UserTypeEnum.Lecturer:
+                            await _userManager.AddToRoleAsync(user, LecturerRoleName);
+                            break;
+                        default:
+                            await _userManager.AddToRoleAsync(user, StudentRoleName);
+                            break;
+                    }
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

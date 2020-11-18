@@ -46,17 +46,21 @@ html {
     position: relative;
     min-height: 100%;
 }
+
 #errorPageBg {
     background-image: url("../img/login-background.jpg");
     opacity: inherit;
 }
+
 #errorId {
     margin-top: 10%;
     margin-left: 25%;
 }
-#errorId > img{
-    border-radius: 15px;
-}
+
+    #errorId > img {
+        border-radius: 15px;
+    }
+
 #nav {
     padding-left: 5px;
     padding-right: 50px;
@@ -106,6 +110,10 @@ body {
 .loginRegisterTextColor {
     color: white;
 }
+#userType{
+    display: inline-block;
+    margin-top: 15px;
+}
 /*Login page CSS*/
 
 /*Target Category Page CSS*/
@@ -123,9 +131,9 @@ body {
     color: gray;
 }
 
-#subCategoryItems h3 {
+    #subCategoryItems h3 {
         color: #dce6cf;
-}
+    }
 
 /*Target Category Page CSS*/
 .footer {
@@ -178,12 +186,14 @@ input::-webkit-input-placeholder {
     background-image: url("../img/create-page-bg.jpg");
     opacity: inherit;
 }
+
 #createCourse {
     padding-top: 10%;
     padding-left: 15%;
     padding-right: 4%;
 }
-.courseSelections{
+
+.courseSelections {
     margin-bottom: 22px;
 }
 /*Create Course*/
@@ -234,3 +244,24 @@ label.star:before {
     font-family: FontAwesome
 }
 /*STAR RATINGS*/
+
+/*LOGOUT BUTTON*/
+#logoutButton {
+    font-family: 'Lato', sans-serif;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+    padding: 0px;
+}
+
+#logoutButton:hover,
+#logoutButton:focus {
+    text-decoration: none;
+    outline: none;
+    opacity: 0.9;
+}
+ 
+/*LOGOUT BUTTON*/
+
