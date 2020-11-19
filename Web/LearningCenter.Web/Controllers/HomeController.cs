@@ -2,12 +2,31 @@
 {
     using System.Diagnostics;
 
+    using LearningCenter.Data.Models;
     using LearningCenter.Web.ViewModels;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController
     {
+        private readonly SignInManager<ApplicationUser> signInManager;
+
+        public HomeController(SignInManager<ApplicationUser> signInManager)
+        {
+            this.signInManager = signInManager;
+        }
+
         public IActionResult Index()
+        {
+            if (this.signInManager.IsSignedIn(this.User))
+            {
+                return this.Redirect("/Categories");
+            }
+
+            return this.View();
+        }
+
+        public IActionResult About()
         {
             return this.View();
         }

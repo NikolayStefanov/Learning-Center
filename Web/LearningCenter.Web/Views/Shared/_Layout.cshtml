@@ -37,10 +37,10 @@
         <div id="searchField">
 
             <div class="active-cyan-4 mb-4 col-md-3 form-group">
-                <input class="form-control loginRegisterTextColor" type="text" placeholder="Search..." aria-label="Search">
+                <input class="form-control white-text" type="text" placeholder="Search..." aria-label="Search">
             </div>
             <div id="searchIcon" class="col-md-1">
-                <i class="fas fa-search loginRegisterTextColor"></i>
+                <i class="fas fa-search white-text"></i>
             </div>
         </div>
         <div class="container">
@@ -49,18 +49,8 @@
                 <ul class="main-menu nav navbar-nav navbar-right d-inline-flex">
                     <li><a asp-action="Index" asp-controller="Categories">Categories</a></li>
                     <li><a asp-action="Index" asp-controller="Home">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    @if (this.User == null)
-                    {
-
-                        <li><a href="blog.html">My Account</a></li>
-                    }
-                    else
-                    {
-                        <partial name="_LoginPartial" />
-                    }
-
-
+                    <li><a asp-action="About" asp-controller="Home">About</a></li>
+                    <partial name="_LoginPartial" />
                 </ul>
             </nav>
             <!-- /Navigation -->
@@ -74,7 +64,7 @@
         </main>
     </div>
     <footer class="border-top footer text-muted transparent">
-        <div class="container loginRegisterTextColor">
+        <div class="container white-text">
             &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>

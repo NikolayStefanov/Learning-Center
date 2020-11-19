@@ -115,6 +115,25 @@ body {
     margin-top: 15px;
 }
 /*Login page CSS*/
+/*LOGOUT BUTTON*/
+#logoutButton {
+    font-family: 'Lato', sans-serif;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+    padding: 0px;
+}
+
+    #logoutButton:hover,
+    #logoutButton:focus {
+        text-decoration: none;
+        outline: none;
+        opacity: 0.9;
+    }
+
+/*LOGOUT BUTTON*/
 
 /*Target Category Page CSS*/
 #targetCategoryPage {
@@ -245,23 +264,18 @@ label.star:before {
 }
 /*STAR RATINGS*/
 
-/*LOGOUT BUTTON*/
-#logoutButton {
-    font-family: 'Lato', sans-serif;
-    color: white;
-    font-weight: 700;
-    text-transform: uppercase;
-    -webkit-transition: 0.2s all;
-    transition: 0.2s all;
-    padding: 0px;
+/*ABOUT PAGE*/
+#aboutPageBg{
+    background-image: url("../img/create-page-bg.jpg");
+}
+#headingJumbotron {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("../img/studyingAbout.jpg");
+    margin-top: 12%;
+}
+#growJumbotronBg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("../img/aboutGrowPage.jpg");
+    margin-top: 20%;
 }
 
-#logoutButton:hover,
-#logoutButton:focus {
-    text-decoration: none;
-    outline: none;
-    opacity: 0.9;
-}
- 
-/*LOGOUT BUTTON*/
+/*ABOUT PAGE*/
 
