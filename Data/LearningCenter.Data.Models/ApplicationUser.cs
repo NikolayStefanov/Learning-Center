@@ -20,6 +20,7 @@ namespace LearningCenter.Data.Models
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.Courses = new HashSet<UserCourses>();
+            this.Lectures = new HashSet<Lecture>();
         }
 
         [Required]
@@ -59,6 +60,8 @@ namespace LearningCenter.Data.Models
         public virtual ICollection<UserCourses> Courses { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
+
+        public virtual ICollection<Lecture> Lectures { get; set; }
 
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 

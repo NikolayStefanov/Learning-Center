@@ -276,6 +276,10 @@ label.star:before {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("../img/aboutGrowPage.jpg");
     margin-top: 20%;
 }
+#topLectorersJumbotron {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("../img/create-page-bg.jpg");
+    margin-top: 20%;
+}
 
 /*ABOUT PAGE*/
 

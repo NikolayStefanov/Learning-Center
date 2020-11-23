@@ -14,7 +14,7 @@
             this.Lectures = new HashSet<Lecture>();
             this.Students = new HashSet<UserCourses>();
             this.Reviews = new HashSet<Review>();
-            this.Ratings = new HashSet<CoursesRatings>();
+            this.Ratings = new HashSet<Rating>();
         }
 
         [Required]
@@ -44,7 +44,7 @@
 
         public virtual SubCategory SubCategory { get; set; }
 
-        public virtual ICollection<CoursesRatings> Ratings { get; set; }
+        public virtual ICollection<Rating> Ratings { get; set; }
 
         public virtual ICollection<Lecture> Lectures { get; set; }
 

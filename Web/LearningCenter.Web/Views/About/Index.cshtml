@@ -1,0 +1,38 @@
+﻿@model LearningCenter.Web.ViewModels.About.AboutPageViewModel
+@{
+    this.ViewData["Title"] = "About Page";
+}
+<div id="aboutPageBg" class="bg-image bg-parallax overlay"></div>
+<div id="headingJumbotron" class="hero-area jumbotron jumbotron-fluid bg-image  text-center">
+    <div class="container white-text">
+        <h1 class="display-4 white-text">Improving Lives Through Learning</h1>
+        <h3 class="white-text">We have: @Model.LearningCenterInfo.CategoriesCount Categories | @Model.LearningCenterInfo.SubCategoriesCount Subcategories | @Model.LearningCenterInfo.LecturersCount Lecturers | @Model.LearningCenterInfo.CoursesCount Courses | @Model.LearningCenterInfo.LecturesCount Lectures</h3>
+        <h2 class="white-text"><a class="white-text" asp-action="Index" asp-controller="Categories">  Click here to see our categories and boost your knowledge!</a></h2>
+    </div>
+</div>
+<div id="growJumbotronBg" class="hero-area jumbotron jumbotron-fluid bg-image  ">
+    <div class="container white-text">
+        <h2 class="display-4 white-text">A great place to grow</h2>
+        <p class="lead">Our culture is diverse, inclusive, and committed to personal and professional development. We’re not afraid to take on a new challenge, and we love taking Learning Center courses!</p>
+    </div>
+</div>
+
+<div id="topLectorersJumbotron" class="hero-area jumbotron jumbotron-fluid bg-image  ">
+    <div class="container white-text">
+        <h2 class="display-4 white-text">Our Top Lecturers:</h2>
+        <div>
+            @foreach (var lecturer in Model.Lectorers)
+            {
+                <div class="card col-md-3" style="width: 18rem;">
+                    <img src="~/img/@lecturer.ProfilePicture.Url" class="card-img-top" alt="ProfilePicture">
+                    <div class="card-body">
+                        <h5 class="card-title white-text">Name: @lecturer.FullName</h5>
+                        <h5 class="card-title white-text">Age: @lecturer.Age</h5>
+                        <h5 class="card-title white-text">Lectures: @lecturer.LecturesCount</h5>
+                        <a href="#" class="btn btn-primary">Visit Profile</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
