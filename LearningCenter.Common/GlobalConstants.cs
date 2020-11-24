@@ -11,14 +11,11 @@ namespace LearningCenter.Common
         public const string StudentRoleName = "Student";
 
         public const string AdminEmail = "admin@admin.admin";
-
         public const string AdminPassword = "admin123";
-
         public const string AdminFirstName = "Admin";
-
         public const string AdminLastName = "Adminov";
 
-        public const string DefaultProfilePicturePath = "avatar.png";
+        public const string DefaultProfilePicturePath = "https://res.cloudinary.com/dszoti5z4/image/upload/v1606211241/avatar_km6qjd.png";
 
     }
 }

@@ -43,4 +43,10 @@
     <ProjectReference Include="..\LearningCenter.Web.Infrastructure\LearningCenter.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\LearningCenter.Web.ViewModels\LearningCenter.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.Production.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

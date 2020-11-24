@@ -10,7 +10,7 @@
 <div id="loginRegisterPage" class="row bg-image bg-parallax overlay">
     <div class="col-md-12">
         <h2 class="white-text">@ViewData["Title"]</h2>
-        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
             <h4 class="loginRegisterTextColor">Create a new account.</h4>
             <hr />
             <div class="col-md-5">
@@ -52,6 +52,11 @@
                     <label asp-for="Input.ConfirmPassword"></label>
                     <input asp-for="Input.ConfirmPassword" class="form-control white-text" />
                     <span asp-validation-for="Input.ConfirmPassword" class="bg-danger text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.ProfilePicture"></label>
+                    <input asp-for="Input.ProfilePicture" class="white-text" />
+                    <span asp-validation-for="Input.ProfilePicture" class="bg-danger text-danger"></span>
                 </div>
                 <div id="userType" class="form-group">
                     <label asp-for="Input.UserType"></label>

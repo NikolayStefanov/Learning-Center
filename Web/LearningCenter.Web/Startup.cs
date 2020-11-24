@@ -73,7 +73,6 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
-            services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IAboutService, AboutService>();
             services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<ICoursesService, CoursesService>();
@@ -103,7 +102,7 @@
                 app.UseHsts();
             }
 
-            // app.UseStatusCodePagesWithRedirects("/Home/StatusCodeError?errorCode={0}");
+            //app.UseStatusCodePagesWithRedirects("/Home/StatusCodeError?errorCode={0}");
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

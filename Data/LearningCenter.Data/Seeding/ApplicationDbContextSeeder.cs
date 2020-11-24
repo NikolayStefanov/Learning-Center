@@ -27,7 +27,6 @@
                           {
                               new RolesSeeder(),
                               new AdminSeeder(),
-                              new SettingsSeeder(),
                               new CategorySeeder(),
                               new SubCategoriesSeeder(),
                           };
