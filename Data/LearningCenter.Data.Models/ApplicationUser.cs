@@ -47,6 +47,11 @@ namespace LearningCenter.Data.Models
 
         public virtual ProfilePicture ProfilePicture { get; set; }
 
+        [ForeignKey(nameof(Lecturer))]
+        public string LecturerId { get; set; }
+
+        public virtual Lecturer Lecturer { get; set; }
+
         // Audit info
         public DateTime CreatedOn { get; set; }
 

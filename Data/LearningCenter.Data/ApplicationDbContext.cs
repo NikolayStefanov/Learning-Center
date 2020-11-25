@@ -42,6 +42,10 @@
 
         public DbSet<Rating> Ratings { get; set; }
 
+        public DbSet<Lecturer> Lecturers { get; set; }
+
+        public DbSet<Feedback> Feedbacks { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

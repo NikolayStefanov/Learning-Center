@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
     @*<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />*@
-    <link rel="icon" type="image/x-icon" href="~/favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
     <link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat:400,600" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="~/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/font-awesome.min.css">
@@ -47,9 +47,9 @@
             <!-- Navigation -->
             <nav id="nav">
                 <ul class="main-menu nav navbar-nav navbar-right d-inline-flex">
-                    <li><a asp-action="Index" asp-controller="Categories">Categories</a></li>
-                    <li><a asp-action="Index" asp-controller="Home">Home</a></li>
-                    <li><a asp-action="Index" asp-controller="About">About</a></li>
+                    <li><a asp-action="Index" asp-controller="Categories"><i class="fas fa-sitemap"></i> Categories</a></li>
+                    <li><a asp-action="Index" asp-controller="Home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a asp-action="Index" asp-controller="About"><i class="fab fa-asymmetrik"></i> About</a></li>
                     <partial name="_LoginPartial" />
                 </ul>
             </nav>
@@ -76,6 +76,7 @@
     <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="~/js/main.js"></script>
     <script type="text/javascript" src="~/js/site.min.js" asp-append-version="true"></script>
+
     @await this.RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

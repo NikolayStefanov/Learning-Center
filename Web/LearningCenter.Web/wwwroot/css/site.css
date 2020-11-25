@@ -97,6 +97,7 @@ body {
 .container {
 }
 /*LOGO*/
+
 /*Login page CSS*/
 #loginRegisterPage {
     background-image: url("../img/login-background.jpg");
@@ -114,25 +115,8 @@ body {
     margin-top: 15px;
 }
 /*Login page CSS*/
-/*LOGOUT BUTTON*/
-#logoutButton {
-    font-family: 'Lato', sans-serif;
-    color: white;
-    font-weight: 700;
-    text-transform: uppercase;
-    -webkit-transition: 0.2s all;
-    transition: 0.2s all;
-    padding: 0px;
-}
 
-    #logoutButton:hover,
-    #logoutButton:focus {
-        text-decoration: none;
-        outline: none;
-        opacity: 0.9;
-    }
 
-/*LOGOUT BUTTON*/
 
 /*Target Category Page CSS*/
 #targetCategoryPage {
@@ -281,3 +265,57 @@ label.star:before {
 }
 
 /*ABOUT PAGE*/
+
+/*PROFILE DROPDOWN*/
+#accountButton {
+    font-family: 'Lato', sans-serif;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 2px;
+    background: transparent;
+    border: none !important;
+}
+
+    #accountButton:hover,
+    #accountButton:focus {
+        text-decoration: none;
+        outline: none;
+        opacity: 0.9;
+    }
+
+.profileDropdownItem{
+    color: black !important;
+    text-align: center !important;
+    margin-left: 40px;
+}
+
+#logoutButton {
+    margin-left: 30px;
+}
+/* Change color of dropdown links on hover */
+.dropdown-menu a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover #accountButton {
+    background-color: #3e8e41;
+}
+/*PROFILE DROPDOWN*/
+
+/*PROFILE PAGE*/
+#profilePageBg {
+    background-image: url("../img/create-page-bg.jpg");
+    opacity: inherit;
+}
+/*PROFILE PAGE*/

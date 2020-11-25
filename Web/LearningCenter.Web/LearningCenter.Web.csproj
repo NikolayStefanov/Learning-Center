@@ -12,6 +12,14 @@
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Administration\Controllers\AdministrationController.cs" />
+    <Content Include="Areas\Administration\Controllers\DashboardController.cs" />
+    <Content Include="Areas\Identity\IdentityHostingStartup.cs" />
+    <Content Include="Areas\Identity\Pages\Account\Login.cshtml.cs" />
+    <Content Include="Areas\Identity\Pages\Account\Logout.cshtml.cs" />
+    <Content Include="Areas\Identity\Pages\Account\Register.cshtml.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Cloudinary.Core" Version="1.31.0" />

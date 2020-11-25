@@ -126,6 +126,11 @@
                     UserType = this.Input.UserType,
                     ProfilePicture = profilePicture,
                 };
+                if (user.UserType == UserTypeEnum.Lecturer)
+                {
+                    user.Lecturer = new Lecturer();
+                }
+
                 var result = await this._userManager.CreateAsync(user, this.Input.Password);
                 if (result.Succeeded)
                 {
