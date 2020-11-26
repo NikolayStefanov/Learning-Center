@@ -318,4 +318,15 @@ label.star:before {
     background-image: url("../img/create-page-bg.jpg");
     opacity: inherit;
 }
+#profilePage {
+    margin-top: 10%;
+}
+.img-thumbnail {
+    width: 300px;
+    height: 300px;
+    border-radius: 30px;
+    background-position: center center;
+    background-size: cover;
+}
+
 /*PROFILE PAGE*/
