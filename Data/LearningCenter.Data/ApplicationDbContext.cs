@@ -32,6 +32,8 @@
 
         public DbSet<Course> Courses { get; set; }
 
+        public DbSet<CourseThumbnail> CourseThumbnails { get; set; }
+
         public DbSet<Lecture> Lectures { get; set; }
 
         public DbSet<Review> Reviews { get; set; }

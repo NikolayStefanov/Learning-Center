@@ -25,7 +25,7 @@
                         <i class="fas fa-angle-down"></i> Account
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item profileDropdownItem" asp-action="Index" asp-controller="Account"> <i class="fas fa-user-alt"></i> Profile</a>
+                        <a class="dropdown-item profileDropdownItem" asp-action="Index" asp-controller="Account" asp-route-id="@this.UserManager.GetUserId(this.User)"> <i class="fas fa-user-alt"></i> Profile</a>
                         <a class="dropdown-item profileDropdownItem" asp-area="Identity" asp-page="/Account/Manage/Index"> <i class="fas fa-users-cog"></i> Settings</a>
                         <a>
                             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@(this.Url.Action("Index", "Home", new { area = string.Empty }))">

@@ -44,6 +44,11 @@
 
         public virtual SubCategory SubCategory { get; set; }
 
+        [ForeignKey(nameof(Thumbnail))]
+        public int ThumbnailId { get; set; }
+
+        public virtual CourseThumbnail Thumbnail { get; set; }
+
         public virtual ICollection<Rating> Ratings { get; set; }
 
         public virtual ICollection<Lecture> Lectures { get; set; }

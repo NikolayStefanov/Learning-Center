@@ -21,9 +21,9 @@ namespace LearningCenter.Web.Controllers
             this.userManager = userManager;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string id)
         {
-            var lecturerId = this.userManager.GetUserId(this.User);
+            var lecturerId = id == null ? this.userManager.GetUserId(this.User) : id;
             var viewModel = this.accountsService.GetLecturerById<ProfileViewModel>(lecturerId);
             return this.View(viewModel);
         }

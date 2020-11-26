@@ -1,8 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace LearningCenter.Web.ViewModels.Courses
+﻿namespace LearningCenter.Web.ViewModels.Courses
 {
-    public class CourseInputModel
+    using System.ComponentModel.DataAnnotations;
+
+    using LearningCenter.Data.Models;
+    using LearningCenter.Services.Mapping;
+
+    public class CourseInputModel : IMapTo<Course>
     {
         [Required]
         [MinLength(3)]
@@ -24,5 +27,7 @@ namespace LearningCenter.Web.ViewModels.Courses
 
         [Required]
         public int SubcategoryId { get; set; }
+
+        public CourseThumbnailInputModel Thumbnail { get; set; }
     }
 }

@@ -62,7 +62,7 @@
                     <label asp-for="Input.UserType"></label>
                     @foreach (var type in System.Enum.GetValues(typeof(UserTypeEnum)))
                     {
-                        <label asp-for="Input.UserType">@type.ToString()</label>
+                        <label asp-for="Input.UserType">| @type.ToString() </label>
                         <input type="radio" asp-for="Input.UserType" value="@((int)type)" />
                     }
                     <span asp-validation-for="Input.UserType" class="bg-danger text-danger"></span>

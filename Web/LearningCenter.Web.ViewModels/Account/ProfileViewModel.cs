@@ -18,6 +18,8 @@
 
         public string FullName => $"{this.FirstName} {this.LastName}";
 
+        public string Email { get; set; }
+
         public ProfilePictureViewModel ProfilePicture { get; set; }
 
         public DateTime BirthDate { get; set; }
@@ -28,7 +30,7 @@
 
         public int CoursesCount { get; set; }
 
-        public IEnumerable<CourseViewModel> CoursesCourse { get; set; }
+        public IEnumerable<UserCoursesViewModel> Courses { get; set; }
 
         public IEnumerable<FeedbackViewModel> Feedbacks { get; set; }
 

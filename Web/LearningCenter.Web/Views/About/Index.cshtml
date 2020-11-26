@@ -29,7 +29,7 @@
                         <h5 class="card-title white-text">Name: @lecturer.FullName</h5>
                         <h5 class="card-title white-text">Age: @lecturer.Age</h5>
                         <h5 class="card-title white-text">Lectures: @lecturer.LecturesCount</h5>
-                        <a href="#" class="btn btn-primary">Visit Profile</a>
+                        <a asp-action="Index" asp-controller="Account" asp-route-id ="@lecturer.Id" class="btn btn-primary">Visit Profile</a>
                     </div>
                 </div>
             }
