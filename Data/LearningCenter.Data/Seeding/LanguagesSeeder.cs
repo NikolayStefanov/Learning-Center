@@ -24,6 +24,7 @@
                 "Spanish",
                 "French",
                 "Italian",
+                "Other",
             };
 
             foreach (var language in languagesList)

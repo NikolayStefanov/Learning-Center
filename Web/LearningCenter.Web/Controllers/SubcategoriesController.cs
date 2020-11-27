@@ -2,7 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
 
-    public class SubcategoriesController : Controller
+    public class SubcategoriesController : BaseController
     {
         public IActionResult ChosenSubcategory()
         {

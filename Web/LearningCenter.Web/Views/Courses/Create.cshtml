@@ -1,4 +1,4 @@
-﻿@model LearningCenter.Web.ViewModels.Courses.CourseInputModel
+﻿@model LearningCenter.Web.ViewModels.Courses.CreateCourseInputModel
 @{
     ViewData["Title"] = "Create course: ";
 }
@@ -16,7 +16,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="@Model.Description" class="white-text"></label>
-                    <input asp-for="@Model.Description" class="form-control white-text" />
+                    <textarea asp-for="@Model.Description" rows="5" class="form-control"></textarea>
                     <span asp-validation-for="@Model.Description" class="bg-danger text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -28,20 +28,31 @@
             <div class="col-md-5 courseSelections">
                 <div class="form-group">
                     <label asp-for="@Model.LanguageId" class="white-text"></label>
-                    <select asp-for="@Model.LanguageId" class="form-control"></select>
+                    <select asp-for="@Model.LanguageId" asp-items="@Model.LanguagesItems" class="form-control">
+                        <option selected="selected">Please select course language</option>
+                    </select>
                     <span asp-validation-for="@Model.LanguageId" class="bg-danger text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="@Model.CategoryId" class="white-text"></label>
-                    <select asp-for="@Model.CategoryId" class="form-control"></select>
+                    <select id="category" asp-for="@Model.CategoryId" asp-items="@Model.CategoriesItems" class="form-control">
+                        <option selected="selected">Please select course category!</option>
+                    </select>
                     <span asp-validation-for="@Model.CategoryId" class="bg-danger text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="@Model.SubcategoryId" class="white-text"></label>
-                    <select asp-for="@Model.SubcategoryId" class="form-control"></select>
+                    <select id="subcategory" asp-for="@Model.SubcategoryId" asp-items="@Model.SubcategoriesItems" onclick="dropdown()" class="form-control">
+                        <option selected="selected">Please select course subcategory!</option>
+                    </select>
                     <span asp-validation-for="@Model.SubcategoryId" class="bg-danger text-danger"></span>
                 </div>
-                <button type="submit" class="btn btn-primary pull-right">Register</button>
+                <div class="form-group">
+                    <label asp-for="@Model.Thumbnail" class="white-text"></label>
+                    <input asp-for="@Model.Thumbnail" class="form-control" />
+                    <span asp-validation-for="@Model.Thumbnail" class="bg-danger text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary pull-right">Create</button>
             </div>
 
         </form>
@@ -49,5 +60,18 @@
 </div>
 
 @section Scripts {
+    <script>
+        function dropdown() {
+            var chosenCategory = document.querySelector("#category");
+            var categoryId = chosenCategory.options[chosenCategory.selectedIndex].value;
+            var categoryName = chosenCategory.options[chosenCategory.selectedIndex].text;
+
+
+            var elements = document.querySelectorAll("#subcategory option");
+            
+        }
+
+    </script>
+
     <partial name="_ValidationScriptsPartial" />
 }

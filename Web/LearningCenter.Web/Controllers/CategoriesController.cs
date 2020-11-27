@@ -1,7 +1,5 @@
 ﻿namespace LearningCenter.Web.Controllers
 {
-    using System.Collections.Generic;
-
     using LearningCenter.Services.Data;
     using LearningCenter.Web.ViewModels.Categories;
     using Microsoft.AspNetCore.Mvc;

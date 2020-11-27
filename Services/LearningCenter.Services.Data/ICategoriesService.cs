@@ -2,9 +2,15 @@
 {
     using System.Collections.Generic;
 
+    using Microsoft.AspNetCore.Mvc.Rendering;
+
     public interface ICategoriesService
     {
         IEnumerable<T> GetAll<T>();
+
+        IEnumerable<SelectListItem> GetAllAsSelectListItems();
+
+        IEnumerable<SelectListItem> GetSubcategoriesAsSelectListItems(int categoryId, string categoryValue);
 
         T GetTatgerCategory<T>(int id);
     }

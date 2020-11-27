@@ -1,16 +1,12 @@
-﻿using LearningCenter.Data.Models;
-using LearningCenter.Services.Data;
-using LearningCenter.Web.ViewModels.Account;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace LearningCenter.Web.Controllers
+﻿namespace LearningCenter.Web.Controllers
 {
-    public class AccountController : Controller
+    using LearningCenter.Data.Models;
+    using LearningCenter.Services.Data;
+    using LearningCenter.Web.ViewModels.Account;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+
+    public class AccountController : BaseController
     {
         private readonly IAccountsService accountsService;
         private readonly UserManager<ApplicationUser> userManager;

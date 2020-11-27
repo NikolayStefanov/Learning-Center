@@ -29,6 +29,7 @@
                               new AdminSeeder(),
                               new CategorySeeder(),
                               new SubCategoriesSeeder(),
+                              new LanguagesSeeder(),
                           };
 
             foreach (var seeder in seeders)
