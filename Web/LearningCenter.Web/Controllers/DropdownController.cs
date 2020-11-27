@@ -3,6 +3,7 @@
     using LearningCenter.Services.Data;
     using LearningCenter.Web.ViewModels.Courses;
     using Microsoft.AspNetCore.Mvc;
+    using System.Threading.Tasks;
 
     [Route("api/[controller]")]
     [ApiController]
@@ -15,10 +16,12 @@
             this.categoriesService = categoriesService;
         }
 
-        public ActionResult<CreateCourseDropdownModel> GetSubcategories(int categoryId, string categoryValue)
+        [IgnoreAntiforgeryToken]
+        public ActionResult<CreateCourseDropdownModel> GetSubcategories(DropdownModel inputModel)
         {
-            var subcategories = this.categoriesService.GetSubcategoriesAsSelectListItems(categoryId, categoryValue);
-            return new CreateCourseDropdownModel { Subcategories = subcategories };
+            var subcategories = this.categoriesService.GetSubcategoriesAsSelectListItems(int.Parse(inputModel.CategoryId));
+            var resultObj = new CreateCourseDropdownModel { Subcategories = subcategories };
+            return resultObj;
         }
     }
 }

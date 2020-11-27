@@ -8,7 +8,7 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc.Rendering;
 
-    public class CreateCourseInputModel : IMapTo<Course>
+    public class CreateCourseInputModel 
     {
         [Required]
         [MinLength(3)]

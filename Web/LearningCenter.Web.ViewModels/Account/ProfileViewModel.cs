@@ -37,7 +37,8 @@
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<ApplicationUser, ProfileViewModel>()
-                .ForMember(x => x.Feedbacks, opt => opt.MapFrom(u => u.Lecturer.Feedbacks));
+                .ForMember(x => x.Feedbacks, opt => opt.MapFrom(u => u.Lecturer.Feedbacks))
+                .ForMember(x => x.CoursesCount, opt => opt.MapFrom(u => u.Courses.Count));
         }
     }
 }

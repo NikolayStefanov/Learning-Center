@@ -34,7 +34,9 @@
 
                 foreach (var subCategoryTitle in subCategory.Value)
                 {
-                    await dbContext.SubCategories.AddAsync(new SubCategory { Title = subCategoryTitle, Category = currCategory });
+                    var newSubcateogory = new SubCategory { Title = subCategoryTitle, Category = currCategory };
+                    currCategory.SubCategories.Add(newSubcateogory);
+                    await dbContext.SubCategories.AddAsync(newSubcateogory);
                 }
             }
         }

@@ -1,18 +1,42 @@
 ﻿namespace LearningCenter.Services.Data
 {
-    using System;
-    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using LearningCenter.Data.Common.Repositories;
+    using LearningCenter.Data.Models;
+    using LearningCenter.Web.ViewModels.Courses;
 
     public class CoursesService : ICoursesService
     {
-        public IEnumerable<T> GetAll<T>()
+        private readonly IDeletableEntityRepository<Course> courseRepository;
+        private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
+
+        public CoursesService(IDeletableEntityRepository<Course> courseRepository, IDeletableEntityRepository<ApplicationUser> userRepository, IDeletableEntityRepository<Lecturer> lecturerRepository)
         {
-            throw new NotImplementedException();
+            this.courseRepository = courseRepository;
+            this.userRepository = userRepository;
         }
 
-        public IEnumerable<T> GetTopCourses<T>()
+        public async Task<int> AddCourseAsync(CreateCourseInputModel inputModel, string thumbnailUrl, string authorId)
         {
-            throw new NotImplementedException();
+            var thumbnail = new CourseThumbnail() { Url = thumbnailUrl };
+            var lecturerId = this.userRepository.All().FirstOrDefault(x => x.Id == authorId).LecturerId;
+
+            var newCourse = new Course()
+            {
+                Title = inputModel.Title,
+                Price = inputModel.Price,
+                Thumbnail = thumbnail,
+                CategoryId = inputModel.CategoryId,
+                LanguageId = inputModel.LanguageId,
+                SubCategoryId = inputModel.SubcategoryId,
+                Description = inputModel.Description,
+                AuthorId = lecturerId,
+            };
+            await this.courseRepository.AddAsync(newCourse);
+            await this.courseRepository.SaveChangesAsync();
+            return newCourse.Id;
         }
     }
 }

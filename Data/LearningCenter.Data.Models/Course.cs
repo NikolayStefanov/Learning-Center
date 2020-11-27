@@ -44,6 +44,12 @@
 
         public virtual SubCategory SubCategory { get; set; }
 
+        [Required]
+        [ForeignKey(nameof(Author))]
+        public string AuthorId { get; set; }
+
+        public virtual Lecturer Author { get; set; }
+
         [ForeignKey(nameof(Thumbnail))]
         public int ThumbnailId { get; set; }
 

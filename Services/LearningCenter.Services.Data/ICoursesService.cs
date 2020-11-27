@@ -1,11 +1,11 @@
 ﻿namespace LearningCenter.Services.Data
 {
-    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using LearningCenter.Web.ViewModels.Courses;
 
     public interface ICoursesService
     {
-        IEnumerable<T> GetAll<T>();
-
-        IEnumerable<T> GetTopCourses<T>();
+        Task<int> AddCourseAsync(CreateCourseInputModel inputModel, string thumbnailUrl, string authorId);
     }
 }

@@ -6,7 +6,7 @@
 <div id="createCourseBg" class="bg-image bg-parallax overlay"></div>
 <div id="createCourse" class="col-md-12 text-center">
     <section>
-        <form>
+        <form method="post" enctype="multipart/form-data">
             <h1 class="white-text">@this.ViewData["Title"]</h1>
             <div class="col-md-5">
                 <div class="form-group">
@@ -35,14 +35,14 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="@Model.CategoryId" class="white-text"></label>
-                    <select id="category" asp-for="@Model.CategoryId" asp-items="@Model.CategoriesItems" class="form-control">
+                    <select id="category" asp-for="@Model.CategoryId" asp-items="@Model.CategoriesItems" class="form-control" onchange="dropdown()">
                         <option selected="selected">Please select course category!</option>
                     </select>
                     <span asp-validation-for="@Model.CategoryId" class="bg-danger text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="@Model.SubcategoryId" class="white-text"></label>
-                    <select id="subcategory" asp-for="@Model.SubcategoryId" asp-items="@Model.SubcategoriesItems" onclick="dropdown()" class="form-control">
+                    <select id="subcategory" asp-for="@Model.SubcategoryId" asp-items="@Model.SubcategoriesItems"  class="form-control" >
                         <option selected="selected">Please select course subcategory!</option>
                     </select>
                     <span asp-validation-for="@Model.SubcategoryId" class="bg-danger text-danger"></span>
@@ -52,7 +52,7 @@
                     <input asp-for="@Model.Thumbnail" class="form-control" />
                     <span asp-validation-for="@Model.Thumbnail" class="bg-danger text-danger"></span>
                 </div>
-                <button type="submit" class="btn btn-primary pull-right">Create</button>
+                <input type="submit" class="btn btn-primary pull-right" value="Create"/>
             </div>
 
         </form>
@@ -61,16 +61,35 @@
 
 @section Scripts {
     <script>
-        function dropdown() {
-            var chosenCategory = document.querySelector("#category");
-            var categoryId = chosenCategory.options[chosenCategory.selectedIndex].value;
-            var categoryName = chosenCategory.options[chosenCategory.selectedIndex].text;
+            async function dropdown() {
+                var chosenCategory = document.querySelector("#category");
+                var categoryId = chosenCategory.options[chosenCategory.selectedIndex].value;
+                var categoryName = chosenCategory.options[chosenCategory.selectedIndex].text;
 
+                var data = { categoryId: categoryId, categoryValue: categoryName, };
 
-            var elements = document.querySelectorAll("#subcategory option");
-            
-        }
+                var uri = "/api/Dropdown";
+                fetch(uri, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                    .then(response => response.json())
+                    .then(data => Object.entries(data).forEach(element => {
+                        var selectItem = element[1];
+                        document.querySelector("#subcategory").innerHTML = '<option selected="selected">Please Select Subcategory</option>';
+                        selectItem.forEach(item => {
+                            var newElement = document.createElement('option')
+                            newElement.value = item.value;
+                            newElement.innerHTML = item.text;
+                            document.querySelector("#subcategory").appendChild(newElement);
+                        })
 
+                    }));
+            }
     </script>
 
     <partial name="_ValidationScriptsPartial" />

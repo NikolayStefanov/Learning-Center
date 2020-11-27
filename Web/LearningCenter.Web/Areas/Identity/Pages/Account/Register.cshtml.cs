@@ -125,6 +125,7 @@
                     Gender = this.Input.Gender,
                     UserType = this.Input.UserType,
                     ProfilePicture = profilePicture,
+                    Lecturer = new Lecturer(),
                 };
                 if (user.UserType == UserTypeEnum.Lecturer)
                 {

@@ -2,8 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     using LearningCenter.Data.Common.Models;
 
@@ -17,5 +15,6 @@
 
         public virtual ICollection<Feedback> Feedbacks { get; set; }
 
+        public virtual ICollection<Course> Courses { get; set; }
     }
 }

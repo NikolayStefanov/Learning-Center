@@ -1,7 +1,7 @@
 ﻿namespace LearningCenter.Services.Data
 {
     using System.Collections.Generic;
-
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc.Rendering;
 
     public interface ICategoriesService
@@ -10,7 +10,7 @@
 
         IEnumerable<SelectListItem> GetAllAsSelectListItems();
 
-        IEnumerable<SelectListItem> GetSubcategoriesAsSelectListItems(int categoryId, string categoryValue);
+        IEnumerable<SelectListItem> GetSubcategoriesAsSelectListItems(int categoryId);
 
         T GetTatgerCategory<T>(int id);
     }

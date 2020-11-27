@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
+    using System.Threading.Tasks;
     using LearningCenter.Data.Common.Repositories;
     using LearningCenter.Data.Models;
     using LearningCenter.Services.Mapping;
@@ -12,10 +12,12 @@
     public class CategoriesService : ICategoriesService
     {
         private readonly IDeletableEntityRepository<Category> categoryRepository;
+        private readonly IDeletableEntityRepository<SubCategory> subcategoryRepository;
 
-        public CategoriesService(IDeletableEntityRepository<Category> categoryRepository)
+        public CategoriesService(IDeletableEntityRepository<Category> categoryRepository, IDeletableEntityRepository<SubCategory> subcategoryRepository)
         {
             this.categoryRepository = categoryRepository;
+            this.subcategoryRepository = subcategoryRepository;
         }
 
         public IEnumerable<T> GetAll<T>()
@@ -28,10 +30,14 @@
             return this.categoryRepository.AllAsNoTracking().Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Title }).ToList();
         }
 
-        public IEnumerable<SelectListItem> GetSubcategoriesAsSelectListItems(int categoryId, string categoryValue)
+        public IEnumerable<SelectListItem> GetSubcategoriesAsSelectListItems(int categoryId)
         {
-            var category = this.categoryRepository.AllAsNoTracking().Where(c => c.Id == categoryId).FirstOrDefault();
-            return category.SubCategories.Select(sc => new SelectListItem() { Value = sc.Id.ToString(), Text = sc.Title }).ToList();
+            var allSubcategories = this.subcategoryRepository.All().Where(x=> x.CategoryId == categoryId).Select(x=> new SelectListItem()
+            {
+                Value = x.Id.ToString(),
+                Text = x.Title,
+            }).ToList();
+            return allSubcategories;
         }
 
         public T GetTatgerCategory<T>(int id)
