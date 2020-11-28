@@ -19,7 +19,6 @@ namespace LearningCenter.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
-            this.Courses = new HashSet<UserCourses>();
             this.Lectures = new HashSet<Lecture>();
         }
 
@@ -47,10 +46,9 @@ namespace LearningCenter.Data.Models
 
         public virtual ProfilePicture ProfilePicture { get; set; }
 
-        [ForeignKey(nameof(Lecturer))]
-        public string LecturerId { get; set; }
-
         public virtual Lecturer Lecturer { get; set; }
+
+        public virtual Student Student { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }
@@ -61,8 +59,6 @@ namespace LearningCenter.Data.Models
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
-
-        public virtual ICollection<UserCourses> Courses { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 

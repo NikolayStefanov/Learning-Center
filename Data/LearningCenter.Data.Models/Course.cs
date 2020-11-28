@@ -26,6 +26,10 @@
         [Required]
         public string Description { get; set; }
 
+        //TODO chose way to store course - url, file or something else
+        [Required]
+        public string CourseUrl { get; set; }
+
         [Required]
         [ForeignKey(nameof(Language))]
         public int LanguageId { get; set; }
@@ -48,7 +52,7 @@
         [ForeignKey(nameof(Author))]
         public string AuthorId { get; set; }
 
-        public virtual Lecturer Author { get; set; }
+        public virtual ApplicationUser Author { get; set; }
 
         [ForeignKey(nameof(Thumbnail))]
         public int ThumbnailId { get; set; }

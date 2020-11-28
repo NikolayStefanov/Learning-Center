@@ -46,6 +46,8 @@
 
         public DbSet<Lecturer> Lecturers { get; set; }
 
+        public DbSet<Student> Students { get; set; }
+
         public DbSet<Feedback> Feedbacks { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
@@ -94,6 +96,16 @@
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
+
+            builder.Entity<ApplicationUser>()
+                .HasOne(l => l.Lecturer)
+                .WithOne(u => u.User)
+                .HasForeignKey<Lecturer>(l => l.UserId);
+
+            builder.Entity<ApplicationUser>()
+               .HasOne(l => l.Student)
+               .WithOne(u => u.User)
+               .HasForeignKey<Student>(l => l.UserId);
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)

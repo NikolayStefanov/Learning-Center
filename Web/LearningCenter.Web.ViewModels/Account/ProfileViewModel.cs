@@ -28,17 +28,14 @@
 
         public int LecturesCount { get; set; }
 
-        public int CoursesCount { get; set; }
-
-        public IEnumerable<UserCoursesViewModel> Courses { get; set; }
+        public LecturerViewModel Lecturer { get; set; }
 
         public IEnumerable<FeedbackViewModel> Feedbacks { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<ApplicationUser, ProfileViewModel>()
-                .ForMember(x => x.Feedbacks, opt => opt.MapFrom(u => u.Lecturer.Feedbacks))
-                .ForMember(x => x.CoursesCount, opt => opt.MapFrom(u => u.Courses.Count));
+                .ForMember(x => x.Feedbacks, opt => opt.MapFrom(u => u.Lecturer.Feedbacks));
         }
     }
 }

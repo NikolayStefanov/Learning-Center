@@ -4,14 +4,16 @@ using LearningCenter.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LearningCenter.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201128174721_LecturersAndStudentsAdded")]
+    partial class LecturersAndStudentsAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,6 +104,9 @@ namespace LearningCenter.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("LecturerId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -137,6 +142,9 @@ namespace LearningCenter.Data.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("StudentId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
@@ -151,6 +159,8 @@ namespace LearningCenter.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
+                    b.HasIndex("LecturerId");
+
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
 
@@ -160,6 +170,8 @@ namespace LearningCenter.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.HasIndex("ProfilePictureId");
+
+                    b.HasIndex("StudentId");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -211,10 +223,6 @@ namespace LearningCenter.Data.Migrations
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
-
-                    b.Property<string>("CourseUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -454,8 +462,7 @@ namespace LearningCenter.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
                     b.ToTable("Lecturers");
                 });
@@ -598,8 +605,7 @@ namespace LearningCenter.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
                     b.ToTable("Students");
                 });
@@ -785,11 +791,19 @@ namespace LearningCenter.Data.Migrations
 
             modelBuilder.Entity("LearningCenter.Data.Models.ApplicationUser", b =>
                 {
+                    b.HasOne("LearningCenter.Data.Models.Lecturer", "Lecturer")
+                        .WithMany()
+                        .HasForeignKey("LecturerId");
+
                     b.HasOne("LearningCenter.Data.Models.ProfilePicture", "ProfilePicture")
                         .WithMany()
                         .HasForeignKey("ProfilePictureId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("LearningCenter.Data.Models.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId");
                 });
 
             modelBuilder.Entity("LearningCenter.Data.Models.Course", b =>
@@ -869,8 +883,8 @@ namespace LearningCenter.Data.Migrations
             modelBuilder.Entity("LearningCenter.Data.Models.Lecturer", b =>
                 {
                     b.HasOne("LearningCenter.Data.Models.ApplicationUser", "User")
-                        .WithOne("Lecturer")
-                        .HasForeignKey("LearningCenter.Data.Models.Lecturer", "UserId")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
@@ -909,8 +923,8 @@ namespace LearningCenter.Data.Migrations
             modelBuilder.Entity("LearningCenter.Data.Models.Student", b =>
                 {
                     b.HasOne("LearningCenter.Data.Models.ApplicationUser", "User")
-                        .WithOne("Student")
-                        .HasForeignKey("LearningCenter.Data.Models.Student", "UserId")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

@@ -125,11 +125,14 @@
                     Gender = this.Input.Gender,
                     UserType = this.Input.UserType,
                     ProfilePicture = profilePicture,
-                    Lecturer = new Lecturer(),
                 };
                 if (user.UserType == UserTypeEnum.Lecturer)
                 {
-                    user.Lecturer = new Lecturer();
+                    user.Lecturer = new Lecturer { UserId = user.Id };
+                }
+                else if (user.UserType == UserTypeEnum.Student)
+                {
+                    user.Student = new Student { UserId = user.Id };
                 }
 
                 var result = await this._userManager.CreateAsync(user, this.Input.Password);

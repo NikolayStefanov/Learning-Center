@@ -15,7 +15,12 @@
         [MaxLength(40)]
         public string Title { get; set; }
 
+        [Required]
+        [Range(0, int.MaxValue)]
         public decimal Price { get; set; }
+
+        [Required]
+        public string CourseUrl { get; set; }
 
         [Required]
         [MinLength(20)]

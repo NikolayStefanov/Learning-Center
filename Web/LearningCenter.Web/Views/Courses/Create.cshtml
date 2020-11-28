@@ -42,17 +42,22 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="@Model.SubcategoryId" class="white-text"></label>
-                    <select id="subcategory" asp-for="@Model.SubcategoryId" asp-items="@Model.SubcategoriesItems"  class="form-control" >
+                    <select id="subcategory" asp-for="@Model.SubcategoryId" asp-items="@Model.SubcategoriesItems" class="form-control">
                         <option selected="selected">Please select course subcategory!</option>
                     </select>
                     <span asp-validation-for="@Model.SubcategoryId" class="bg-danger text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.CourseUrl" class="white-text"></label>
+                    <input asp-for="@Model.CourseUrl" class="form-control white-text" />
+                    <span asp-validation-for="@Model.CourseUrl" class="bg-danger text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="@Model.Thumbnail" class="white-text"></label>
                     <input asp-for="@Model.Thumbnail" class="form-control" />
                     <span asp-validation-for="@Model.Thumbnail" class="bg-danger text-danger"></span>
                 </div>
-                <input type="submit" class="btn btn-primary pull-right" value="Create"/>
+                <input type="submit" class="btn btn-primary pull-right" value="Create" />
             </div>
 
         </form>

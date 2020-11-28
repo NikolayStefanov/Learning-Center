@@ -17,7 +17,7 @@
         [ForeignKey(nameof(Student))]
         public string StudentId { get; set; }
 
-        public virtual ApplicationUser Student { get; set; }
+        public virtual Student Student { get; set; }
 
         public int? Grade { get; set; }
     }

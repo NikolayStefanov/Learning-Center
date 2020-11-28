@@ -1,6 +1,7 @@
 ﻿namespace LearningCenter.Data.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -11,17 +12,15 @@
         public Student()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.Courses = new HashSet<UserCourses>();
         }
 
-        [ForeignKey(nameof(ProfilePicture))]
-        public int ProfilePictureId { get; set; }
-
-        public ProfilePicture ProfilePicture { get; set; }
+        public virtual ICollection<UserCourses> Courses { get; set; }
 
         [Required]
         [ForeignKey(nameof(User))]
         public string UserId { get; set; }
 
-        public ApplicationUser User { get; set; }
+        public virtual ApplicationUser User { get; set; }
     }
 }

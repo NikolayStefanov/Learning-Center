@@ -6,6 +6,7 @@
     using LearningCenter.Data.Common.Repositories;
     using LearningCenter.Data.Models;
     using LearningCenter.Web.ViewModels.Courses;
+    using Microsoft.EntityFrameworkCore;
 
     public class CoursesService : ICoursesService
     {
@@ -21,19 +22,21 @@
         public async Task<int> AddCourseAsync(CreateCourseInputModel inputModel, string thumbnailUrl, string authorId)
         {
             var thumbnail = new CourseThumbnail() { Url = thumbnailUrl };
-            var lecturerId = this.userRepository.All().FirstOrDefault(x => x.Id == authorId).LecturerId;
 
             var newCourse = new Course()
             {
                 Title = inputModel.Title,
                 Price = inputModel.Price,
                 Thumbnail = thumbnail,
+                CourseUrl = inputModel.CourseUrl,
                 CategoryId = inputModel.CategoryId,
                 LanguageId = inputModel.LanguageId,
                 SubCategoryId = inputModel.SubcategoryId,
                 Description = inputModel.Description,
-                AuthorId = lecturerId,
+                AuthorId = authorId,
             };
+            this.userRepository.All().Include(x => x.Lecturer).FirstOrDefault(x => x.Id == authorId).Lecturer.Courses.Add(newCourse);
+
             await this.courseRepository.AddAsync(newCourse);
             await this.courseRepository.SaveChangesAsync();
             return newCourse.Id;
