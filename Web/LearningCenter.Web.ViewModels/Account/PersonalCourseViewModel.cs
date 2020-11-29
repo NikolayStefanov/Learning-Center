@@ -18,6 +18,8 @@
 
         public string ThumbnailUrl { get; set; }
 
-        public string CourseUrl { get; set; }
+        public string SubCategoryTitle { get; set; }
+
+        public string CategoryTitle { get; set; }
     }
 }

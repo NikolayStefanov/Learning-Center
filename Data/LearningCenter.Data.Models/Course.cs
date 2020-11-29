@@ -26,10 +26,6 @@
         [Required]
         public string Description { get; set; }
 
-        //TODO chose way to store course - url, file or something else
-        [Required]
-        public string CourseUrl { get; set; }
-
         [Required]
         [ForeignKey(nameof(Language))]
         public int LanguageId { get; set; }

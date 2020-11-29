@@ -28,7 +28,6 @@
                 Title = inputModel.Title,
                 Price = inputModel.Price,
                 Thumbnail = thumbnail,
-                CourseUrl = inputModel.CourseUrl,
                 CategoryId = inputModel.CategoryId,
                 LanguageId = inputModel.LanguageId,
                 SubCategoryId = inputModel.SubcategoryId,
@@ -40,6 +39,21 @@
             await this.courseRepository.AddAsync(newCourse);
             await this.courseRepository.SaveChangesAsync();
             return newCourse.Id;
+        }
+
+        public async Task<bool> DeleteAsync(int courseId, string userId)
+        {
+            var user = this.userRepository.All().Include(u=> u.Lecturer).FirstOrDefault(u => u.Id == userId);
+            var course = this.courseRepository.All().FirstOrDefault(x => x.Id == courseId);
+            if (userId != course.AuthorId)
+            {
+                return false;
+            }
+
+            user.Lecturer.Courses.Remove(course);
+            this.courseRepository.Delete(course);
+            await this.courseRepository.SaveChangesAsync();
+            return true;
         }
     }
 }

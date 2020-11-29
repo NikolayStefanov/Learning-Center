@@ -11,7 +11,7 @@
         <div class="col-md-2 mb-4">
             <img src="@Model.ProfilePicture.Url" class="img-thumbnail" alt="ProfilePicture">
         </div>
-        <div class="col-md-6">
+        <div class="col-md-8">
             <div class="profile-head">
                 <h1 class="white-text">
                     @Model.FullName
@@ -25,40 +25,61 @@
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Personal Courses (@Model.Lecturer.Courses.Count())</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Feedbacks (@Model.Feedbacks.Count())</a>
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Feedbacks (@Model.Lecturer.Feedbacks.Count())</a>
                     </li>
                 </ul>
             </div>
-        </div>
-    </div>
 
-    <div class="col-md-12">
-        <div class="tab-content profile-tab" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                @if (Model.Lecturer.Courses.Any())
-                {
-                    @foreach (var course in Model.Lecturer.Courses)
-                    {
-                        <h2>@course.Title</h2>
-                        <h3>@course.Description</h3>
-                    }
-                }
-                else
-                {
-                    @if (this.User.Identity.Name == Model.Email)
-                    {
-                        <h3 class="white-text">You don't have any courses yet. <a class="" asp-action="Create" asp-controller="Courses">Create your first course! </a></h3>
-                    }
-                    else
-                    {
-                        <h3 class="white-text">@Model.FullName doesn't has any courses yet!</h3>
-                    }
-                }
+            <div class="row">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        @if (Model.Lecturer.Courses.Any())
+                        {
+                        <div class="row">
+                            @foreach (var course in Model.Lecturer.Courses)
+                            {
 
+                                <div id="courseCard" class="card text-center col-md-3" style="width: 18rem;">
+                                    <img class="card-img-top" width="200px" height="175px" src="@course.ThumbnailUrl" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h4 class="card-title white-text">@course.Title</h4>
+                                        <span class="badge badge-warning">Category: @course.CategoryTitle</span>
+                                        <span class="badge badge-warning">Subcategory: @course.SubCategoryTitle</span>
+                                        <a class="btn btn-success btn-sm" asp-controller="Courses" asp-action="GetCourse" asp-route-id="@course.Id">Go to the course!</a>
+                                        @if (this.User.Identity.Name == Model.Email)
+                                        {
+                                            <a class="btn btn-danger btn-sm" asp-controller="Courses" asp-action="Delete" asp-route-id="@course.Id">Delete</a>
+                                        }
+                                    </div>
+                                </div>
+
+                            }
+                            <div id="addCourseButton" class="text-center">
+                                <h1><a asp-action="Create" asp-controller="Courses"><i class="far fa-plus-square fa-5x"></i></a></h1>
+                                <h3 ><a asp-action="Create" asp-controller="Courses">Add Course</a></h3>
+                            </div>
+                        </div>
+                                }
+                                else
+                                {
+                                @if (this.User.Identity.Name == Model.Email)
+                                {
+                                    <h3 class="white-text">You don't have any courses yet. <a class="" asp-action="Create" asp-controller="Courses">Create your first course! </a></h3>
+                                }
+                                else
+                                {
+                                    <h3 class="white-text">@Model.FullName doesn't has any courses yet!</h3>
+                                }
+                                }
+
+                            </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                    </div>
+                </div>
             </div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
-            </div>
         </div>
+
     </div>
 </div>

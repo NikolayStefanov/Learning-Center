@@ -8,7 +8,7 @@
     using LearningCenter.Services.Mapping;
     using LearningCenter.Web.ViewModels.About;
 
-    public class ProfileViewModel : IMapFrom<ApplicationUser>, IHaveCustomMappings
+    public class ProfileViewModel : IMapFrom<ApplicationUser>
     {
         public string Id { get; set; }
 
@@ -29,13 +29,5 @@
         public int LecturesCount { get; set; }
 
         public LecturerViewModel Lecturer { get; set; }
-
-        public IEnumerable<FeedbackViewModel> Feedbacks { get; set; }
-
-        public void CreateMappings(IProfileExpression configuration)
-        {
-            configuration.CreateMap<ApplicationUser, ProfileViewModel>()
-                .ForMember(x => x.Feedbacks, opt => opt.MapFrom(u => u.Lecturer.Feedbacks));
-        }
     }
 }

@@ -1,14 +1,17 @@
 ﻿namespace LearningCenter.Web.Controllers
 {
+    using System.Threading.Tasks;
+
     using CloudinaryDotNet;
     using LearningCenter.Data.Models;
     using LearningCenter.Services.Data;
     using LearningCenter.Web.CloudinaryHelper;
     using LearningCenter.Web.ViewModels.Courses;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
 
+    [Authorize]
     public class CoursesController : BaseController
     {
         private readonly ICategoriesService categoriesService;
@@ -54,10 +57,22 @@
             return this.Redirect($"/Courses/GetCourse/{newCourseId}");
         }
 
-        public IActionResult GetCourse(int courseId)
+        public IActionResult GetCourse(int id)
         {
 
             return this.View();
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var userId = this.userManager.GetUserId(this.User);
+            var isDeleted = await this.coursesService.DeleteAsync(id, userId);
+            if (!isDeleted)
+            {
+                return this.Redirect("/Home/Error");
+            }
+
+            return this.Redirect($"/Account/Index/{userId}");
         }
     }
 }
