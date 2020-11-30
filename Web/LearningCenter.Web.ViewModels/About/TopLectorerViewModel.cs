@@ -21,6 +21,8 @@
 
         public int Age => DateTime.UtcNow.Year - this.BirthDate.Year;
 
+        public int LecturerCoursesCount { get; set; }
+
         public int LecturesCount { get; set; }
     }
 }

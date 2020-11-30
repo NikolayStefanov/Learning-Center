@@ -43,18 +43,20 @@
                                     <img class="card-img-top" width="200px" height="175px" src="@course.ThumbnailUrl" alt="Card image cap">
                                     <div class="card-body">
                                         <h4 class="card-title white-text">@course.Title</h4>
-                                        <span class="badge badge-warning">Category: @course.CategoryTitle</span>
-                                        <span class="badge badge-warning">Subcategory: @course.SubCategoryTitle</span>
-                                        <a class="btn btn-success btn-sm" asp-controller="Courses" asp-action="GetCourse" asp-route-id="@course.Id">Go to the course!</a>
-                                        @if (this.User.Identity.Name == Model.Email)
-                                        {
-                                            <a class="btn btn-danger btn-sm" asp-controller="Courses" asp-action="Delete" asp-route-id="@course.Id">Delete</a>
-                                        }
+                                        <span class="badge badge-warning"><a asp-action="ChosenCategory" asp-controller="Categories" asp-route-id="@course.CategoryId">Category: @course.CategoryTitle</a></span>
+                                        <span class="badge badge-warning"><a asp-action="GetCourse" asp-controller="Courses" asp-route-id="@course.Id">Subcategory: @course.SubCategoryTitle</a></span>
+                                        <div>
+                                            <a class="btn btn-success btn-sm" asp-controller="Courses" asp-action="GetCourse" asp-route-id="@course.Id">Go to course</a>
+                                            @if (this.User.Identity.Name == Model.Email)
+                                            {
+                                                <a class="btn btn-danger btn-sm" asp-controller="Courses" asp-action="Delete" asp-route-id="@course.Id">Delete</a>
+                                            }
+                                        </div>
                                     </div>
                                 </div>
 
                             }
-                            <div id="addCourseButton" class="text-center">
+                            <div id="addCourseButton" class="text-center col-md-3">
                                 <h1><a asp-action="Create" asp-controller="Courses"><i class="far fa-plus-square fa-5x"></i></a></h1>
                                 <h3 ><a asp-action="Create" asp-controller="Courses">Add Course</a></h3>
                             </div>

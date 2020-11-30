@@ -338,8 +338,11 @@ label.star:before {
     margin-bottom: 25px;
     margin-left: 30px;
 }
-#addCourseButton {
+#addCourseButton{
     margin-top: 55px;
-    color: white;
 }
+#addCourseButton a {
+    color: #dce6cf !important;
+}
+
 /*PROFILE PAGE*/
