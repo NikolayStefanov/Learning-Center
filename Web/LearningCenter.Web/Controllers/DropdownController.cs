@@ -3,7 +3,6 @@
     using LearningCenter.Services.Data;
     using LearningCenter.Web.ViewModels.Courses;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
 
     [Route("api/[controller]")]
     [ApiController]

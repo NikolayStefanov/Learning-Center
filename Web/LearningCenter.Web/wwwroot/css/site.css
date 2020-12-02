@@ -137,6 +137,14 @@ body {
         color: #dce6cf;
     }
 
+#coursesList {
+    margin-top: 10%;
+}
+
+.even-larger-badge {
+    font-size: 0.9em;
+}
+
 /*Target Category Page CSS*/
 .footer {
     padding-left: 50px;

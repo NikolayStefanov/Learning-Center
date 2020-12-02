@@ -3,6 +3,7 @@
     using LearningCenter.Data.Models;
     using LearningCenter.Services.Data;
     using LearningCenter.Web.ViewModels.Account;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,7 @@
             this.userManager = userManager;
         }
 
+        [Authorize]
         public IActionResult Index(string id)
         {
             var lecturerId = id == null ? this.userManager.GetUserId(this.User) : id;

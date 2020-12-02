@@ -9,16 +9,16 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="stars">
-                        <form action="" >
-                            <input class="star star-5" id="star-5" type="radio" name="star" onclick="StarClicked(5)"/>
+                        <form action="">
+                            <input class="star star-5" id="star-5" type="radio" name="star" onclick="StarClicked(5)" />
                             <label class="star star-5" for="star-5"></label>
-                            <input class="star star-4" id="star-4" type="radio" name="star" onclick="StarClicked(4)"/>
+                            <input class="star star-4" id="star-4" type="radio" name="star" onclick="StarClicked(4)" />
                             <label class="star star-4" for="star-4"></label>
-                            <input class="star star-3" id="star-3" type="radio" name="star" onclick="StarClicked(3)"/>
+                            <input class="star star-3" id="star-3" type="radio" name="star" onclick="StarClicked(3)" />
                             <label class="star star-3" for="star-3"></label>
-                            <input class="star star-2" id="star-2" type="radio" name="star" onclick="StarClicked(2)"/>
+                            <input class="star star-2" id="star-2" type="radio" name="star" onclick="StarClicked(2)" />
                             <label class="star star-2" for="star-2"></label>
-                            <input class="star star-1" id="star-1" type="radio" name="star" onclick="StarClicked(1)"/>
+                            <input class="star star-1" id="star-1" type="radio" name="star" onclick="StarClicked(1)" />
                             <label class="star star-1" for="star-1"></label>
                         </form>
                     </div>
@@ -37,8 +37,39 @@
     </div>
 </div>
 
-<script> 
-        function StarClicked(value) {
-            //TODO: РЕЙТИНГИТЕ ТРЯБВА ДА СА ЗА КУРСОВЕТЕ, ЩОМ ГИ НАПРАВЯ
-        }
+<div id="coursesList" class="col-md-10">
+    @if (Model.Courses.Any())
+    {
+        <div class="row">
+            @foreach (var course in Model.Courses)
+            {
+
+                <div id="courseCard" class="card text-center col-md-3" style="width: 18rem;">
+                    <img class="card-img-top" width="200px" height="175px" src="@course.ThumbnailUrl" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title white-text">@course.Title - @course.Price$</h4>
+                        <h5 class="white-text">By: <a asp-action="Index" asp-controller="Account" asp-route-id="@course.AuthorId">@course.AuthorName</a></h5>
+                        <h5 class="white-text">Rating: @course.AverageRating/5 (@course.RatingsCount)</h5>
+
+                        <span class="badge even-larger-badge"><a asp-action="ChosenSubcategory" asp-controller="Subcategories" asp-route-id="@course.SubCategoryId">Subcategory: @course.SubCategoryTitle</a></span>
+
+                        <div>
+                            <a class="btn btn-success" asp-controller="Courses" asp-action="GetCourse" asp-route-id="@course.Id">Go to course</a>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    }
+    else
+    {
+        <h2 class="white-text">There isn't any courses yet in this category!</h2>
+    }
+</div>
+
+<script>
+    function StarClicked(value) {
+        //TODO: РЕЙТИНГИТЕ ТРЯБВА ДА СА ЗА КУРСОВЕТЕ, ЩОМ ГИ НАПРАВЯ
+    }
 </script>

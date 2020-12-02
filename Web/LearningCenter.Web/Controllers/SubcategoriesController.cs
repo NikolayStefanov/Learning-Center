@@ -4,7 +4,7 @@
 
     public class SubcategoriesController : BaseController
     {
-        public IActionResult ChosenSubcategory()
+        public IActionResult ChosenSubcategory(int id)
         {
             return this.View();
         }
