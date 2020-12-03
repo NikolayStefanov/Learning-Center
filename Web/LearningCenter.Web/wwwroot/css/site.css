@@ -98,9 +98,12 @@ body {
 }
 /*LOGO*/
 
-/*Login page CSS*/
-#loginRegisterPage {
+/*Login and Register page CSS*/
+#loginRegisterPageBg {
     background-image: url("../img/login-background.jpg");
+}
+#loginRegisterPage {
+   
     padding-top: 150px;
     padding-left: 75px;
     margin-bottom: 75px;
@@ -114,10 +117,11 @@ body {
     display: inline-block;
     margin-top: 15px;
 }
+.external-login-container {
+    display: table;
+    width: 100%;
+}
 /*Login page CSS*/
-
-
-
 /*Target Category Page CSS*/
 #targetCategoryPage {
     background-image: url("../img/cta2-background.jpg");
@@ -351,6 +355,34 @@ label.star:before {
 }
 #addCourseButton a {
     color: #dce6cf !important;
+}
+
+#feedbackForm{
+    margin-right: 50px;
+    
+}
+#feedback {
+    margin-right: 50px;
+    margin-left: 10px;
+}
+#feedbackPhoto {
+    float: left;
+    padding-right: 10px;
+    border-radius: 15px;
+}
+#feedbackContent{
+    border: 2px solid;
+    border-left: none;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#createdOn{
+    margin-right: 10px;
+    float: right;
+    text-align: right;
 }
 
 /*PROFILE PAGE*/

@@ -8,6 +8,7 @@
     public class LecturerViewModel : IMapFrom<Lecturer>
     {
         public IEnumerable<PersonalCourseViewModel> Courses { get; set; }
+
         public IEnumerable<FeedbackViewModel> Feedbacks { get; set; }
     }
 }

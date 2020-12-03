@@ -9,21 +9,8 @@
 <div id="profilePage" class="container emp-profile">
     <div class="row">
         <div class="col-md-2">
-            <img src="@Model.ProfilePicture.Url" class="img-thumbnail" alt="ProfilePicture">
+            <img src="@Model.ProfilePictureUrl" class="img-thumbnail" alt="ProfilePicture">
             <hr />
-            <form>
-                <div class="form-group text-center white-text">
-                    <h3 class="white-text">Send Feedback</h3>
-                    <label for="exampleFormControlInput1">Your name:</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" readonly placeholder="@this.User.Identity.Name"/>
-                </div>
-                <div class="form-group text-center white-text">
-                    <label for="exampleFormControlTextarea1">Feedback Content</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="7"></textarea>
-                    <br />
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
         </div>
         <div class="col-md-10">
             <div class="profile-head">
@@ -36,10 +23,10 @@
                 </h4>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Personal Courses (@Model.Lecturer.Courses.Count())</a>
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-list"></i> Personal Courses (@Model.Lecturer.Courses.Count())</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Feedbacks (@Model.Lecturer.Feedbacks.Count())</a>
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fas fa-address-card"></i> Feedbacks (@Model.Lecturer.Feedbacks.Count())</a>
                     </li>
                 </ul>
             </div>
@@ -80,7 +67,7 @@
                         {
                             @if (this.User.Identity.Name == Model.Email)
                             {
-                                <h3 class="white-text">You don't have any courses yet. <a class="" asp-action="Create" asp-controller="Courses">Create your first course! </a></h3>
+                                <h3 class="white-text">You don't have any courses yet. <a class="" asp-action="Create" asp-controller="Courses">Create your first course! <i class="fas fa-folder-plus"></i></a></h3>
                             }
                             else
                             {
@@ -90,14 +77,41 @@
 
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <ul class="list-unstyled">
-                            <li class="media">
-                                <img src="..." class="mr-3" alt="...">
-                                <div class="media-body">
-                                    <h5 class="mt-0 mb-1">List-based media object</h5>
-                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        @if (this.User.Identity.Name != Model.Email)
+                        {
+                            <form id="feedbackForm">
+                                <input type="hidden" id="lecturerFeedbackId" value="@Model.Id" />
+                                <div class="form-group text-center">
+                                    <h3 class="white-text">Write Feedback to @Model.FullName</h3>
+                                    <label for="exampleFormControlInput1" class="white-text">Your email: <input type="email" class="form-control col-md-8" id="exampleFormControlInput1" readonly value="@this.User.Identity.Name" /></label>
+
                                 </div>
-                            </li>
+                                <div class="form-group text-center white-text">
+                                    <label for="exampleFormControlTextarea1">Content</label>
+                                    <textarea class="form-control col-md-8" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                    <br />
+                                    <button type="reset" onclick="createFeedback()" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                            <hr />
+                        }
+
+                        <ul id="feedbacksList" class="list-unstyled">
+                            @foreach (var feedback in Model.Lecturer.Feedbacks.OrderByDescending(x => x.CreatedOn))
+                            {
+                                <li id="feedback" class="media row">
+                                    <img id="feedbackPhoto" width="75px;" height="75px;" src="@feedback.AuthorProfilePictureUrl" class="" alt="feedbackAuthorPhoto">
+
+                                    <div id="feedbackContent" class="media-body white-text">
+                                        <h4 class="white-text"><i class="fas fa-user"></i> @feedback.AuthorFullName</h4>
+                                        <p>@feedback.Content</p>
+                                        <div>
+                                            <span id="createdOn" class="white-text"><i class="far fa-clock"></i> @feedback.CreatedOn.ToString("dd-MMM-y HH:mm:ss")</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+
                         </ul>
                     </div>
                 </div>
@@ -107,3 +121,46 @@
 
     </div>
 </div>
+@section Scripts {
+    <script>
+        async function createFeedback() {
+            var authorEmail = document.getElementById("exampleFormControlInput1").value;
+            var lecturerUser = document.getElementById("lecturerFeedbackId").value;
+            var feedbackContetnt = document.getElementById("exampleFormControlTextarea1").value;
+            var data = { AuthorEmail: authorEmail, LecturerId: lecturerUser, Content: feedbackContetnt };
+
+            var uri = "/api/Feedback";
+            fetch(uri, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    var authorName = data["authorFullName"];
+                    var feedbackContent = data["content"];
+                    var createdOn = data["createdOn"];
+                    var photoUrl = data["authorProfilePictureUrl"];
+
+                    var m = new Date(createdOn);
+                    var dateString = (m.getUTCMonth() + 1) + "-" + m.getUTCDate() + "-" + m.getUTCFullYear() + " " + m.getUTCHours() + ":" + m.getUTCMinutes() + ":" + m.getSeconds();
+                    console.log(dateString);
+
+                    var list = document.getElementById("feedback").cloneNode(true);
+
+                    list.querySelector("#feedbackPhoto").src = photoUrl;
+                    list.querySelector("#createdOn").textContent = dateString;
+                    list.querySelector("#feedbackContent h4").textContent = authorName;
+                    list.querySelector("#feedbackContent p").textContent = feedbackContent;
+
+                    document.getElementById("feedbacksList").prepend(list);
+                });
+
+        };
+    </script>
+
+    <partial name="_ValidationScriptsPartial" />
+}

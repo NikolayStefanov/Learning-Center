@@ -1,12 +1,9 @@
 ﻿namespace LearningCenter.Web.ViewModels.Account
 {
     using System;
-    using System.Collections.Generic;
 
-    using AutoMapper;
     using LearningCenter.Data.Models;
     using LearningCenter.Services.Mapping;
-    using LearningCenter.Web.ViewModels.About;
 
     public class ProfileViewModel : IMapFrom<ApplicationUser>
     {
@@ -20,7 +17,7 @@
 
         public string Email { get; set; }
 
-        public ProfilePictureViewModel ProfilePicture { get; set; }
+        public string ProfilePictureUrl { get; set; }
 
         public DateTime BirthDate { get; set; }
 

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace LearningCenter.Web.ViewModels.Courses
+﻿namespace LearningCenter.Web.ViewModels.Courses
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
     public class DropdownModel
     {
         public string CategoryId { get; set; }
