@@ -181,7 +181,7 @@ input::-webkit-input-placeholder {
 }
 /*Category Cards Page*/
 #categoryCards {
-    padding-top: 12%;
+    padding-top: 9%;
     padding-left: 10%;
     padding-right: 4%;
 }
@@ -230,7 +230,7 @@ input.star {
 label.star {
     float: right;
     font-size: 30px;
-    color: #4A148C;
+    color: #f589e6;
     transition: all .2s
 }
 
@@ -244,9 +244,20 @@ input.star-5:checked ~ label.star:before {
     color: lawngreen;
     text-shadow: 0 0 20px #952
 }
-
+input.star-4:checked ~ label.star:before {
+    color: #65e67d;
+    text-shadow: 0 0 20px #952
+}
+input.star-3:checked ~ label.star:before {
+    color: #FD4;
+    text-shadow: 0 0 20px #952
+}
+input.star-2:checked ~ label.star:before {
+    color: #F62;
+    text-shadow: 0 0 20px #952
+}
 input.star-1:checked ~ label.star:before {
-    color: #F62
+    color: #f70000;
 }
 
 label.star:hover {
@@ -272,7 +283,7 @@ label.star:before {
     margin-top: 20%;
 }
 #topLectorersJumbotron {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("../img/create-page-bg.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("../img/aboutTopLecturersBg.jpg");
     margin-top: 20%;
 }
 
@@ -386,3 +397,18 @@ label.star:before {
 }
 
 /*PROFILE PAGE*/
+
+/*COURSE PAGE*/
+#coursePageBg {
+    background-image: url("../img/courseBg.jpg");
+}
+#coursePage{
+    margin-top: 9%;
+    margin-left: 25px;
+}
+#courseDescription {
+    margin-left: 35px;
+}
+
+
+/*COURSE PAGE*/

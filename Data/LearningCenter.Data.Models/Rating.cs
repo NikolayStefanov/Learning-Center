@@ -5,7 +5,7 @@
 
     using LearningCenter.Data.Common.Models;
 
-    public class Rating : BaseDeletableModel<int>
+    public class Rating : BaseModel<int>
     {
         public int Value { get; set; }
 
@@ -14,5 +14,10 @@
         public int CourseId { get; set; }
 
         public virtual Course Course { get; set; }
+
+        [ForeignKey(nameof(User))]
+        public string UserId { get; set; }
+
+        public ApplicationUser User { get; set; }
     }
 }

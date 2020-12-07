@@ -1,6 +1,7 @@
 ﻿namespace LearningCenter.Web.ViewModels.Account
 {
     using System;
+    using System.Collections.Generic;
 
     using LearningCenter.Data.Models;
     using LearningCenter.Services.Mapping;
@@ -24,6 +25,8 @@
         public int Age => DateTime.UtcNow.Year - this.BirthDate.Year;
 
         public int LecturesCount { get; set; }
+
+        public IEnumerable<UserCoursesViewModel> Courses { get; set; }
 
         public LecturerViewModel Lecturer { get; set; }
     }

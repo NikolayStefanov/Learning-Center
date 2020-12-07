@@ -79,6 +79,7 @@
             services.AddTransient<IAccountsService, AccountsService>();
             services.AddTransient<ILanguagesService, LanguagesService>();
             services.AddTransient<ISubcategoriesService, SubcategoriesService>();
+            services.AddTransient<IRateService, RateService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

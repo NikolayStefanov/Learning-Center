@@ -1,5 +1,6 @@
 ﻿namespace LearningCenter.Web.ViewModels.Courses
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -23,6 +24,8 @@
 
         public int RatingsCount { get; set; }
 
+        public string AuthorEmail { get; set; }
+
         public string AuthorFirstName { get; set; }
 
         public string AuthorLastName { get; set; }
@@ -32,6 +35,10 @@
         public string AuthorId { get; set; }
 
         public int LecturesCount { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public string CreatedTimeFormated => this.CreatedOn.ToString("dd-MMM-yyyy");
 
         public IEnumerable<LectureViewModel> Lectures { get; set; }
 

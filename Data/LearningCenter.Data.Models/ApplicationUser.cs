@@ -20,6 +20,8 @@ namespace LearningCenter.Data.Models
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.Lectures = new HashSet<Lecture>();
+            this.Courses = new HashSet<UserCourses>();
+            this.Ratings = new HashSet<Rating>();
         }
 
         [Required]
@@ -48,8 +50,6 @@ namespace LearningCenter.Data.Models
 
         public virtual Lecturer Lecturer { get; set; }
 
-        public virtual Student Student { get; set; }
-
         // Audit info
         public DateTime CreatedOn { get; set; }
 
@@ -60,9 +60,13 @@ namespace LearningCenter.Data.Models
 
         public DateTime? DeletedOn { get; set; }
 
+        public virtual ICollection<UserCourses> Courses { get; set; }
+
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
         public virtual ICollection<Lecture> Lectures { get; set; }
+
+        public virtual ICollection<Rating> Ratings { get; set; }
 
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 

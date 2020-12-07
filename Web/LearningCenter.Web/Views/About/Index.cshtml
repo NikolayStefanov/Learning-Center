@@ -23,14 +23,14 @@
         <div>
             @foreach (var lecturer in Model.Lectorers)
             {
-                <div class="card col-md-3" style="width: 18rem;">
+                <div class="card col-md-3 text-center" style="width: 18rem;">
                     <img src="@lecturer.ProfilePicture.Url" width="150px" height="185px" class="card-img-top" alt="ProfilePicture">
                     <div class="card-body">
                         <h5 class="card-title white-text">Name: @lecturer.FullName</h5>
                         <h5 class="card-title white-text">Age: @lecturer.Age</h5>
                         <h5 class="card-title white-text">Courses: @lecturer.LecturerCoursesCount</h5>
                         <h5 class="card-title white-text">Lectures: @lecturer.LecturesCount</h5>
-                        <a asp-action="Index" asp-controller="Account" asp-route-id="@lecturer.Id" class="btn btn-primary">Visit Profile</a>
+                        <a asp-action="Index" asp-controller="Account" asp-route-id="@lecturer.Id" class="btn btn-success">Visit Profile</a>
                     </div>
                 </div>
             }

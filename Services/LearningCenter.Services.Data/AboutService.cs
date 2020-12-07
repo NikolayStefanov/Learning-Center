@@ -43,8 +43,10 @@
         {
             var topLecturers = this.lecturersRepository.All()
                 .Where(x => x.UserType == UserTypeEnum.Lecturer)
-                .OrderByDescending(x => x.Lectures.Count)
+                .OrderByDescending(x => x.Lecturer.Courses.Count)
+                .ThenByDescending(x => x.Lectures.Count)
                 .To<T>()
+                .Take(5)
                 .ToList();
             return topLecturers;
         }
