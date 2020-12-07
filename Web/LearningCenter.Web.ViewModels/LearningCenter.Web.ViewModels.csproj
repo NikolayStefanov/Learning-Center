@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <Folder Include="Home\" />
+    <Folder Include="Lectures\" />
   </ItemGroup>
 
 </Project>

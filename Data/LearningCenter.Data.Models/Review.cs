@@ -11,9 +11,6 @@
         public string Content { get; set; }
 
         [Required]
-        public int Rating { get; set; }
-
-        [Required]
         [ForeignKey(nameof(Author))]
         public string AuthorId { get; set; }
 

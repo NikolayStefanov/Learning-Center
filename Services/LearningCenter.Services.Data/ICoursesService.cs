@@ -9,5 +9,7 @@
         Task<int> AddCourseAsync(CreateCourseInputModel inputModel, string thumbnailUrl, string authorId);
 
         Task<bool> DeleteAsync(int courseId, string userId);
+
+        T GetCourse<T>(int id);
     }
 }

@@ -4,8 +4,6 @@
 
     using LearningCenter.Data.Models;
     using LearningCenter.Services.Mapping;
-    using LearningCenter.Web.ViewModels.Courses;
-    using LearningCenter.Web.ViewModels.SubCategories;
 
     public class ChosenCategory : IMapFrom<Category>
     {

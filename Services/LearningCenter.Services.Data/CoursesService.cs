@@ -5,6 +5,7 @@
 
     using LearningCenter.Data.Common.Repositories;
     using LearningCenter.Data.Models;
+    using LearningCenter.Services.Mapping;
     using LearningCenter.Web.ViewModels.Courses;
     using Microsoft.EntityFrameworkCore;
 
@@ -54,6 +55,12 @@
             this.courseRepository.Delete(course);
             await this.courseRepository.SaveChangesAsync();
             return true;
+        }
+
+        public T GetCourse<T>(int id)
+        {
+            var targetCourse = this.courseRepository.All().Where(x => x.Id == id).To<T>().FirstOrDefault();
+            return targetCourse;
         }
     }
 }

@@ -59,8 +59,8 @@
 
         public IActionResult GetCourse(int id)
         {
-
-            return this.View();
+            var viewModel = this.coursesService.GetCourse<CourseViewModel>(id);
+            return this.View(viewModel);
         }
 
         public async Task<IActionResult> Delete(int id)

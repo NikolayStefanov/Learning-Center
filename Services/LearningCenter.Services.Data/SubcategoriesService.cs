@@ -5,6 +5,7 @@
 
     using LearningCenter.Data.Common.Repositories;
     using LearningCenter.Data.Models;
+    using LearningCenter.Services.Mapping;
     using Microsoft.AspNetCore.Mvc.Rendering;
 
     public class SubcategoriesService : ISubcategoriesService
@@ -27,6 +28,12 @@
                 })
                 .ToList();
             return subcategories;
+        }
+
+        public T GetSubcategory<T>(int id)
+        {
+            var targetSubcategory = this.subcategoryRepo.All().Where(x => x.Id == id).To<T>().FirstOrDefault();
+            return targetSubcategory;
         }
     }
 }

@@ -31,7 +31,7 @@
         <ul class="list-group">
             @foreach (var subCategory in Model.SubCategories)
             {
-                <li class="list-group-item list-group-item-success"><a class="text-success" asp-controller="Subcategories" asp-action="ChosenSubcategory" asp-route-id="@subCategory.Id">@subCategory.Title (@subCategory.CoursesCount)</a> </li>
+                <li class="list-group-item list-group-item-success"><a class="text-success" asp-controller="Subcategories" asp-action="GetSubcategory" asp-route-id="@subCategory.Id">@subCategory.Title (@subCategory.CoursesCount)</a> </li>
             }
         </ul>
     </div>
@@ -51,7 +51,7 @@
                         <h5 class="white-text">By: <a asp-action="Index" asp-controller="Account" asp-route-id="@course.AuthorId">@course.AuthorName</a></h5>
                         <h5 class="white-text">Rating: @course.AverageRating/5 (@course.RatingsCount)</h5>
 
-                        <span class="badge even-larger-badge"><a asp-action="ChosenSubcategory" asp-controller="Subcategories" asp-route-id="@course.SubCategoryId">Subcategory: @course.SubCategoryTitle</a></span>
+                        <span class="badge even-larger-badge"><a asp-action="GetSubcategory" asp-controller="Subcategories" asp-route-id="@course.SubCategoryId">Subcategory: @course.SubCategoryTitle</a></span>
 
                         <div>
                             <a class="btn btn-success" asp-controller="Courses" asp-action="GetCourse" asp-route-id="@course.Id">Go to course</a>

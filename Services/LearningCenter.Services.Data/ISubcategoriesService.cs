@@ -7,5 +7,7 @@
     public interface ISubcategoriesService
     {
         IEnumerable<SelectListItem> GetAllAsSelectListItems();
+
+        T GetSubcategory<T>(int id);
     }
 }

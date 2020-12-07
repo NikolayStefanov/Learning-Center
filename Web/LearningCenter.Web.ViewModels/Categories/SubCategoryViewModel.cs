@@ -1,10 +1,8 @@
-﻿namespace LearningCenter.Web.ViewModels.SubCategories
+﻿namespace LearningCenter.Web.ViewModels.Categories
 {
-    using System.Collections.Generic;
 
     using LearningCenter.Data.Models;
     using LearningCenter.Services.Mapping;
-    using LearningCenter.Web.ViewModels.Categories;
 
     public class SubCategoryViewModel : IMapFrom<SubCategory>
     {
@@ -13,7 +11,5 @@
         public string Title { get; set; }
 
         public int CoursesCount { get; set; }
-
-        public IEnumerable<CourseViewModel> Courses { get; set; }
     }
 }
