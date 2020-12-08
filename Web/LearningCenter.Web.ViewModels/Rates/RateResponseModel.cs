@@ -3,5 +3,7 @@
     public class RateResponseModel
     {
         public double AverageRating { get; set; }
+
+        public int RatesCount { get; set; }
     }
 }

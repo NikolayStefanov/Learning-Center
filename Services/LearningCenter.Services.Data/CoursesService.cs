@@ -13,11 +13,13 @@
     {
         private readonly IDeletableEntityRepository<Course> courseRepository;
         private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
+        private readonly IDeletableEntityRepository<UserCourses> userCoursesRepository;
 
-        public CoursesService(IDeletableEntityRepository<Course> courseRepository, IDeletableEntityRepository<ApplicationUser> userRepository, IDeletableEntityRepository<Lecturer> lecturerRepository)
+        public CoursesService(IDeletableEntityRepository<Course> courseRepository, IDeletableEntityRepository<ApplicationUser> userRepository, IDeletableEntityRepository<UserCourses> userCoursesRepository)
         {
             this.courseRepository = courseRepository;
             this.userRepository = userRepository;
+            this.userCoursesRepository = userCoursesRepository;
         }
 
         public async Task<int> AddCourseAsync(CreateCourseInputModel inputModel, string thumbnailUrl, string authorId)
@@ -42,6 +44,16 @@
             return newCourse.Id;
         }
 
+        public async Task AddCourseToBagAsync(int courseId, string userId)
+        {
+            var userCourse = this.userCoursesRepository.All().FirstOrDefault(x => x.StudentId == userId && x.CourseId == courseId);
+            if (userCourse == null)
+            {
+                await this.userCoursesRepository.AddAsync(new UserCourses { CourseId = courseId, StudentId = userId });
+                await this.userCoursesRepository.SaveChangesAsync();
+            }
+        }
+
         public async Task<bool> DeleteAsync(int courseId, string userId)
         {
             var user = this.userRepository.All().Include(u=> u.Lecturer).FirstOrDefault(u => u.Id == userId);
@@ -61,6 +73,13 @@
         {
             var targetCourse = this.courseRepository.All().Where(x => x.Id == id).To<T>().FirstOrDefault();
             return targetCourse;
+        }
+
+        public async Task RemoveCourseFromBag(int courseId, string userId)
+        {
+            var targetEntity = this.userCoursesRepository.All().FirstOrDefault(x => x.StudentId == userId && x.CourseId == courseId);
+            this.userCoursesRepository.Delete(targetEntity);
+            await this.userCoursesRepository.SaveChangesAsync();
         }
     }
 }

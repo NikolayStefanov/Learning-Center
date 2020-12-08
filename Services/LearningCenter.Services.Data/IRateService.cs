@@ -10,5 +10,7 @@
         Task SetRate(string userId, int courseId, int value);
 
         public double GetAverageRating(int courseId);
+
+        public int GetRatesCount(int courseId);
     }
 }

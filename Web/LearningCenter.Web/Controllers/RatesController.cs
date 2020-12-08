@@ -26,7 +26,9 @@
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             await this.rateService.SetRate(userId, input.CourseId, input.Value);
             var courseAverageRating = this.rateService.GetAverageRating(input.CourseId);
-            return new RateResponseModel { AverageRating = courseAverageRating };
+            var ratesCount = this.rateService.GetRatesCount(input.CourseId);
+            var resultResponseModel = new RateResponseModel { AverageRating = courseAverageRating, RatesCount = ratesCount };
+            return resultResponseModel;
         }
     }
 }

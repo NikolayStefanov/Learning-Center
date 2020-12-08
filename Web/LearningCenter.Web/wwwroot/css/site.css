@@ -268,10 +268,13 @@ label.star:before {
     content: '\f006';
     font-family: FontAwesome
 }
+#starsId{
+    margin-top: 15px;
+    padding-right: 25px;
+}
 /*STAR RATINGS*/
-
 /*ABOUT PAGE*/
-#aboutPageBg{
+#aboutPageBg {
     background-image: url("../img/create-page-bg.jpg");
 }
 #headingJumbotron {
@@ -345,6 +348,7 @@ label.star:before {
     margin-top: 10%;
 }
 .img-thumbnail {
+    margin-left: 4px;
     width: 350px;
     height: 300px;
     border-radius: 30px;
@@ -395,9 +399,7 @@ label.star:before {
     float: right;
     text-align: right;
 }
-
 /*PROFILE PAGE*/
-
 /*COURSE PAGE*/
 #coursePageBg {
     background-image: url("../img/courseBg.jpg");

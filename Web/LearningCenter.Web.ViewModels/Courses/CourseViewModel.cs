@@ -8,7 +8,7 @@
     using LearningCenter.Data.Models;
     using LearningCenter.Services.Mapping;
 
-    public class CourseViewModel : IMapFrom<Course>
+    public class CourseViewModel : IMapFrom<Course>, IHaveCustomMappings
     {
         public int Id { get; set; }
 

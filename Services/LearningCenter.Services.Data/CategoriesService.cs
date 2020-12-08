@@ -42,7 +42,7 @@
 
         public T GetTatgerCategory<T>(int id)
         {
-            return this.categoryRepository.AllAsNoTracking().Where(c => c.Id == id).To<T>().FirstOrDefault();
+            return this.categoryRepository.All().Where(c => c.Id == id).To<T>().FirstOrDefault();
         }
     }
 }

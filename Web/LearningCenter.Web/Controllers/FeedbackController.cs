@@ -1,9 +1,10 @@
 ﻿namespace LearningCenter.Web.Controllers
 {
+    using System.Threading.Tasks;
+
     using LearningCenter.Services.Data;
     using LearningCenter.Web.ViewModels.Account;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
 
     [Route("api/[controller]")]
     [ApiController]
@@ -17,7 +18,6 @@
         }
 
         [HttpPost]
-        [IgnoreAntiforgeryToken]
         public async Task<ActionResult<FeedbackViewModel>> AddFeedback(FeedbackInputModel inputModel)
         {
             var newFeedbackId = await this.accountService.AddFeedbackAsync(inputModel);

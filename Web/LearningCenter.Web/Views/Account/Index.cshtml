@@ -8,7 +8,7 @@
 
 <div id="profilePage" class="container emp-profile">
     <div class="row">
-        <div class="col-md-2">
+        <div id="profilePicture" class="col-md-2">
             <img src="@Model.ProfilePictureUrl" class="img-thumbnail" alt="ProfilePicture">
             <hr />
         </div>
@@ -97,7 +97,7 @@
                                                 <a class="btn btn-success btn-sm" asp-controller="Courses" asp-action="GetCourse" asp-route-id="@course.CourseId">Go to course</a>
                                                 @if (this.User.Identity.Name == Model.Email)
                                                 {
-                                                    <a onclick="return confirm('Are you sure you want to remove from courses bag: @course.Course.Title?')" class="btn btn-danger btn-sm" asp-controller="Courses" asp-action="Delete" asp-route-id="@course.CourseId">Remove From Bag</a>
+                                                    <a onclick="return confirm('Are you sure you want to remove from courses bag: @course.Course.Title?')" class="btn btn-danger btn-sm" asp-controller="Courses" asp-action="RemoveCourseFromBag" asp-route-id="@course.CourseId">Remove From Bag</a>
                                                 }
                                             </div>
                                         </div>
@@ -150,7 +150,7 @@
                                         <h4 class="white-text"><i class="fas fa-user"></i> @feedback.AuthorFullName</h4>
                                         <p>@feedback.Content</p>
                                         <div>
-                                            <span id="createdOn" class="white-text"><i class="far fa-clock"></i> @feedback.CreatedOn.ToString("dd-MMM-y HH:mm:ss")</span>
+                                            <span  id="createdOn" class="white-text"> <i class="far fa-clock"></i> <span id="createdOnIn">@feedback.CreatedOn.ToString("dd-MMM-y HH:mm:ss")</span></span>
                                         </div>
                                     </div>
                                 </li>
@@ -165,6 +165,7 @@
 
     </div>
 </div>
+<form method="post" id="antiForgery"></form>
 @section Scripts {
     <script>
         async function createFeedback() {
@@ -172,11 +173,13 @@
             var lecturerUser = document.getElementById("lecturerFeedbackId").value;
             var feedbackContetnt = document.getElementById("exampleFormControlTextarea1").value;
             var data = { AuthorEmail: authorEmail, LecturerId: lecturerUser, Content: feedbackContetnt };
+            var antiForgeryToken = document.querySelector("#antiForgery input").getAttribute('value');
 
             var uri = "/api/Feedback";
             fetch(uri, {
                 method: 'POST',
                 headers: {
+                    'X-CSRF-TOKEN': antiForgeryToken,
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
@@ -191,12 +194,11 @@
 
                     var m = new Date(createdOn);
                     var dateString = (m.getUTCMonth() + 1) + "-" + m.getUTCDate() + "-" + m.getUTCFullYear() + " " + m.getUTCHours() + ":" + m.getUTCMinutes() + ":" + m.getSeconds();
-                    console.log(dateString);
 
                     var list = document.getElementById("feedback").cloneNode(true);
 
                     list.querySelector("#feedbackPhoto").src = photoUrl;
-                    list.querySelector("#createdOn").textContent = dateString;
+                    list.querySelector("#createdOnIn").textContent = dateString;
                     list.querySelector("#feedbackContent h4").textContent = authorName;
                     list.querySelector("#feedbackContent p").textContent = feedbackContent;
 

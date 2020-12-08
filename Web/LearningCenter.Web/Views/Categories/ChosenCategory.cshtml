@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <h4 class="card-title white-text">@course.Title - @course.Price$</h4>
                         <h5 class="white-text">By: <a asp-action="Index" asp-controller="Account" asp-route-id="@course.AuthorId">@course.AuthorName</a></h5>
-                        <h5 class="white-text">Rating: @course.AverageRating/5 (@course.RatingsCount)</h5>
+                        <h5 class="white-text">Rating: @Math.Round(course.AverageRating, 1)/5 (@course.RatingsCount)</h5>
 
                         <span class="badge even-larger-badge"><a asp-action="GetSubcategory" asp-controller="Subcategories" asp-route-id="@course.SubCategoryId">Subcategory: @course.SubCategoryTitle</a></span>
 

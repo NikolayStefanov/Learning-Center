@@ -1,5 +1,6 @@
 ﻿namespace LearningCenter.Web.Controllers
 {
+    using System;
     using System.Threading.Tasks;
 
     using CloudinaryDotNet;
@@ -61,6 +62,22 @@
         {
             var viewModel = this.coursesService.GetCourse<CourseViewModel>(id);
             return this.View(viewModel);
+        }
+
+        public async Task<IActionResult> AddCourseInBag(int id)
+        {
+            var userId = this.userManager.GetUserId(this.User);
+            await this.coursesService.AddCourseToBagAsync(id, userId);
+
+            return this.Redirect($"/Account/Index/{userId}#courses");
+        }
+
+        public async Task<IActionResult> RemoveCourseFromBag(int id)
+        {
+            var userId = this.userManager.GetUserId(this.User);
+            await this.coursesService.RemoveCourseFromBag(id, userId);
+
+            return this.Redirect($"/Account/Index/{userId}#courses");
         }
 
         public async Task<IActionResult> Delete(int id)

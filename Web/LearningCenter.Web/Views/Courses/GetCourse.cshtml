@@ -6,79 +6,114 @@
 <div id="coursePageBg" class="bg-image bg-parallax overlay"></div>
 <div id="coursePage" class=" white-text">
     <div class="card row">
-        <div class="col-md-8">
-            <div class="col-md-4">
-                <img id="coursePhotoImg" src="@Model.ThumbnailUrl" class="card-img-top" width="350px" height="350px" alt="ThumbnailPhoto">
-                <h1 class="card-title white-text">@Model.Title</h1>
+        <div class="col-md-7">
+            <div class="col-md-5">
+                <h2 class="card-title white-text">@Model.Title</h2>
+                <hr />
                 <ul>
-                    <li><h4 class="white-text"><i class="fas fa-dollar-sign"></i> Price: $@Model.Price</h4></li>
-                    <li><h4 class="white-text"><i class="fas fa-user-tie"></i> Author: <a asp-action="Index" asp-controller="Account" asp-route-id="@Model.AuthorId"><u>@Model.AuthorName</u></a>  </h4></li>
-                    <li><h4 class="white-text"><i class="fas fa-history"></i> Created on: @Model.CreatedTimeFormated</h4></li>
-                    <li><h4 class="white-text"><i class="fas fa-star-half-alt"></i> Rating: @Model.AverageRating (@Model.RatingsCount)</h4></li>
+                    <li><h5 class="white-text"><i class="fas fa-dollar-sign"></i> Price: $@Model.Price</h5></li>
+                    <li><h5 class="white-text"><i class="fas fa-user-tie"></i> Author: <a asp-action="Index" asp-controller="Account" asp-route-id="@Model.AuthorId"><u>@Model.AuthorName</u></a>  </h5></li>
+                    <li><h5 class="white-text"><i class="fas fa-history"></i> Created on: @Model.CreatedTimeFormated</h5></li>
+                    <li><h5 class="white-text"><i class="fas fa-star-half-alt"></i> Rating:  <span id="averageRating">@Math.Round(Model.AverageRating, 1)</span> / 5 (<span id="ratingsCount">@Model.RatingsCount</span>)</h5></li>
                 </ul>
+                <img id="coursePhotoImg" src="@Model.ThumbnailUrl" class="card-img-top" width="300px" height="300px" alt="ThumbnailPhoto">
+
             </div>
-            <div id="courseDescription" class="col-md-7">
+            <div id="courseDescription" class="col-md-6 text-center">
                 <div class="card-body">
-                    <a asp-action="AddCourseInBag" asp-controller="Courses" asp-route-id="@Model.Id" class="btn btn-success card-link">Add In Courses Bag</a>
+                    <a id="addInCourseBag" asp-action="AddCourseInBag" asp-controller="Courses" asp-route-id="@Model.Id" onclick="AddButtonClicked()" class="btn btn-success card-link">Add In Courses Bag</a>
+                    <a id="removeFromCourseBag" asp-action="RemoveCourseFromBag" asp-controller="Courses" asp-route-id="@Model.Id" onclick="RemoveButtonClicked()" class="btn btn-danger card-link">Remove from Courses Bag</a>
                 </div>
                 <div class="container d-flex justify-content-center mt-200">
                     <div class="row">
                         <div class="col-md-5">
                             <h3 class="white-text"><i class="far fa-star"></i> Rate course: </h3>
                         </div>
-                        <div class="col-md-2">
-                            <div class="stars">
-                                <form action="">
-                                    <input class="star star-5" id="star-5" type="radio" name="star" onclick="StarClicked(5)" />
-                                    <label class="star star-5" for="star-5"></label>
-                                    <input class="star star-4" id="star-4" type="radio" name="star" onclick="StarClicked(4)" />
-                                    <label class="star star-4" for="star-4"></label>
-                                    <input class="star star-3" id="star-3" type="radio" name="star" onclick="StarClicked(3)" />
-                                    <label class="star star-3" for="star-3"></label>
-                                    <input class="star star-2" id="star-2" type="radio" name="star" onclick="StarClicked(2)" />
-                                    <label class="star star-2" for="star-2"></label>
-                                    <input class="star star-1" id="star-1" type="radio" name="star" onclick="StarClicked(1)" />
-                                    <label class="star star-1" for="star-1"></label>
-                                </form>
-                            </div>
+                        <div id="starsId" class="stars">
+                            <form action="">
+                                <input class="star star-5" id="star-5" type="radio" name="star" onclick="StarClicked(5)" />
+                                <label class="star star-5" for="star-5"></label>
+                                <input class="star star-4" id="star-4" type="radio" name="star" onclick="StarClicked(4)" />
+                                <label class="star star-4" for="star-4"></label>
+                                <input class="star star-3" id="star-3" type="radio" name="star" onclick="StarClicked(3)" />
+                                <label class="star star-3" for="star-3"></label>
+                                <input class="star star-2" id="star-2" type="radio" name="star" onclick="StarClicked(2)" />
+                                <label class="star star-2" for="star-2"></label>
+                                <input class="star star-1" id="star-1" type="radio" name="star" onclick="StarClicked(1)" />
+                                <label class="star star-1" for="star-1"></label>
+                            </form>
                         </div>
                     </div>
                 </div>
+                <hr />
                 <p class="card-text"><b>Description: </b>@Model.Description</p>
             </div>
         </div>
-        <div class="col-md-4">
-            <h1 class="white-text">LECTURES:</h1>
-            @if (this.User.Identity.Name == Model.AuthorEmail)
-            {
-                <div>
-                    <div id="addCourseButton" class="text-center col-md-3">
-                        <h1><a asp-action="Create" asp-controller="Lectures"><i class="far fa-plus-square fa-5x"></i></a></h1>
-                        <h3><a asp-action="Create" asp-controller="Lectures">Add Lecture</a></h3>
+        <div class="col-md-5 text-center">
+            <div class="col-md-12">
+                <h1 class="white-text">LECTURES:</h1>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/v64KOxKVLVg" allowfullscreen></iframe>
+                </div>
+                @if (this.User.Identity.Name == Model.AuthorEmail)
+                {
+                    <div>
+                        <div id="addCourseButton">
+                            <h1><a asp-action="Create" asp-controller="Lectures"><i class="far fa-plus-square fa-4x"></i></a></h1>
+                            <h3><a asp-action="Create" asp-controller="Lectures">Add Lecture</a></h3>
+                        </div>
                     </div>
-                </div>
-            }
-        </div>
+                }
 
-        @*<div class="card-body col-md-4 text-center">
-                <p class="card-text">@Model.Description</p>
-                <ul class="list-group">
-                    <li class="">Cras justo odio</li>
-                    <li class="">Dapibus ac facilisis in</li>
-                    <li class="">Vestibulum at eros</li>
-                </ul>
-                <div class="card-body">
-                    <a asp-action="AddCourseInBag" asp-controller="Courses" asp-route-id="@Model.Id" class="btn btn-success card-link">Add In Courses Bag</a>
-                </div>
-            </div>*@
+            </div>
+        </div>
 
     </div>
 </div>
+<form method="post" id="antiForgery"></form>
 
 @section Scripts{
     <script>
+        function AddButtonClicked() {
+            document.getElementById("addInCourseBag").style.display = 'none';
+            document.getElementById("removeFromCourseBag").style.display = 'block';
+        }
+        function RemoveButtonClicked() {
+            document.getElementById("removeFromCourseBag").style.display = 'none';
+            document.getElementById("addInCourseBag").style.display = 'block';
+        }
         function StarClicked(value) {
-            console.log(value);
+            var starValue = value;
+            var courseId = @Model.Id;
+            var data = { value: starValue, courseId: courseId };
+
+            var antiForgeryToken = document.querySelector("#antiForgery input").getAttribute('value');
+
+            var url = "/api/Rates";
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': antiForgeryToken,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    var averageRating = data["averageRating"].toFixed(1);
+                    var ratesCount = data["ratesCount"];
+
+                    var ratesCountElement = document.getElementById("ratingsCount");
+
+                    ratesCountElement.textContent = "";
+                    ratesCountElement.textContent = `${ratesCount}`;
+
+                    var ratingElement = document.getElementById("averageRating");
+
+                    ratingElement.textContent = "";
+                    ratingElement.textContent = `${averageRating}`;
+                });
         }
     </script>
 }

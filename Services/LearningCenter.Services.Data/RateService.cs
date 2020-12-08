@@ -25,6 +25,12 @@
             return averageRating;
         }
 
+        public int GetRatesCount(int courseId)
+        {
+            var ratingsCount = this.rateRepository.All().Where(x => x.CourseId == courseId).Count();
+            return ratingsCount;
+        }
+
         public async Task SetRate(string userId, int courseId, int value)
         {
             var rate = this.rateRepository.All().Where(x => x.CourseId == courseId && x.UserId == userId).FirstOrDefault();

@@ -11,5 +11,9 @@
         Task<bool> DeleteAsync(int courseId, string userId);
 
         T GetCourse<T>(int id);
+
+        Task AddCourseToBagAsync(int courseId, string userId);
+
+        Task RemoveCourseFromBag(int courseId, string userId);
     }
 }
