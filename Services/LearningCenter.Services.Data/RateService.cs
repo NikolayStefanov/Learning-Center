@@ -25,6 +25,17 @@
             return averageRating;
         }
 
+        public int? GetRateByUserAndCourse(int courseId, string userId)
+        {
+            var targetRate = this.rateRepository.All().FirstOrDefault(x => x.CourseId == courseId && x.UserId == userId);
+            if (targetRate == null)
+            {
+                return null;
+            }
+
+            return targetRate.Value;
+        }
+
         public int GetRatesCount(int courseId)
         {
             var ratingsCount = this.rateRepository.All().Where(x => x.CourseId == courseId).Count();

@@ -21,8 +21,9 @@
         private readonly Cloudinary cloudinary;
         private readonly ICoursesService coursesService;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly IRateService rateService;
 
-        public CoursesController(ICategoriesService categoriesService, ILanguagesService languagesService, ISubcategoriesService subcategoriesService, Cloudinary cloudinary, ICoursesService coursesService, UserManager<ApplicationUser> userManager)
+        public CoursesController(ICategoriesService categoriesService, ILanguagesService languagesService, ISubcategoriesService subcategoriesService, Cloudinary cloudinary, ICoursesService coursesService, UserManager<ApplicationUser> userManager, IRateService rateService)
         {
             this.categoriesService = categoriesService;
             this.languagesService = languagesService;
@@ -30,6 +31,7 @@
             this.cloudinary = cloudinary;
             this.coursesService = coursesService;
             this.userManager = userManager;
+            this.rateService = rateService;
         }
 
         public IActionResult Create()
@@ -61,6 +63,8 @@
         public IActionResult GetCourse(int id)
         {
             var viewModel = this.coursesService.GetCourse<CourseViewModel>(id);
+            var userId = this.userManager.GetUserId(this.User);
+            viewModel.CourseRateByCurrentUser = this.rateService.GetRateByUserAndCourse(id, userId);
             return this.View(viewModel);
         }
 
@@ -69,7 +73,7 @@
             var userId = this.userManager.GetUserId(this.User);
             await this.coursesService.AddCourseToBagAsync(id, userId);
 
-            return this.Redirect($"/Account/Index/{userId}#courses");
+            return this.RedirectToAction("GetCourse", new { id });
         }
 
         public async Task<IActionResult> RemoveCourseFromBag(int id)
@@ -77,7 +81,7 @@
             var userId = this.userManager.GetUserId(this.User);
             await this.coursesService.RemoveCourseFromBag(id, userId);
 
-            return this.Redirect($"/Account/Index/{userId}#courses");
+            return this.RedirectToAction("GetCourse", new { id });
         }
 
         public async Task<IActionResult> Delete(int id)

@@ -100,7 +100,7 @@ body {
 
 /*Login and Register page CSS*/
 #loginRegisterPageBg {
-    background-image: url("../img/login-background.jpg");
+    background-image: url("../img/black-parket.jpg");
 }
 #loginRegisterPage {
    
@@ -275,7 +275,7 @@ label.star:before {
 /*STAR RATINGS*/
 /*ABOUT PAGE*/
 #aboutPageBg {
-    background-image: url("../img/create-page-bg.jpg");
+    background-image: url("../img/itDna.jpg");
 }
 #headingJumbotron {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("../img/studyingAbout.jpg");
@@ -341,7 +341,7 @@ label.star:before {
 
 /*PROFILE PAGE*/
 #profilePageBg {
-    background-image: url("../img/create-page-bg.jpg");
+    background-image: url("../img/itDna.jpg");
     opacity: inherit;
 }
 #profilePage {
@@ -412,5 +412,11 @@ label.star:before {
     margin-left: 35px;
 }
 
-
-/*COURSE PAGE*/
+#videosBar{
+    border: 2px solid;
+    border-right: none;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    padding-bottom: 30px;
+}
+    /*COURSE PAGE*/

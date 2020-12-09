@@ -9,8 +9,10 @@
     {
         Task SetRate(string userId, int courseId, int value);
 
-        public double GetAverageRating(int courseId);
+        double GetAverageRating(int courseId);
 
-        public int GetRatesCount(int courseId);
+        int GetRatesCount(int courseId);
+
+        int? GetRateByUserAndCourse(int courseId, string userId);
     }
 }

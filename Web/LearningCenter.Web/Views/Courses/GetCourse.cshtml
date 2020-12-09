@@ -1,4 +1,5 @@
-﻿@model LearningCenter.Web.ViewModels.Courses.CourseViewModel
+﻿@using System.Security.Claims;
+@model LearningCenter.Web.ViewModels.Courses.CourseViewModel
 @{
     ViewData["Title"] = Model.Title;
 }
@@ -21,8 +22,16 @@
             </div>
             <div id="courseDescription" class="col-md-6 text-center">
                 <div class="card-body">
-                    <a id="addInCourseBag" asp-action="AddCourseInBag" asp-controller="Courses" asp-route-id="@Model.Id" onclick="AddButtonClicked()" class="btn btn-success card-link">Add In Courses Bag</a>
-                    <a id="removeFromCourseBag" asp-action="RemoveCourseFromBag" asp-controller="Courses" asp-route-id="@Model.Id" onclick="RemoveButtonClicked()" class="btn btn-danger card-link">Remove from Courses Bag</a>
+                    @if (Model.Students.Any(x => x.StudentId == this.User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                    {
+                        <a id="removeFromCourseBag" asp-action="RemoveCourseFromBag" asp-controller="Courses" asp-route-id="@Model.Id" class="btn btn-danger card-link">Remove from Courses Bag</a>
+                    }
+                    else
+                    {
+                        <a id="addInCourseBag" asp-action="AddCourseInBag" asp-controller="Courses" asp-route-id="@Model.Id" class="btn btn-success card-link">Add In Courses Bag</a>
+                    }
+
+
                 </div>
                 <div class="container d-flex justify-content-center mt-200">
                     <div class="row">
@@ -49,12 +58,41 @@
                 <p class="card-text"><b>Description: </b>@Model.Description</p>
             </div>
         </div>
-        <div class="col-md-5 text-center">
+        <div id="videosBar" class="col-md-5 text-center">
             <div class="col-md-12">
                 <h1 class="white-text">LECTURES:</h1>
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/v64KOxKVLVg" allowfullscreen></iframe>
+                <hr />
+                @*<div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/v64KOxKVLVg" allowfullscreen></iframe>
+                    </div>*@
+
+                <div class="right-bar">
+                    <div class="right-bar-panel rightbar-items">
+                        <div class="right-bar-panel rightbar-items">
+                            <ul id="TopVideosList" class="stacked-list">
+                                <li class="media">
+                                    <div class="media-left media-top">
+                                        <a href="https://www.c-sharpcorner.com/article/rownumber-function-in-microsoft-sql-server-how-to-use-rownumber-in-sql-ser/" style="position: relative"> <img src="https://i.ytimg.com/vi/11ufWI-GR0Y/mqdefault.jpg" width="150" height="115"></a>
+                                    </div>
+                                    <div class="media-body">
+                                        <p>
+                                            <a class="text-grey-900" href="https://www.c-sharpcorner.com/article/rownumber-function-in-microsoft-sql-server-how-to-use-rownumber-in-sql-ser/"> <h3>Tips and Tricks in ASP.NET Core</h3></a>
+                                        </p>
+                                        <a class="LinkOrange userName" href="https://www.c-sharpcorner.com/members/deependra-kushwaha">Deependra Kushwah</a>
+                                        <div class="setRight">
+                                            <span class="time">17/Mar/1997 15:34</span>
+                                            <span class="vidoesViews"><i class="d-icon icon-view"></i> 11.6k</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <hr />
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+
+
+
                 @if (this.User.Identity.Name == Model.AuthorEmail)
                 {
                     <div>
@@ -74,13 +112,11 @@
 
 @section Scripts{
     <script>
-        function AddButtonClicked() {
-            document.getElementById("addInCourseBag").style.display = 'none';
-            document.getElementById("removeFromCourseBag").style.display = 'block';
-        }
-        function RemoveButtonClicked() {
-            document.getElementById("removeFromCourseBag").style.display = 'none';
-            document.getElementById("addInCourseBag").style.display = 'block';
+        window.addEventListener('load', setRating);
+        function setRating() {
+            var rateValue = @Model.CourseRateByCurrentUser;
+            var selector = `#starsId  label.star-${rateValue}`;
+            document.querySelector(selector).click();
         }
         function StarClicked(value) {
             var starValue = value;

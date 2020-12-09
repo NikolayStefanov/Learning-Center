@@ -36,6 +36,8 @@
 
         public int LecturesCount { get; set; }
 
+        public int? CourseRateByCurrentUser { get; set; }
+
         public DateTime CreatedOn { get; set; }
 
         public string CreatedTimeFormated => this.CreatedOn.ToString("dd-MMM-yyyy");
@@ -43,6 +45,8 @@
         public IEnumerable<LectureViewModel> Lectures { get; set; }
 
         public IEnumerable<ReviewViewModel> Reviews { get; set; }
+
+        public IEnumerable<UserCourses> Students { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
         {

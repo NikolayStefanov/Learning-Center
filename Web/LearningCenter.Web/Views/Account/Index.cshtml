@@ -140,6 +140,13 @@
                             <hr />
                         }
 
+                        @if (!this.Model.Lecturer.Feedbacks.Any())
+                        {
+                            <div class="text-center">
+                                <h1 class="white-text">You don't have any feedbacks yet!</h1>
+                            </div>
+                        }
+
                         <ul id="feedbacksList" class="list-unstyled">
                             @foreach (var feedback in Model.Lecturer.Feedbacks.OrderByDescending(x => x.CreatedOn))
                             {
@@ -150,7 +157,7 @@
                                         <h4 class="white-text"><i class="fas fa-user"></i> @feedback.AuthorFullName</h4>
                                         <p>@feedback.Content</p>
                                         <div>
-                                            <span  id="createdOn" class="white-text"> <i class="far fa-clock"></i> <span id="createdOnIn">@feedback.CreatedOn.ToString("dd-MMM-y HH:mm:ss")</span></span>
+                                            <span id="createdOn" class="white-text"> <i class="far fa-clock"></i> <span id="createdOnIn">@feedback.CreatedOn.ToString("dd-MMM-y HH:mm:ss")</span></span>
                                         </div>
                                     </div>
                                 </li>
