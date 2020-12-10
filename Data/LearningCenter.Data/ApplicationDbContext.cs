@@ -48,6 +48,8 @@
 
         public DbSet<Feedback> Feedbacks { get; set; }
 
+        public DbSet<AdditionalResource> AdditionalResources { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

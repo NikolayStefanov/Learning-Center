@@ -21,7 +21,7 @@
 
         public async Task<int> AddFeedbackAsync(FeedbackInputModel inputModel)
         {
-            var lecturer = this.userRepository.All().Include(x=> x.Lecturer).Where(x => x.Id == inputModel.LecturerId).FirstOrDefault();
+            var lecturer = this.userRepository.All().Include(x => x.Lecturer).Where(x => x.Id == inputModel.LecturerId).FirstOrDefault();
             var feedbackAuthor = this.userRepository.AllAsNoTracking().FirstOrDefault(x => x.Email == inputModel.AuthorEmail);
             var feedback = new Feedback { AuthorId = feedbackAuthor.Id, LecturerId = lecturer.Lecturer.Id , Content = inputModel.Content };
 

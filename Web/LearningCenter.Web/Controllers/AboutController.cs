@@ -4,7 +4,7 @@
     using LearningCenter.Web.ViewModels.About;
     using Microsoft.AspNetCore.Mvc;
 
-    public class AboutController : BaseController
+    public class AboutController : Controller
     {
         private readonly IAboutService aboutService;
 

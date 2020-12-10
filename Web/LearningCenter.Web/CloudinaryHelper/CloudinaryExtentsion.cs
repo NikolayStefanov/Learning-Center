@@ -10,7 +10,7 @@
 
     public class CloudinaryExtentsion
     {
-        public static async Task<string> UploadAsync(Cloudinary cloudinary,IFormFile file)
+        public static async Task<string> UploadOneFileAsync(Cloudinary cloudinary,IFormFile file)
         {
             var resultUrl = string.Empty;
             byte[] finalImage;
@@ -28,6 +28,36 @@
             resultUrl = result.Uri.AbsoluteUri;
 
             return resultUrl;
+        }
+
+        public static async Task<List<string>> UploadManyFilesAsync(Cloudinary cloudinary, IEnumerable<IFormFile> files)
+        {
+            List<string> list = new List<string>();
+
+            foreach (var file in files)
+            {
+                byte[] destinationImage;
+
+                using (var memoryStream = new MemoryStream())
+                {
+                    await file.CopyToAsync(memoryStream);
+                    destinationImage = memoryStream.ToArray();
+                }
+
+                using (var destinationStream = new MemoryStream(destinationImage))
+                {
+                    var uploadParams = new ImageUploadParams()
+                    {
+                        File = new FileDescription(file.FileName, destinationStream),
+                    };
+
+                    var res = await cloudinary.UploadAsync(uploadParams);
+
+                    list.Add(res.Uri.AbsoluteUri);
+                }
+            }
+
+            return list;
         }
     }
 }

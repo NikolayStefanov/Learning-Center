@@ -9,15 +9,18 @@
 <!-- /Backgound Image -->
 <div id="home" class="hero-area text-center">
     
-    <div id="categoryCards">
+    <div id="categoryPage"  class="text-center">
         <h1 class="white-text">What are you interested in?</h1>
         <hr />
+        <div id="categoryCards" class="text-center">
         @foreach (var category in Model.Categories)
         {
             <div class="col-md-3 categoryElement" style="width: 18rem;">
-                <img class="card-img-top" width="175px" height="175px" src="~/img/@category.ImageName" alt="Card image cap">
+                <a asp-controller="Categories" asp-action="ChosenCategory" asp-route-id="@category.Id">
+                    <img class="card-img-top" width="175px" height="175px" src="~/img/@category.ImageName" alt="Card image cap">
+                </a>
                 <div class="card-body">
-                    <h3><a class="card-text loginRegisterTextColor" asp-controller="Categories" asp-action="ChosenCategory" asp-route-id="@category.Id">@category.Title</a></h3>
+                    <h3><a class="card-text white-text" asp-controller="Categories" asp-action="ChosenCategory" asp-route-id="@category.Id">@category.Title</a></h3>
                 </div>
             </div>
         }

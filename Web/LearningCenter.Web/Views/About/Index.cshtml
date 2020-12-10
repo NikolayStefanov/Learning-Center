@@ -6,7 +6,7 @@
 <div id="headingJumbotron" class="hero-area jumbotron jumbotron-fluid bg-image  text-center">
     <div class="container white-text">
         <h1 class="display-4 white-text">Improving Lives Through Learning</h1>
-        <h3 class="white-text">We have: @Model.LearningCenterInfo.CategoriesCount Categories | @Model.LearningCenterInfo.SubCategoriesCount Subcategories | @Model.LearningCenterInfo.LecturersCount Lecturers | @Model.LearningCenterInfo.CoursesCount Courses | @Model.LearningCenterInfo.LecturesCount Lectures</h3>
+        <h3 class="white-text">We have: @Model.LearningCenterInfo.CategoriesCount Categories | @Model.LearningCenterInfo.SubCategoriesCount Subcategories | @(Model.LearningCenterInfo.LecturersCount-1) Lecturers | @Model.LearningCenterInfo.CoursesCount Courses | @Model.LearningCenterInfo.LecturesCount Lectures</h3>
         <h2 class="white-text"><a class="white-text" asp-action="Index" asp-controller="Categories">  Click here to see our categories and boost your knowledge!</a></h2>
     </div>
 </div>

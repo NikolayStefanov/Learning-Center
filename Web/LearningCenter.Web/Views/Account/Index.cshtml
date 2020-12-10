@@ -17,69 +17,78 @@
                 <h1 class="white-text">
                     @Model.FullName
                 </h1>
-                <h4 class="white-text">
-                    @Model.FirstName is an author of @Model.LecturesCount lectures and @Model.Lecturer.Courses.Count() courses!
+                @if (Model.Lecturer != null)
+                {
+                    <h4 class="white-text">
+                        @Model.FirstName is an author of @Model.LecturesCount lectures and @Model.Lecturer.Courses.Count() courses!
 
-                </h4>
+                    </h4>
+                }
+
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-list"></i> Personal Courses (@Model.Lecturer.Courses.Count())</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" id="coursesBag-tab" data-toggle="tab" href="#courses" role="tab" aria-controls="courses" aria-selected="false"><i class="fas fa-suitcase"></i> Courses Bag (@Model.Courses.Count())</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fas fa-address-card"></i> Feedbacks (@Model.Lecturer.Feedbacks.Count())</a>
-                    </li>
+                    @if (Model.Lecturer != null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-list"></i> Personal Courses (@Model.Lecturer.Courses.Count())</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fas fa-address-card"></i> Feedbacks (@Model.Lecturer.Feedbacks.Count())</a>
+                        </li>
+                    }
                 </ul>
             </div>
 
             <div class="row">
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade " id="home" role="tabpanel" aria-labelledby="home-tab">
-                        @if (Model.Lecturer.Courses.Any())
-                        {
-                            <div class="row">
-                                @foreach (var course in Model.Lecturer.Courses)
-                                {
+                    @if (Model.Lecturer != null)
+                    {
+                        <div class="tab-pane fade " id="home" role="tabpanel" aria-labelledby="home-tab">
+                            @if (Model.Lecturer.Courses.Any())
+                            {
+                                <div class="row">
+                                    @foreach (var course in Model.Lecturer.Courses)
+                                    {
 
-                                    <div id="courseCard" class="card text-center col-md-3" style="width: 18rem;">
-                                        <img class="card-img-top" width="200px" height="175px" src="@course.ThumbnailUrl" alt="Card image cap">
-                                        <div class="card-body">
-                                            <h4 class="card-title white-text">@course.Title</h4>
-                                            <span class="badge badge-warning"><a asp-action="ChosenCategory" asp-controller="Categories" asp-route-id="@course.CategoryId">Category: @course.CategoryTitle</a></span>
-                                            <span class="badge badge-warning"><a asp-action="GetSubcategory" asp-controller="Subcategories" asp-route-id="@course.SubCategoryId">Subcategory: @course.SubCategoryTitle</a></span>
-                                            <div>
-                                                <a class="btn btn-success btn-sm" asp-controller="Courses" asp-action="GetCourse" asp-route-id="@course.Id">Go to course</a>
-                                                @if (this.User.Identity.Name == Model.Email)
-                                                {
-                                                    <a onclick="return confirm('Are you sure you want to delete course: @course.Title?')" class="btn btn-danger btn-sm" asp-controller="Courses" asp-action="Delete" asp-route-id="@course.Id">Delete</a>
-                                                }
+                                        <div id="courseCard" class="card text-center col-md-3" style="width: 18rem;">
+                                            <img class="card-img-top" width="200px" height="175px" src="@course.ThumbnailUrl" alt="Card image cap">
+                                            <div class="card-body">
+                                                <h4 class="card-title white-text">@course.Title</h4>
+                                                <span class="badge badge-warning"><a asp-action="ChosenCategory" asp-controller="Categories" asp-route-id="@course.CategoryId">Category: @course.CategoryTitle</a></span>
+                                                <span class="badge badge-warning"><a asp-action="GetSubcategory" asp-controller="Subcategories" asp-route-id="@course.SubCategoryId">Subcategory: @course.SubCategoryTitle</a></span>
+                                                <div>
+                                                    <a class="btn btn-success btn-sm" asp-controller="Courses" asp-action="GetCourse" asp-route-id="@course.Id">Go to course</a>
+                                                    @if (this.User.Identity.Name == Model.Email)
+                                                    {
+                                                        <a onclick="return confirm('Are you sure you want to delete course: @course.Title?')" class="btn btn-danger btn-sm" asp-controller="Courses" asp-action="Delete" asp-route-id="@course.Id">Delete</a>
+                                                    }
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                }
-                                <div id="addCourseButton" class="text-center col-md-3">
-                                    <h1><a asp-action="Create" asp-controller="Courses"><i class="far fa-plus-square fa-5x"></i></a></h1>
-                                    <h3><a asp-action="Create" asp-controller="Courses">Add Course</a></h3>
+                                    }
+                                    <div id="addCourseButton" class="text-center col-md-3">
+                                        <h1><a asp-action="Create" asp-controller="Courses"><i class="far fa-plus-square fa-5x"></i></a></h1>
+                                        <h3><a asp-action="Create" asp-controller="Courses">Add Course</a></h3>
+                                    </div>
                                 </div>
-                            </div>
-                        }
-                        else
-                        {
-                            @if (this.User.Identity.Name == Model.Email)
-                            {
-                                <h3 class="white-text">You don't have any courses yet. <a class="" asp-action="Create" asp-controller="Courses">Create your first course! <i class="fas fa-folder-plus"></i></a></h3>
                             }
                             else
                             {
-                                <h3 class="white-text">@Model.FullName doesn't has any courses yet!</h3>
+                                @if (this.User.Identity.Name == Model.Email)
+                                {
+                                    <h3 class="white-text">You don't have any courses yet. <a class="" asp-action="Create" asp-controller="Courses">Create your first course! <i class="fas fa-folder-plus"></i></a></h3>
+                                }
+                                else
+                                {
+                                    <h3 class="white-text">@Model.FullName doesn't has any courses yet!</h3>
+                                }
                             }
-                        }
 
-                    </div>
-
+                        </div>
+                    }
                     <div class="tab-pane fade" id="courses" role="tabpanel" aria-labelledby="coursesBag-tab">
 
                         <div class="row">
@@ -119,52 +128,54 @@
                         </div>
 
                     </div>
-
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        @if (this.User.Identity.Name != Model.Email)
-                        {
-                            <form id="feedbackForm">
-                                <input type="hidden" id="lecturerFeedbackId" value="@Model.Id" />
-                                <div class="form-group text-center">
-                                    <h3 class="white-text">Write Feedback to @Model.FullName</h3>
-                                    <label for="exampleFormControlInput1" class="white-text">Your email: <input type="email" class="form-control col-md-8" id="exampleFormControlInput1" readonly value="@this.User.Identity.Name" /></label>
-
-                                </div>
-                                <div class="form-group text-center white-text">
-                                    <label for="exampleFormControlTextarea1">Content</label>
-                                    <textarea class="form-control col-md-8" id="exampleFormControlTextarea1" rows="4"></textarea>
-                                    <br />
-                                    <button type="reset" onclick="createFeedback()" class="btn btn-primary">Submit</button>
-                                </div>
-                            </form>
-                            <hr />
-                        }
-
-                        @if (!this.Model.Lecturer.Feedbacks.Any())
-                        {
-                            <div class="text-center">
-                                <h1 class="white-text">You don't have any feedbacks yet!</h1>
-                            </div>
-                        }
-
-                        <ul id="feedbacksList" class="list-unstyled">
-                            @foreach (var feedback in Model.Lecturer.Feedbacks.OrderByDescending(x => x.CreatedOn))
+                    @if (Model.Lecturer != null)
+                    {
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            @if (this.User.Identity.Name != Model.Email)
                             {
-                                <li id="feedback" class="media row">
-                                    <img id="feedbackPhoto" width="75px;" height="75px;" src="@feedback.AuthorProfilePictureUrl" class="" alt="feedbackAuthorPhoto">
+                                <form id="feedbackForm">
+                                    <input type="hidden" id="lecturerFeedbackId" value="@Model.Id" />
+                                    <div class="form-group text-center">
+                                        <h3 class="white-text">Write Feedback to @Model.FullName</h3>
+                                        <label for="exampleFormControlInput1" class="white-text">Your email: <input type="email" class="form-control col-md-8" id="exampleFormControlInput1" readonly value="@this.User.Identity.Name" /></label>
 
-                                    <div id="feedbackContent" class="media-body white-text">
-                                        <h4 class="white-text"><i class="fas fa-user"></i> @feedback.AuthorFullName</h4>
-                                        <p>@feedback.Content</p>
-                                        <div>
-                                            <span id="createdOn" class="white-text"> <i class="far fa-clock"></i> <span id="createdOnIn">@feedback.CreatedOn.ToString("dd-MMM-y HH:mm:ss")</span></span>
-                                        </div>
                                     </div>
-                                </li>
+                                    <div class="form-group text-center white-text">
+                                        <label for="exampleFormControlTextarea1">Content</label>
+                                        <textarea class="form-control col-md-8" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                        <br />
+                                        <button type="reset" onclick="createFeedback()" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
+                                <hr />
                             }
 
-                        </ul>
-                    </div>
+                            @if (!this.Model.Lecturer.Feedbacks.Any())
+                            {
+                                <div class="text-center">
+                                    <h1 class="white-text">You don't have any feedbacks yet!</h1>
+                                </div>
+                            }
+
+                            <ul id="feedbacksList" class="list-unstyled">
+                                @foreach (var feedback in Model.Lecturer.Feedbacks.OrderByDescending(x => x.CreatedOn))
+                                {
+                                    <li id="feedback" class="media row">
+                                        <img id="feedbackPhoto" width="75px;" height="75px;" src="@feedback.AuthorProfilePictureUrl" class="" alt="feedbackAuthorPhoto">
+
+                                        <div id="feedbackContent" class="media-body white-text">
+                                            <h4 class="white-text"><i class="fas fa-user"></i> @feedback.AuthorFullName</h4>
+                                            <p>@feedback.Content</p>
+                                            <div>
+                                                <span id="createdOn" class="white-text"> <i class="far fa-clock"></i> <span id="createdOnIn">@feedback.CreatedOn.ToString("dd-MMM-y HH:mm:ss")</span></span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+
                 </div>
             </div>
 

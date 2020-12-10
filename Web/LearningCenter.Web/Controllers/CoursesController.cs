@@ -13,7 +13,7 @@
     using Microsoft.AspNetCore.Mvc;
 
     [Authorize]
-    public class CoursesController : BaseController
+    public class CoursesController : Controller
     {
         private readonly ICategoriesService categoriesService;
         private readonly ILanguagesService languagesService;
@@ -52,8 +52,8 @@
                 return this.View(inputModel);
             }
 
-            var resultUrl = await CloudinaryExtentsion.UploadAsync(this.cloudinary, inputModel.Thumbnail);
-            var url = resultUrl;
+            var url = await CloudinaryExtentsion.UploadOneFileAsync(this.cloudinary, inputModel.Thumbnail);
+
             var userId = this.userManager.GetUserId(this.User);
             var newCourseId = await this.coursesService.AddCourseAsync(inputModel, url, userId);
 

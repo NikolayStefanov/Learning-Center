@@ -10,7 +10,7 @@
 
     [Route("/api/[controller]")]
     [ApiController]
-    public class RatesController : BaseController
+    public class RatesController : ControllerBase
     {
         private readonly IRateService rateService;
 

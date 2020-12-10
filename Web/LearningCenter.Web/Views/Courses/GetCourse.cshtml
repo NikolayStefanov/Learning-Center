@@ -18,7 +18,19 @@
                     <li><h5 class="white-text"><i class="fas fa-star-half-alt"></i> Rating:  <span id="averageRating">@Math.Round(Model.AverageRating, 1)</span> / 5 (<span id="ratingsCount">@Model.RatingsCount</span>)</h5></li>
                 </ul>
                 <img id="coursePhotoImg" src="@Model.ThumbnailUrl" class="card-img-top" width="300px" height="300px" alt="ThumbnailPhoto">
-
+                <hr />
+                <h2 class="white-text">Add review:</h2>
+                <div class="media">
+                    <div class="media-body">
+                        <h4 class="mt-0 white-text">From: <span id="userEmail">@this.User.Identity.Name</span></h4>
+                        <div class="form-group text-center white-text">
+                            <label for="reviewContent">Content</label>
+                            <textarea class="form-control col-md-8" id="reviewContent" rows="4"></textarea>
+                            <br />
+                            <button type="reset" onclick="createReview()" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div id="courseDescription" class="col-md-6 text-center">
                 <div class="card-body">
@@ -56,6 +68,27 @@
                 </div>
                 <hr />
                 <p class="card-text"><b>Description: </b>@Model.Description</p>
+                <hr />
+                <h2 class="white-text">Reviews:</h2>
+                @if (Model.Reviews.Any())
+                {
+                    <ul id="reviewList" class="list-unstyled">
+                        @foreach (var review in Model.Reviews.OrderByDescending(x => x.CreatedOn))
+                        {
+                            <li id="review" class="media row">
+                                <img id="reviewPhoto" width="75px;" height="75px;" src="@review.AuthorProfilePictureUrl" class="" alt="reviewAuthorPhoto">
+
+                                <div id="reviewContent" class="media-body white-text">
+                                    <h4 class="white-text"><i class="fas fa-user"></i> @review.AuthorFirstName @review.AuthorLastName</h4>
+                                    <p>@review.Content</p>
+                                    <div>
+                                        <span id="createdOn" class="white-text text-center"> <i class="far fa-clock"></i> <span id="createdOnIn">@review.CreatedOn.ToString("dd-MMM-y HH:mm:ss")</span></span>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                }
             </div>
         </div>
         <div id="videosBar" class="col-md-5 text-center">
@@ -69,24 +102,39 @@
                 <div class="right-bar">
                     <div class="right-bar-panel rightbar-items">
                         <div class="right-bar-panel rightbar-items">
-                            <ul id="TopVideosList" class="stacked-list">
-                                <li class="media">
-                                    <div class="media-left media-top">
-                                        <a href="https://www.c-sharpcorner.com/article/rownumber-function-in-microsoft-sql-server-how-to-use-rownumber-in-sql-ser/" style="position: relative"> <img src="https://i.ytimg.com/vi/11ufWI-GR0Y/mqdefault.jpg" width="150" height="115"></a>
-                                    </div>
-                                    <div class="media-body">
-                                        <p>
-                                            <a class="text-grey-900" href="https://www.c-sharpcorner.com/article/rownumber-function-in-microsoft-sql-server-how-to-use-rownumber-in-sql-ser/"> <h3>Tips and Tricks in ASP.NET Core</h3></a>
-                                        </p>
-                                        <a class="LinkOrange userName" href="https://www.c-sharpcorner.com/members/deependra-kushwaha">Deependra Kushwah</a>
-                                        <div class="setRight">
-                                            <span class="time">17/Mar/1997 15:34</span>
-                                            <span class="vidoesViews"><i class="d-icon icon-view"></i> 11.6k</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <hr />
-                            </ul>
+                            <div data-spy="scroll" class="scrollspy-example">
+                                <ul id="TopVideosList" class="stacked-list">
+                                    @foreach (var lecture in Model.Lectures)
+                                    {
+                                        <li class="media">
+                                            <div class="media-left media-top">
+                                                <a href="@lecture.VideoUrl" style="position: relative"> <img id="" src="@lecture.ThumbnailUrl" width="150" height="115"></a>
+                                            </div>
+                                            <div class="media-body">
+                                                <a class="text-grey-900" href="@lecture.VideoUrl"> <h3 class="white-text">@lecture.Title</h3></a>
+                                                <div class="col">
+                                                    @if (lecture.AdditionalResources.Any())
+                                                    {
+                                                        <span><b>Download Resurces: </b></span>
+                                                    }
+
+                                                    @foreach (var resource in lecture.AdditionalResources)
+                                                    {
+                                                        <span>[<i class="fas fa-download"></i>] | </span>
+                                                    }
+                                                </div>
+                                                <span>@lecture.ShortDescription <a class="btn" onclick="showMore(event)">[Show More]</a></span>
+                                                <span class="longDescription">@lecture.Description <a class="btn" onclick="showLess(event)">[Show Less]</a></span>
+
+                                                <div class="setRight">
+                                                    <span class="time"><i class="far fa-clock"></i> @lecture.CreatedOn.ToString("dd-MMM-y HH:mm:ss")</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <hr />
+                                    }
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -97,8 +145,8 @@
                 {
                     <div>
                         <div id="addCourseButton">
-                            <h1><a asp-action="Create" asp-controller="Lectures"><i class="far fa-plus-square fa-4x"></i></a></h1>
-                            <h3><a asp-action="Create" asp-controller="Lectures">Add Lecture</a></h3>
+                            <h1><a asp-action="Add" asp-controller="Lectures" asp-route-id="@Model.Id"><i class="far fa-plus-square fa-4x"></i></a></h1>
+                            <h3><a asp-action="Add" asp-controller="Lectures" asp-route-id="@Model.Id">Add Lecture</a></h3>
                         </div>
                     </div>
                 }
@@ -112,12 +160,76 @@
 
 @section Scripts{
     <script>
-        window.addEventListener('load', setRating);
+        async function createReview() {
+            var authorEmail = document.getElementById("userEmail").textContent;
+            var courseId = @Model.Id;
+            var reviewContent = document.getElementById("reviewContent").value;
+
+            var data = { authorEmail: authorEmail, courseId: courseId, content: reviewContent };
+            var antiForgeryToken = document.querySelector("#antiForgery input").getAttribute('value');
+
+            var uri = "/api/Reviews";
+            fetch(uri, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': antiForgeryToken,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    var authorName = data["authorFullName"];
+                    var reviewContent = data["content"];
+                    var createdOn = data["createdOn"];
+                    var photoUrl = data["authorProfilePictureUrl"];
+
+                    var m = new Date(createdOn);
+                    var dateString = (m.getUTCMonth() + 1) + "-" + m.getUTCDate() + "-" + m.getUTCFullYear() + " " + m.getUTCHours() + ":" + m.getUTCMinutes() + ":" + m.getSeconds();
+
+                    var list = document.getElementById("review").cloneNode(true);
+
+                    list.querySelector("#reviewPhoto").src = photoUrl;
+                    list.querySelector("#createdOnIn").textContent = dateString;
+                    list.querySelector("#reviewContent h4").textContent = authorName;
+                    list.querySelector("#reviewContent p").textContent = reviewContent;
+
+                    document.getElementById("reviewContent").value = '';
+                    document.getElementById("reviewList").prepend(list);
+                    console.log(list);
+                });
+
+        };
+    </script>
+
+    <script>
+        window.addEventListener('load', hideLongDescription);
+        function hideLongDescription() {
+            document.querySelectorAll(".longDescription").forEach(x => x.style.display = 'none');
+        }
+    </script>
+    <script type="text/javascript">
+        function showMore(ev) {
+            ev.target.parentElement.style.display = 'none';
+            ev.target.parentElement.nextElementSibling.style.display = 'block';
+        }
+    </script>
+    <script type="text/javascript">
+        function showLess(ev) {
+            ev.target.parentElement.style.display = 'none';
+            ev.target.parentElement.previousElementSibling.style.display = 'block';
+        }
+    </script>
+    <script>
+     window.addEventListener('load', setRating);
         function setRating() {
             var rateValue = @Model.CourseRateByCurrentUser;
             var selector = `#starsId  label.star-${rateValue}`;
             document.querySelector(selector).click();
         }
+    </script>
+    <script>
         function StarClicked(value) {
             var starValue = value;
             var courseId = @Model.Id;

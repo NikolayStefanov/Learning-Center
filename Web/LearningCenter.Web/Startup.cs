@@ -81,6 +81,8 @@
             services.AddTransient<ILanguagesService, LanguagesService>();
             services.AddTransient<ISubcategoriesService, SubcategoriesService>();
             services.AddTransient<IRateService, RateService>();
+            services.AddTransient<ILecturesService, LecturesService>();
+            services.AddTransient<IReviewsService, ReviewsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

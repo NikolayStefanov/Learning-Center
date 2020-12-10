@@ -4,14 +4,16 @@ using LearningCenter.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LearningCenter.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201210082501_AdditionalResources")]
+    partial class AdditionalResources
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,6 +28,9 @@ namespace LearningCenter.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -35,9 +40,6 @@ namespace LearningCenter.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int>("LectureId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
@@ -46,9 +48,9 @@ namespace LearningCenter.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IsDeleted");
+                    b.HasIndex("CourseId");
 
-                    b.HasIndex("LectureId");
+                    b.HasIndex("IsDeleted");
 
                     b.ToTable("AdditionalResources");
                 });
@@ -431,6 +433,9 @@ namespace LearningCenter.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<TimeSpan>("Duration")
+                        .HasColumnType("time");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -448,9 +453,6 @@ namespace LearningCenter.Data.Migrations
                     b.Property<string>("VideoUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Views")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -782,9 +784,9 @@ namespace LearningCenter.Data.Migrations
 
             modelBuilder.Entity("LearningCenter.Data.Models.AdditionalResource", b =>
                 {
-                    b.HasOne("LearningCenter.Data.Models.Lecture", "Lecture")
+                    b.HasOne("LearningCenter.Data.Models.Course", "Course")
                         .WithMany("AdditionalResources")
-                        .HasForeignKey("LectureId")
+                        .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

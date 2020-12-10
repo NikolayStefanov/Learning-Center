@@ -17,5 +17,7 @@ namespace LearningCenter.Common
 
         public const string DefaultProfilePicturePath = "https://res.cloudinary.com/dszoti5z4/image/upload/v1606211241/avatar_km6qjd.png";
 
+        public const int ViewsCountWhenLectureIsCreated = 0;
+
     }
 }

@@ -46,12 +46,17 @@
 
         public async Task AddCourseToBagAsync(int courseId, string userId)
         {
-            var userCourse = this.userCoursesRepository.All().FirstOrDefault(x => x.StudentId == userId && x.CourseId == courseId);
+            var userCourse = this.userCoursesRepository.AllWithDeleted().FirstOrDefault(x => x.StudentId == userId && x.CourseId == courseId);
             if (userCourse == null)
             {
                 await this.userCoursesRepository.AddAsync(new UserCourses { CourseId = courseId, StudentId = userId });
-                await this.userCoursesRepository.SaveChangesAsync();
             }
+            else
+            {
+                userCourse.IsDeleted = false;
+            }
+
+            await this.userCoursesRepository.SaveChangesAsync();
         }
 
         public async Task<bool> DeleteAsync(int courseId, string userId)

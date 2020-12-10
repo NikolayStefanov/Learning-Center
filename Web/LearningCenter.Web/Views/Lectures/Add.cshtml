@@ -1,0 +1,44 @@
+﻿@model LearningCenter.Web.ViewModels.Lectures.LectureInputModel
+@{ 
+    this.ViewData["Title"] = "Add Lecture";
+}
+<div id="addLectureBg" class="bg-image bg-parallax overlay"></div>
+<div id="addLecture" class="col-md-12 text-center">
+    <section>
+        <form method="post" enctype="multipart/form-data" class="text-center">
+            <h1 class="white-text">@this.ViewData["Title"]</h1>
+            <div class="form-group">
+                <label asp-for="@Model.Title" class="white-text"></label>
+                <input asp-for="@Model.Title" class="form-control white-text" />
+                <span asp-validation-for="@Model.Title" class="bg-danger text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Description" class="white-text"></label>
+                <textarea asp-for="@Model.Description" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="@Model.Description" class="bg-danger text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.VideoUrl" class="white-text"></label>
+                <input asp-for="@Model.VideoUrl" class="form-control white-text" />
+                <span asp-validation-for="@Model.VideoUrl" class="bg-danger text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Thumbnail" class="white-text"></label>
+                <input asp-for="@Model.Thumbnail" class="form-control" />
+                <span asp-validation-for="@Model.Thumbnail" class="bg-danger text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.AdditionalMaterials" class="white-text"></label>
+                <input asp-for="@Model.AdditionalMaterials" class="form-control" />
+                <span asp-validation-for="@Model.AdditionalMaterials" class="bg-danger text-danger"></span>
+            </div>
+            <hr />
+            <input type="hidden" asp-for="CourseId"/>
+            <input type="submit" class="btn btn-success" value="Submit" />
+        </form>
+    </section>
+</div>
+
+@section Scripts{ 
+    <partial name="_ValidationScriptsPartial" />
+}

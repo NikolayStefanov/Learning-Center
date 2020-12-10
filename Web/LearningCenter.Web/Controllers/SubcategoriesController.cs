@@ -4,7 +4,7 @@
     using LearningCenter.Web.ViewModels.SubCategories;
     using Microsoft.AspNetCore.Mvc;
 
-    public class SubcategoriesController : BaseController
+    public class SubcategoriesController : Controller
     {
         private readonly ISubcategoriesService subcategoriesService;
 

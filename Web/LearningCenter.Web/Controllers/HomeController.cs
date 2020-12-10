@@ -7,7 +7,7 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
-    public class HomeController : BaseController
+    public class HomeController : Controller
     {
         private readonly SignInManager<ApplicationUser> signInManager;
 

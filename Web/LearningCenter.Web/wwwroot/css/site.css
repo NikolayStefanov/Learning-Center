@@ -180,9 +180,11 @@ input::-webkit-input-placeholder {
     text-decoration-color: white;
 }
 /*Category Cards Page*/
-#categoryCards {
+#categoryPage{
     padding-top: 9%;
-    padding-left: 10%;
+}
+#categoryCards {
+    padding-left: 12%;
     padding-right: 4%;
 }
 
@@ -197,7 +199,7 @@ input::-webkit-input-placeholder {
 
 /*Create Course*/
 #createCourseBg {
-    background-image: url("../img/create-page-bg.jpg");
+    background-image: url("../img/aboutTopLecturersBg.png");
     opacity: inherit;
 }
 
@@ -419,4 +421,47 @@ label.star:before {
     border-top-left-radius: 30px;
     padding-bottom: 30px;
 }
-    /*COURSE PAGE*/
+#thumbnailPhoto{
+    border-radius: 5px;
+}
+/*COURSE PAGE*/
+/*ADD LECTURE*/
+#addLectureBg {
+    background-image: url("../img/aboutTopLecturersBg.png");
+    opacity: inherit;
+}
+
+#addLecture {
+    padding-top: 10%;
+    padding-left: 5%;
+    padding-right: 4%;
+}
+
+.courseSelections {
+    margin-bottom: 22px;
+}
+    /*ADD LECTURE*/
+
+    /*REVIEW*/
+
+#reviewPhoto {
+    float: left;
+    padding-right: 10px;
+    border-radius: 5px;
+    border-radius: 5px;
+}
+
+#reviewContent {
+    border: 2px solid;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#createdOn {
+    margin-right: 10px;
+    float: right;
+    text-align: right;
+}
+    /*REVIEW*/

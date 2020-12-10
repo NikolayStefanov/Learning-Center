@@ -1,5 +1,6 @@
 ﻿namespace LearningCenter.Data.Models
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -21,5 +22,10 @@
         public int CourseId { get; set; }
 
         public virtual Course Course { get; set; }
+
+        public T To<T>()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

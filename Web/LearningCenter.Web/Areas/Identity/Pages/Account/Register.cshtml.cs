@@ -111,7 +111,7 @@
                 var profilePicture = new ProfilePicture { Url = DefaultProfilePicturePath };
                 if (this.Input.ProfilePicture != null)
                 {
-                    var resultUrl = await CloudinaryExtentsion.UploadAsync(this.cloudinary, this.Input.ProfilePicture);
+                    var resultUrl = await CloudinaryExtentsion.UploadOneFileAsync(this.cloudinary, this.Input.ProfilePicture);
                     profilePicture.Url = resultUrl;
                 }
 
