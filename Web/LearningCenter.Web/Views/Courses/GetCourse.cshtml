@@ -19,18 +19,23 @@
                 </ul>
                 <img id="coursePhotoImg" src="@Model.ThumbnailUrl" class="card-img-top" width="300px" height="300px" alt="ThumbnailPhoto">
                 <hr />
-                <h2 class="white-text">Add review:</h2>
-                <div class="media">
-                    <div class="media-body">
-                        <h4 class="mt-0 white-text">From: <span id="userEmail">@this.User.Identity.Name</span></h4>
-                        <div class="form-group text-center white-text">
-                            <label for="reviewContent">Content</label>
-                            <textarea class="form-control col-md-8" id="reviewContent" rows="4"></textarea>
-                            <br />
-                            <button type="reset" onclick="createReview()" class="btn btn-primary">Submit</button>
+
+                @if (Model.AuthorEmail != this.User.Identity.Name)
+                {
+                    <h2 class="white-text">Add review:</h2>
+                    <div class="media">
+                        <div class="media-body">
+                            <h4 class="mt-0 white-text">From: <span id="userEmail">@this.User.Identity.Name</span></h4>
+                            <div class="form-group text-center white-text">
+                                <label for="reviewContent">Content</label>
+                                <textarea class="form-control col-md-8" id="reviewContent" rows="4"></textarea>
+                                <br />
+                                <button type="reset" onclick="createReview()" class="btn btn-primary">Submit</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
+
             </div>
             <div id="courseDescription" class="col-md-6 text-center">
                 <div class="card-body">

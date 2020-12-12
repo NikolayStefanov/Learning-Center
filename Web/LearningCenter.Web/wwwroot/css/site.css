@@ -18,6 +18,7 @@ html {
         font-size: 16px;
     }
 }
+
 .border-top {
     border-top: 1px solid #e5e5e5;
 }
@@ -102,8 +103,8 @@ body {
 #loginRegisterPageBg {
     background-image: url("../img/black-parket.jpg");
 }
+
 #loginRegisterPage {
-   
     padding-top: 150px;
     padding-left: 75px;
     margin-bottom: 75px;
@@ -113,10 +114,12 @@ body {
 .loginRegisterTextColor {
     color: white;
 }
-#userType{
+
+#userType {
     display: inline-block;
     margin-top: 15px;
 }
+
 .external-login-container {
     display: table;
     width: 100%;
@@ -144,6 +147,7 @@ body {
 #coursesList {
     margin-top: 10%;
 }
+
 
 .even-larger-badge {
     font-size: 0.9em;
@@ -180,17 +184,26 @@ input::-webkit-input-placeholder {
     text-decoration-color: white;
 }
 /*Category Cards Page*/
-#categoryPage{
-    padding-top: 9%;
+#categoryPage {
+    margin-top: 9%;
 }
+
 #categoryCards {
     padding-left: 12%;
     padding-right: 4%;
 }
 
-    #categoryCards .categoryElement {
-        margin-bottom: 5%;
-    }
+#categoryCards .categoryElement {
+    margin-bottom: 5%;
+}
+
+#coursesList .container{
+    display: flex;
+    flex-flow: wrap;
+}
+#subcategoryCourses{
+    margin-left: 15%;
+}
 
 .card-img-top {
     border-radius: 15px;
@@ -246,18 +259,22 @@ input.star-5:checked ~ label.star:before {
     color: lawngreen;
     text-shadow: 0 0 20px #952
 }
+
 input.star-4:checked ~ label.star:before {
     color: #65e67d;
     text-shadow: 0 0 20px #952
 }
+
 input.star-3:checked ~ label.star:before {
     color: #FD4;
     text-shadow: 0 0 20px #952
 }
+
 input.star-2:checked ~ label.star:before {
     color: #F62;
     text-shadow: 0 0 20px #952
 }
+
 input.star-1:checked ~ label.star:before {
     color: #f70000;
 }
@@ -270,7 +287,8 @@ label.star:before {
     content: '\f006';
     font-family: FontAwesome
 }
-#starsId{
+
+#starsId {
     margin-top: 15px;
     padding-right: 25px;
 }
@@ -279,14 +297,17 @@ label.star:before {
 #aboutPageBg {
     background-image: url("../img/itDna.jpg");
 }
+
 #headingJumbotron {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("../img/studyingAbout.jpg");
     margin-top: 12%;
 }
+
 #growJumbotronBg {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("../img/aboutGrowPage.jpg");
     margin-top: 20%;
 }
+
 #topLectorersJumbotron {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("../img/aboutTopLecturersBg.jpg");
     margin-top: 20%;
@@ -316,7 +337,7 @@ label.star:before {
         opacity: 0.9;
     }
 
-.profileDropdownItem{
+.profileDropdownItem {
     color: black !important;
     text-align: center !important;
     margin-left: 40px;
@@ -346,9 +367,11 @@ label.star:before {
     background-image: url("../img/itDna.jpg");
     opacity: inherit;
 }
+
 #profilePage {
     margin-top: 10%;
 }
+
 .img-thumbnail {
     margin-left: 4px;
     width: 350px;
@@ -367,36 +390,40 @@ label.star:before {
     margin-bottom: 25px;
     margin-left: 30px;
 }
-#addCourseButton{
+
+#addCourseButton {
     margin-top: 55px;
 }
-#addCourseButton a {
-    color: #dce6cf !important;
+
+    #addCourseButton a {
+        color: #dce6cf !important;
+    }
+
+#feedbackForm {
+    margin-right: 50px;
 }
 
-#feedbackForm{
-    margin-right: 50px;
-    
-}
 #feedback {
     margin-right: 50px;
     margin-left: 10px;
 }
+
 #feedbackPhoto {
     float: left;
     padding-right: 10px;
     border-radius: 15px;
 }
-#feedbackContent{
+
+#feedbackContent {
     border: 2px solid;
     border-left: none;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-
     margin-left: 10px;
     margin-right: 10px;
 }
-#createdOn{
+
+#createdOn {
     margin-right: 10px;
     float: right;
     text-align: right;
@@ -406,22 +433,25 @@ label.star:before {
 #coursePageBg {
     background-image: url("../img/courseBg.jpg");
 }
-#coursePage{
+
+#coursePage {
     margin-top: 9%;
     margin-left: 25px;
 }
+
 #courseDescription {
     margin-left: 35px;
 }
 
-#videosBar{
+#videosBar {
     border: 2px solid;
     border-right: none;
     border-bottom-left-radius: 30px;
     border-top-left-radius: 30px;
     padding-bottom: 30px;
 }
-#thumbnailPhoto{
+
+#thumbnailPhoto {
     border-radius: 5px;
 }
 /*COURSE PAGE*/
@@ -440,9 +470,9 @@ label.star:before {
 .courseSelections {
     margin-bottom: 22px;
 }
-    /*ADD LECTURE*/
+/*ADD LECTURE*/
 
-    /*REVIEW*/
+/*REVIEW*/
 
 #reviewPhoto {
     float: left;
@@ -464,4 +494,4 @@ label.star:before {
     float: right;
     text-align: right;
 }
-    /*REVIEW*/
+/*REVIEW*/

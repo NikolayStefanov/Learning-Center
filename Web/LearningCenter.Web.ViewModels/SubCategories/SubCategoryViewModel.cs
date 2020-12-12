@@ -6,13 +6,11 @@
     using LearningCenter.Services.Mapping;
     using LearningCenter.Web.ViewModels.Categories;
 
-    public class SubCategoryViewModel : IMapFrom<SubCategory>
+    public class SubCategoryViewModel : PaginationViewModel, IMapFrom<SubCategory>
     {
         public int Id { get; set; }
 
         public string Title { get; set; }
-
-        public int CoursesCount { get; set; }
 
         public IEnumerable<CourseViewModel> Courses { get; set; }
     }

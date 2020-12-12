@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
+
     using Microsoft.AspNetCore.Mvc.Rendering;
 
     public interface ICategoriesService
@@ -12,6 +13,6 @@
 
         IEnumerable<SelectListItem> GetSubcategoriesAsSelectListItems(int categoryId);
 
-        T GetTatgerCategory<T>(int id);
+        T GetTargetCategory<T>(int id);
     }
 }

@@ -1,0 +1,75 @@
+﻿<div class="col-md-10">
+        <div class="row container">
+            @foreach (var course in Model.Courses)
+            {
+                <div id="courseCard" class="card text-center col-md-3" style="width: 18rem;">
+                    <img class="card-img-top" width="200px" height="175px" src="@course.ThumbnailUrl" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title white-text">@course.Title - @course.Price$</h4>
+                        <h5 class="white-text">By: <a asp-action="Index" asp-controller="Account" asp-route-id="@course.AuthorId">@course.AuthorName</a></h5>
+                        <h5 class="white-text">Rating: @Math.Round(course.AverageRating, 1)/5 (@course.RatingsCount)</h5>
+                        @if (ViewContext.RouteData.Values["controller"].ToString() != "Subcategories")
+                        {
+                            <span class="badge even-larger-badge"><a asp-action="GetSubcategory" asp-controller="Subcategories" asp-route-id="@course.SubCategoryId">Subcategory: @course.SubCategoryTitle</a></span>
+                        }
+                        else
+                        {
+                            <span class="badge even-larger-badge"><a asp-action="ChosenCategory" asp-controller="Categories" asp-route-id="@course.CategoryId">Category: @course.CategoryTitle</a></span>
+                        }
+
+
+                        <div>
+                            <a class="btn btn-success" asp-controller="Courses" asp-action="GetCourse" asp-route-id="@course.Id">Go to course</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <nav aria-label="...">
+            <div class="text-center">
+                <ul class="pagination">
+
+                    @if (Model.HasPreviousPage)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" @Html.ActionLink("Previous", ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { id = Model.Id, page = Model.PreviousPageNumber }, null)></a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" @Html.ActionLink($"{Model.PreviousPageNumber}", ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { id = Model.Id, page = Model.PreviousPageNumber }, null)></a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item disabled">
+                            <span class="page-link">Previous</span>
+                        </li>
+                    }
+
+                    <li class="page-item active" aria-current="page">
+                        <span class="page-link">
+                            @Model.PageNumber
+                            <span class="sr-only">(current)</span>
+                        </span>
+                    </li>
+                    @if (Model.HasNextPage)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" @Html.ActionLink($"{Model.NextPageNumber}", ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { id = Model.Id, page = Model.NextPageNumber }, null)></a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" @Html.ActionLink("Next", ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { id = Model.Id, page = Model.NextPageNumber }, null)></a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item disabled">
+                            <a class="page-link">Next</a>
+                        </li>
+                    }
+
+
+                </ul>
+            </div>
+        </nav>
+
+</div>

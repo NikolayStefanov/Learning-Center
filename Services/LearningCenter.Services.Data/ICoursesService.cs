@@ -1,5 +1,6 @@
 ﻿namespace LearningCenter.Services.Data
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using LearningCenter.Web.ViewModels.Courses;
@@ -15,5 +16,11 @@
         Task AddCourseToBagAsync(int courseId, string userId);
 
         Task RemoveCourseFromBag(int courseId, string userId);
+
+        int GetCountByCategoryId(int categoryId);
+
+        int GetCountBySubCategoryId(int subcategoryId);
+
+        Task<IEnumerable<T>> GetAllByCategoryId<T>(int categoryId, int page, int itemsPerPage);
     }
 }

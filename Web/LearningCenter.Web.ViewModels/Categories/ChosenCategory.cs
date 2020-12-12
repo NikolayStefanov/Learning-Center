@@ -1,11 +1,12 @@
 ﻿namespace LearningCenter.Web.ViewModels.Categories
 {
+    using System;
     using System.Collections.Generic;
 
     using LearningCenter.Data.Models;
     using LearningCenter.Services.Mapping;
 
-    public class ChosenCategory : IMapFrom<Category>
+    public class ChosenCategory : PaginationViewModel, IMapFrom<Category>
     {
         public int Id { get; set; }
 
@@ -16,5 +17,6 @@
         public IEnumerable<SubCategoryViewModel> SubCategories { get; set; }
 
         public IEnumerable<CourseViewModel> Courses { get; set; }
+
     }
 }

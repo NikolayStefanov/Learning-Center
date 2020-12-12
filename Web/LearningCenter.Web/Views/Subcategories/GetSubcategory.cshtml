@@ -7,37 +7,35 @@
 <div id="coursesList" class="col-md-12">
     <div class="text-center white-text">
         <h1 class="white-text">@Model.Title.ToUpper()</h1>
+        <hr />
     </div>
     @if (Model.Courses.Any())
     {
-        <div class="row">
-            @foreach (var course in Model.Courses)
-            {
+        <div id="subcategoryCourses">
+            <partial name="_ListCoursesWithPaginationPartial" model="@Model" />
+        </div>
+        @*<div class="row">
+                @foreach (var course in Model.Courses)
+                {
 
-                <div id="courseCard" class="card text-center col-md-3" style="width: 18rem;">
-                    <img class="card-img-top" width="200px" height="175px" src="@course.ThumbnailUrl" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title white-text">@course.Title - @course.Price$</h4>
-                        <h5 class="white-text">By: <a asp-action="Index" asp-controller="Account" asp-route-id="@course.AuthorId">@course.AuthorName</a></h5>
-                        <h5 class="white-text">Rating: @course.AverageRating/5 (@course.RatingsCount)</h5>
+                    <div id="courseCard" class="card text-center col-md-3" style="width: 18rem;">
+                        <img class="card-img-top" width="200px" height="175px" src="@course.ThumbnailUrl" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title white-text">@course.Title - @course.Price$</h4>
+                            <h5 class="white-text">By: <a asp-action="Index" asp-controller="Account" asp-route-id="@course.AuthorId">@course.AuthorName</a></h5>
+                            <h5 class="white-text">Rating: @course.AverageRating/5 (@course.RatingsCount)</h5>
 
-                        <div>
-                            <a class="btn btn-success" asp-controller="Courses" asp-action="GetCourse" asp-route-id="@course.Id">Go to course</a>
+                            <div>
+                                <a class="btn btn-success" asp-controller="Courses" asp-action="GetCourse" asp-route-id="@course.Id">Go to course</a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-            }
-        </div>
+                }
+            </div>*@
     }
     else
     {
         <h2 class="white-text">There isn't any courses yet in this Subcategory!</h2>
     }
 </div>
-
-<script>
-    function StarClicked(value) {
-        //TODO: РЕЙТИНГИТЕ ТРЯБВА ДА СА ЗА КУРСОВЕТЕ, ЩОМ ГИ НАПРАВЯ
-    }
-</script>

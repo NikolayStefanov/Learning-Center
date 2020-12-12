@@ -1,5 +1,6 @@
 ﻿namespace LearningCenter.Services.Data
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -72,6 +73,28 @@
             this.courseRepository.Delete(course);
             await this.courseRepository.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<IEnumerable<T>> GetAllByCategoryId<T>(int categoryId, int page, int itemsPerPage)
+        {
+            var courses = await this.courseRepository.All()
+                .Where(x => x.CategoryId == categoryId)
+                .OrderByDescending(x => x.Id)
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage)
+                .To<T>()
+                .ToListAsync();
+            return courses;
+        }
+
+        public int GetCountByCategoryId(int categoryId)
+        {
+            return this.courseRepository.AllAsNoTracking().Where(x => x.CategoryId == categoryId).Count();
+        }
+
+        public int GetCountBySubCategoryId(int subcategoryId)
+        {
+            return this.courseRepository.AllAsNoTracking().Where(x => x.SubCategoryId == subcategoryId).Count();
         }
 
         public T GetCourse<T>(int id)

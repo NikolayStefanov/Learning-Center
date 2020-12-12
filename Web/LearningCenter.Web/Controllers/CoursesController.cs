@@ -81,7 +81,7 @@
             var userId = this.userManager.GetUserId(this.User);
             await this.coursesService.RemoveCourseFromBag(id, userId);
 
-            return this.RedirectToAction("GetCourse", new { id });
+            return this.Redirect($"/Account/Index/{userId}");
         }
 
         public async Task<IActionResult> Delete(int id)

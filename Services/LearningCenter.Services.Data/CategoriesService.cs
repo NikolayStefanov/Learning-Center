@@ -32,7 +32,7 @@
 
         public IEnumerable<SelectListItem> GetSubcategoriesAsSelectListItems(int categoryId)
         {
-            var allSubcategories = this.subcategoryRepository.All().Where(x=> x.CategoryId == categoryId).Select(x=> new SelectListItem()
+            var allSubcategories = this.subcategoryRepository.All().Where(x => x.CategoryId == categoryId).Select(x=> new SelectListItem()
             {
                 Value = x.Id.ToString(),
                 Text = x.Title,
@@ -40,7 +40,7 @@
             return allSubcategories;
         }
 
-        public T GetTatgerCategory<T>(int id)
+        public T GetTargetCategory<T>(int id)
         {
             return this.categoryRepository.All().Where(c => c.Id == id).To<T>().FirstOrDefault();
         }
