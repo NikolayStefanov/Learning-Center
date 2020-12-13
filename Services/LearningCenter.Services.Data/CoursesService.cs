@@ -87,6 +87,11 @@
             return courses;
         }
 
+        public int GetCountByAuthorId(string authorId)
+        {
+            return this.courseRepository.AllAsNoTracking().Where(x => x.AuthorId == authorId).Count();
+        }
+
         public int GetCountByCategoryId(int categoryId)
         {
             return this.courseRepository.AllAsNoTracking().Where(x => x.CategoryId == categoryId).Count();

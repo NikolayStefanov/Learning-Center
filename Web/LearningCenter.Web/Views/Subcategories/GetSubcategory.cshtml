@@ -12,7 +12,7 @@
     @if (Model.Courses.Any())
     {
         <div id="subcategoryCourses">
-            <partial name="_ListCoursesWithPaginationPartial" model="@Model" />
+            <partial name="_ListCoursesPartial" model="@Model" />
         </div>
         @*<div class="row">
                 @foreach (var course in Model.Courses)

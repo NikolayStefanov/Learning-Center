@@ -1,0 +1,35 @@
+﻿<div class="col-md-10">
+        <div class="row container">
+            @foreach (var course in Model.Courses)
+            {
+                <div id="courseCard" class="card text-center col-md-3" style="width: 18rem;">
+                    <img class="card-img-top" width="200px" height="175px" src="@course.ThumbnailUrl" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title white-text">@course.Title - @course.Price$</h4>
+                        <h5 class="white-text">By: <a asp-action="Index" asp-controller="Account" asp-route-id="@course.AuthorId">@course.AuthorName</a></h5>
+                        <h5 class="white-text">Rating: @Math.Round(course.AverageRating, 1)/5 (@course.RatingsCount)</h5>
+                        @if (ViewContext.RouteData.Values["controller"].ToString() == "Categories")
+                        {
+                            <span class="badge even-larger-badge"><a asp-action="GetSubcategory" asp-controller="Subcategories" asp-route-id="@course.SubCategoryId">Subcategory: @course.SubCategoryTitle</a></span>
+                        }
+                        else if (ViewContext.RouteData.Values["controller"].ToString() == "Subcategories")
+                        {
+                            <span class="badge even-larger-badge"><a asp-action="ChosenCategory" asp-controller="Categories" asp-route-id="@course.CategoryId">Category: @course.CategoryTitle</a></span>
+                        }
+                        else
+                        {
+                            <span class="badge even-larger-badge"><a asp-action="GetSubcategory" asp-controller="Subcategories" asp-route-id="@course.SubCategoryId">Subcategory: @course.SubCategoryTitle</a></span>
+                            <span class="badge even-larger-badge"><a asp-action="ChosenCategory" asp-controller="Categories" asp-route-id="@course.CategoryId">Category: @course.CategoryTitle</a></span>
+                        }
+
+
+                        <div>
+                            <a class="btn btn-success" asp-controller="Courses" asp-action="GetCourse" asp-route-id="@course.Id">Go to course</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <partial name="_PaginationPartial" model="@Model"/>
+
+</div>

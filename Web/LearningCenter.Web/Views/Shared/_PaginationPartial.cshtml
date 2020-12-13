@@ -1,0 +1,46 @@
+﻿<nav aria-label="...">
+    <div class="text-center">
+        <ul class="pagination">
+
+            @if (Model.HasPreviousPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" @Html.ActionLink("Previous", ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { id = Model.Id, page = Model.PreviousPageNumber }, null)></a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" @Html.ActionLink($"{Model.PreviousPageNumber}", ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { id = Model.Id, page = Model.PreviousPageNumber }, null)></a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item disabled">
+                    <span class="page-link">Previous</span>
+                </li>
+            }
+
+            <li class="page-item active" aria-current="page">
+                <span class="page-link">
+                    @Model.PageNumber
+                    <span class="sr-only">(current)</span>
+                </span>
+            </li>
+            @if (Model.HasNextPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" @Html.ActionLink($"{Model.NextPageNumber}", ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { id = Model.Id, page = Model.NextPageNumber }, null)></a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" @Html.ActionLink("Next", ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { id = Model.Id, page = Model.NextPageNumber }, null)></a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item disabled">
+                    <a class="page-link">Next</a>
+                </li>
+            }
+
+
+        </ul>
+    </div>
+</nav>

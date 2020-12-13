@@ -21,6 +21,8 @@
 
         int GetCountBySubCategoryId(int subcategoryId);
 
+        int GetCountByAuthorId(string authorId);
+
         Task<IEnumerable<T>> GetAllByCategoryId<T>(int categoryId, int page, int itemsPerPage);
     }
 }

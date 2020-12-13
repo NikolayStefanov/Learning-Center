@@ -19,7 +19,7 @@
 <div id="coursesList" class="col-md-10">
     @if (Model.Courses.Any())
     {
-        <partial name="_ListCoursesWithPaginationPartial" model="@Model" />
+        <partial name="_ListCoursesPartial" model="@Model" />
     }
     else
     {

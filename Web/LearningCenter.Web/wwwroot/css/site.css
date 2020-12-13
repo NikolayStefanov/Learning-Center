@@ -429,6 +429,12 @@ label.star:before {
     text-align: right;
 }
 /*PROFILE PAGE*/
+
+/*MANAGE ACCOUNT PAGE*/
+#manageAccountId{
+    background-image: url(../img/courseBg.jpg);
+}
+/*MANAGE ACCOUNT PAGE*/
 /*COURSE PAGE*/
 #coursePageBg {
     background-image: url("../img/courseBg.jpg");
