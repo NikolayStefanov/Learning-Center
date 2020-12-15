@@ -34,15 +34,16 @@
             </button>
             <!-- /Mobile toggle -->
         </div>
-        <div id="searchField">
-
-            <div class="active-cyan-4 mb-4 col-md-3 form-group">
-                <input class="form-control white-text" type="text" placeholder="Search..." aria-label="Search">
+        <form method="get">
+            <div id="searchField">
+                <div class="active-cyan-4 mb-4 col-md-3 form-group">
+                    <input type="search" class="form-control text-black-50" name="SearchTerm"  asp-route-searchTerm="SearchTerm" placeholder="Search..." aria-label="Search" />
+                </div>
+                <div id="searchIcon" class="col-md-1">
+                    <button class="btn btn-success" type="submit" asp-controller="Home" asp-action="Search"> <i class="fas fa-search white-text"></i></button>
+                </div>
             </div>
-            <div id="searchIcon" class="col-md-1">
-                <i class="fas fa-search white-text"></i>
-            </div>
-        </div>
+        </form>
         <div class="container">
             <!-- Navigation -->
             <nav id="nav">
@@ -74,6 +75,7 @@
     <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
     <script type="text/javascript" src="~/js/jquery.min.js"></script>
     <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+
     <script type="text/javascript" src="~/js/main.js"></script>
     <script type="text/javascript" src="~/js/site.min.js" asp-append-version="true"></script>
 

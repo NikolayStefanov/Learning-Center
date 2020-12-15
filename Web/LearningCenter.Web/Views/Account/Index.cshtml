@@ -57,7 +57,7 @@
 
                                         @foreach (var course in Model.Lecturer.Courses)
                                         {
-                                            <div id="courseCard" class="card text-center col-md-3" style="width: 18rem;">
+                                            <div id="" class="card text-center col-md-3 courseCard" style="width: 18rem;">
                                                 <img class="card-img-top" width="200px" height="175px" src="@course.ThumbnailUrl" alt="Card image cap">
                                                 <div class="card-body">
                                                     <h4 class="card-title white-text">@course.Title</h4>
@@ -67,7 +67,7 @@
                                                         <a class="btn btn-success btn-sm" asp-controller="Courses" asp-action="GetCourse" asp-route-id="@course.Id">Go to course</a>
                                                         @if (this.User.Identity.Name == Model.Email)
                                                         {
-                                                            <a onclick="return confirm('Are you sure you want to delete course: @course.Title?')" class="btn btn-danger btn-sm" asp-controller="Courses" asp-action="Delete" asp-route-id="@course.Id">Delete</a>
+                                                            <a onclick="return confirm('Are you sure you want to remove course: @course.Title?')" asp-controller="Courses" asp-action="Delete" asp-route-id="@course.Id" class="btn btn-danger btn-sm">Remove</a>
                                                         }
                                                     </div>
                                                 </div>
@@ -98,7 +98,7 @@
                                 {
                                     @foreach (var course in Model.Courses)
                                     {
-                                        <div id="courseCard" class="card text-center col-md-3" style="width: 18rem;">
+                                        <div id="" class="card text-center col-md-3 courseCard" style="width: 18rem;">
                                             <img class="card-img-top" width="200px" height="175px" src="@course.Course.ThumbnailUrl" alt="Card image cap">
                                             <div class="card-body">
                                                 <h4 class="card-title white-text">@course.Course.Title</h4>
@@ -146,7 +146,7 @@
                                         <label for="exampleFormControlTextarea1">Content</label>
                                         <textarea class="form-control col-md-8" id="exampleFormControlTextarea1" rows="4"></textarea>
                                         <br />
-                                        <button type="reset" onclick="createFeedback()" class="btn btn-primary">Submit</button>
+                                        <button type="reset" onclick="createFeedback()" class="btn btn-primary">Submit Button</button>
                                     </div>
                                 </form>
                                 <hr />

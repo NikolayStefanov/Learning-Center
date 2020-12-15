@@ -49,6 +49,7 @@
                     var uploadParams = new ImageUploadParams()
                     {
                         File = new FileDescription(file.FileName, destinationStream),
+                        Transformation = new Transformation().Flags("attachment:Resource").FetchFormat("auto"),
                     };
 
                     var res = await cloudinary.UploadAsync(uploadParams);

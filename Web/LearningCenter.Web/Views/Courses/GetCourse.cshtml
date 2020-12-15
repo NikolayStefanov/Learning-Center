@@ -125,7 +125,7 @@
 
                                                     @foreach (var resource in lecture.AdditionalResources)
                                                     {
-                                                        <span>[<i class="fas fa-download"></i>] | </span>
+                                                    <span><a href="@resource.ResourceUrl" download="Resourse">[<i class="fas fa-download"></i>]</a> | </span>
                                                     }
                                                 </div>
                                                 <span>@lecture.ShortDescription <a class="btn" onclick="showMore(event)">[Show More]</a></span>

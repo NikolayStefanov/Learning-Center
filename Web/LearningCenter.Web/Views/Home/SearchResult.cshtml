@@ -1,0 +1,18 @@
+﻿@model LearningCenter.Web.ViewModels.Home.SearchViewModel
+@{
+    this.ViewData["Title"] = "Search Results";
+}
+<div id="targetCategoryPage" class="bg-image bg-parallax overlay"></div>
+
+<div id="coursesList" class="col-md-12">
+    @if (Model.Courses.Any())
+    {
+        <div id="subcategoryCourses">
+            <partial name="_ListCoursesPartial" model="@Model" />
+        </div>
+    }
+    else
+    {
+        <h2 class="white-text">The search doesn't match anything. Try again!</h2>
+    }
+</div>

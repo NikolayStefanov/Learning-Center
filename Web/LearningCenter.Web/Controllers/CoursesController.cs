@@ -73,7 +73,7 @@
             var userId = this.userManager.GetUserId(this.User);
             await this.coursesService.AddCourseToBagAsync(id, userId);
 
-            return this.RedirectToAction("GetCourse", new { id });
+            return this.RedirectToAction( nameof(this.GetCourse), new { id });
         }
 
         public async Task<IActionResult> RemoveCourseFromBag(int id)

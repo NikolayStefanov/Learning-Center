@@ -170,7 +170,6 @@ body {
 }
 
 #searchIcon {
-    padding-top: 10px;
     padding-left: 0px !important;
 }
 
@@ -381,7 +380,7 @@ label.star:before {
     background-size: cover;
 }
 
-#courseCard {
+.courseCard {
     border: 2px solid;
     border-radius: 15px;
     padding-top: 15px;

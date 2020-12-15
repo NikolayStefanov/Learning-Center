@@ -9,14 +9,15 @@
     using System.Threading.Tasks;
 
     using CloudinaryDotNet;
+    using LearningCenter.Common;
     using LearningCenter.Data.Models;
     using LearningCenter.Data.Models.Enums;
+    using LearningCenter.Services.Messaging;
     using LearningCenter.Web.CloudinaryHelper;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Identity.UI.Services;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.AspNetCore.WebUtilities;
@@ -154,7 +155,7 @@
                         values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
                         protocol: this.Request.Scheme);
 
-                    await this._emailSender.SendEmailAsync(this.Input.Email, "Confirm your email",
+                    await this._emailSender.SendEmailAsync(GlobalConstants.SystemEmail, GlobalConstants.SystemName,this.Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                     if (this._userManager.Options.SignIn.RequireConfirmedAccount)
@@ -173,7 +174,6 @@
                     this.ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
-            
             // If we got this far, something failed, redisplay form
             return this.Page();
         }

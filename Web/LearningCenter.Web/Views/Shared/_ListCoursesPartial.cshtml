@@ -2,7 +2,7 @@
         <div class="row container">
             @foreach (var course in Model.Courses)
             {
-                <div id="courseCard" class="card text-center col-md-3" style="width: 18rem;">
+                <div class="card text-center col-md-3 courseCard" style="width: 18rem;">
                     <img class="card-img-top" width="200px" height="175px" src="@course.ThumbnailUrl" alt="Card image cap">
                     <div class="card-body">
                         <h4 class="card-title white-text">@course.Title - @course.Price$</h4>

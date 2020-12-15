@@ -24,8 +24,4 @@
     <ProjectReference Include="..\..\Services\LearningCenter.Services.Mapping\LearningCenter.Services.Mapping.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Home\" />
-  </ItemGroup>
-
 </Project>
