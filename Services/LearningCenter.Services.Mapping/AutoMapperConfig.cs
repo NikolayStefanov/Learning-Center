@@ -16,7 +16,7 @@
 
         public static void RegisterMappings(params Assembly[] assemblies)
         {
-            if (initialized)
+            if (MapperInstance != null)
             {
                 return;
             }

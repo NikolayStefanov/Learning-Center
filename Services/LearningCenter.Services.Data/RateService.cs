@@ -1,12 +1,10 @@
 ﻿namespace LearningCenter.Services.Data
 {
+    using System.Linq;
+    using System.Threading.Tasks;
+
     using LearningCenter.Data.Common.Repositories;
     using LearningCenter.Data.Models;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class RateService : IRateService
     {
@@ -42,7 +40,7 @@
             return ratingsCount;
         }
 
-        public async Task SetRate(string userId, int courseId, int value)
+        public async Task SetRateAsync(string userId, int courseId, int value)
         {
             var rate = this.rateRepository.All().Where(x => x.CourseId == courseId && x.UserId == userId).FirstOrDefault();
 

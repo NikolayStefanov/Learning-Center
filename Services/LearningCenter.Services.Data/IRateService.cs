@@ -7,7 +7,7 @@
 
     public interface IRateService
     {
-        Task SetRate(string userId, int courseId, int value);
+        Task SetRateAsync(string userId, int courseId, int value);
 
         double GetAverageRating(int courseId);
 

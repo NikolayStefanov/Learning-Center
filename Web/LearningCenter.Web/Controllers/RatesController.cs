@@ -24,7 +24,7 @@
         public async Task<ActionResult<RateResponseModel>> Rate(SetRateInputModel input)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            await this.rateService.SetRate(userId, input.CourseId, input.Value);
+            await this.rateService.SetRateAsync(userId, input.CourseId, input.Value);
             var courseAverageRating = this.rateService.GetAverageRating(input.CourseId);
             var ratesCount = this.rateService.GetRatesCount(input.CourseId);
             var resultResponseModel = new RateResponseModel { AverageRating = courseAverageRating, RatesCount = ratesCount };
