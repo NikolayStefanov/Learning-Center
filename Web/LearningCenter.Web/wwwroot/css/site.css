@@ -311,9 +311,14 @@ label.star:before {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("../img/aboutTopLecturersBg.jpg");
     margin-top: 20%;
 }
-
+.topLecturer {
+    border: 2px solid;
+    margin-left: 20px;
+    padding-top: 20px;
+    border-radius: 10px;
+    border-color: gray;
+}
 /*ABOUT PAGE*/
-
 /*PROFILE DROPDOWN*/
 #accountButton {
     font-family: 'Lato', sans-serif;

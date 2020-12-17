@@ -46,7 +46,7 @@
                 .OrderByDescending(x => x.Lecturer.Courses.Count)
                 .ThenByDescending(x => x.Lectures.Count)
                 .To<T>()
-                .Take(5)
+                .Take(4)
                 .ToList();
             return topLecturers;
         }
