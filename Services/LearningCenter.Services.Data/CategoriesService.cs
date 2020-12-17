@@ -1,9 +1,8 @@
 ﻿namespace LearningCenter.Services.Data
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Threading.Tasks;
+
     using LearningCenter.Data.Common.Repositories;
     using LearningCenter.Data.Models;
     using LearningCenter.Services.Mapping;
@@ -32,7 +31,7 @@
 
         public IEnumerable<SelectListItem> GetSubcategoriesAsSelectListItems(int categoryId)
         {
-            var allSubcategories = this.subcategoryRepository.All().Where(x => x.CategoryId == categoryId).Select(x=> new SelectListItem()
+            var allSubcategories = this.subcategoryRepository.All().Where(x => x.CategoryId == categoryId).Select(x => new SelectListItem()
             {
                 Value = x.Id.ToString(),
                 Text = x.Title,

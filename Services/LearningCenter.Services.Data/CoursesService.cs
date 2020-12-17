@@ -62,7 +62,7 @@
 
         public async Task<bool> DeleteAsync(int courseId, string userId)
         {
-            var user = this.userRepository.All().Include(u=> u.Lecturer).FirstOrDefault(u => u.Id == userId);
+            var user = this.userRepository.All().Include(u => u.Lecturer).FirstOrDefault(u => u.Id == userId);
             var course = this.courseRepository.All().FirstOrDefault(x => x.Id == courseId);
             if (userId != course.AuthorId)
             {
