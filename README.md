@@ -8,47 +8,22 @@ Learning Center development tools, they can upload videos, PowerPoint
 presentations, PDFs, ZIP files and live classes to create courses|
 
 Technologies Used This website is designed and runs using the main technologies below:
-<<<<<<< HEAD
-*ID:
-    - Visual Studio Enterprise 2019
-*Web Framework: 
-    -ASP.NET Core 3.1
-*Programming Languages:
-    -C#
-    -JavaScript
-*Database:
-    -MS SQL Server
-    -MS SQL Server Management Studio 2017
-    -ORM: Entity Framework Core
-*Markup Languages
-    -HTML5
-    -CSS
-        -CSS Framework: Bootstrap 4
-*External APIs:
-    -Cloudinary API
-    -StyleCop Analyzers
-    -SendGrid API
-
-    
-    
-=======
-    *ID:
+ID:
         - Visual Studio Enterprise 2019
-    *Web Framework: 
+Web Framework: 
         -ASP.NET Core 3.1
-    *Programming Languages:
+Programming Languages:
         -C#
         -JavaScript
-    *Database:
+Database:
         -MS SQL Server
         -MS SQL Server Management Studio 2017
         -ORM: Entity Framework Core
-    *Markup Languages
+Markup Languages
         -HTML5
         -CSS
             -CSS Framework: Bootstrap 4
-    *External APIs:
+External APIs:
         -Cloudinary API
         -StyleCop Analyzers
         -SendGrid API
->>>>>>> 9031447dee6c459f4aabb711ee37e867db9960ff
