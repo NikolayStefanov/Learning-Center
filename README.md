@@ -19,30 +19,30 @@ Web Framework:
 
 Programming Languages:
 
--C#
+    -C#
 
--JavaScript
+    -JavaScript
 
 Database:
 
--MS SQL Server
+    -MS SQL Server
 
-2.MS SQL Server Management Studio 2017
+    -MS SQL Server Management Studio 2017
 
-3.ORM: Entity Framework Core
+    -ORM:
+        - Entity Framework Core
 
 Markup Languages
 
--HTML5
+    -HTML5
 
--CSS
-
----CSS Framework: Bootstrap 4
+    -CSS
+        -CSS Framework: Bootstrap 4
 
 External APIs:
 
--Cloudinary API
+    -Cloudinary API
 
--StyleCop Analyzers
+    -StyleCop Analyzers
 
--SendGrid API
+    -SendGrid API
