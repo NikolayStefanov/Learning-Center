@@ -50,5 +50,4 @@ External APIs:
 ----------------------------------------------------------------------------------------
 
 Database Diagram:
-
-[!alt text](https://res.cloudinary.com/dszoti5z4/image/upload/v1608301842/LearningCenterSecondDatabase_zlor6y.png)
+![alt text](https://res.cloudinary.com/dszoti5z4/image/upload/v1608301842/LearningCenterSecondDatabase_zlor6y.png)
