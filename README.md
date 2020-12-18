@@ -27,6 +27,3 @@ Technologies Used This website is designed and runs using the main technologies 
         -Cloudinary API
         -StyleCop Analyzers
         -SendGrid API
-
-    
-    
