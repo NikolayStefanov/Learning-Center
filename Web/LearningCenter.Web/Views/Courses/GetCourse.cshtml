@@ -75,34 +75,40 @@
                 <p class="card-text"><b>Description: </b>@Model.Description</p>
                 <hr />
                 <h2 class="white-text">Reviews:</h2>
-                @if (Model.Reviews.Any())
-                {
-                    <ul id="reviewList" class="list-unstyled">
-                        @foreach (var review in Model.Reviews.OrderByDescending(x => x.CreatedOn))
-                        {
-                            <li id="review" class="media row">
-                                <img id="reviewPhoto" width="75px;" height="75px;" src="@review.AuthorProfilePictureUrl" class="" alt="reviewAuthorPhoto">
+                    
+            <ul id="reviewList" class="list-unstyled">
+                <li id="review" class="media row hiddenListEl">
+                    <img id="reviewPhoto" width="75px;" height="75px;" src="" class="" alt="reviewAuthorPhoto">
 
-                                <div id="reviewContent" class="media-body white-text">
-                                    <h4 class="white-text"><i class="fas fa-user"></i> @review.AuthorFirstName @review.AuthorLastName</h4>
-                                    <p>@review.Content</p>
-                                    <div>
-                                        <span id="createdOn" class="white-text text-center"> <i class="far fa-clock"></i> <span id="createdOnIn">@review.CreatedOn.ToString("dd-MMM-y HH:mm:ss")</span></span>
-                                    </div>
-                                </div>
-                            </li>
-                        }
-                    </ul>
+                    <div id="reviewContent" class="media-body white-text">
+                        <h4 class="white-text"><i class="fas fa-user"></i> </h4>
+                        <p></p>
+                        <div>
+                            <span id="createdOn" class="white-text text-center"> <i class="far fa-clock"></i> <span id="createdOnIn"></span></span>
+                        </div>
+                    </div>
+                </li>
+                @foreach (var review in Model.Reviews.OrderByDescending(x => x.CreatedOn))
+                {
+                    <li id="review" class="media row">
+                        <img id="reviewPhoto" width="75px;" height="75px;" src="@review.AuthorProfilePictureUrl" class="" alt="reviewAuthorPhoto">
+
+                        <div id="reviewContent" class="media-body white-text">
+                            <h4 class="white-text"><i class="fas fa-user"></i> @review.AuthorFirstName @review.AuthorLastName</h4>
+                            <p>@review.Content</p>
+                            <div>
+                                <span id="createdOn" class="white-text text-center"> <i class="far fa-clock"></i> <span id="createdOnIn">@review.CreatedOn.ToString("dd-MMM-y HH:mm:ss")</span></span>
+                            </div>
+                        </div>
+                    </li>
                 }
+            </ul>
             </div>
         </div>
         <div id="videosBar" class="col-md-5 text-center">
             <div class="col-md-12">
                 <h1 class="white-text">LECTURES:</h1>
                 <hr />
-                @*<div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/v64KOxKVLVg" allowfullscreen></iframe>
-                    </div>*@
 
                 <div class="right-bar">
                     <div class="right-bar-panel rightbar-items">
@@ -191,16 +197,17 @@
                     var photoUrl = data["authorProfilePictureUrl"];
 
                     var m = new Date(createdOn);
-                    var dateString = (m.getUTCMonth() + 1) + "-" + m.getUTCDate() + "-" + m.getUTCFullYear() + " " + m.getUTCHours() + ":" + m.getUTCMinutes() + ":" + m.getSeconds();
 
+                    console.log(document.getElementById("review"));
                     var list = document.getElementById("review").cloneNode(true);
 
+                    list.style.display = "block";
                     list.querySelector("#reviewPhoto").src = photoUrl;
-                    list.querySelector("#createdOnIn").textContent = dateString;
+                    list.querySelector("#createdOnIn").textContent = "At the moment";
                     list.querySelector("#reviewContent h4").textContent = authorName;
                     list.querySelector("#reviewContent p").textContent = reviewContent;
 
-                    document.getElementById("reviewContent").value = '';
+                    document.querySelector("#reviewContent").value = '';
                     document.getElementById("reviewList").prepend(list);
                     console.log(list);
                 });

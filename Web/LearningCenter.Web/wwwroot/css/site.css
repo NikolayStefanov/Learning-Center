@@ -432,10 +432,12 @@ label.star:before {
     float: right;
     text-align: right;
 }
+.hiddenListEl {
+    display: none;
+}
 /*PROFILE PAGE*/
-
 /*MANAGE ACCOUNT PAGE*/
-#manageAccountId{
+#manageAccountId {
     background-image: url(../img/courseBg.jpg);
 }
 /*MANAGE ACCOUNT PAGE*/

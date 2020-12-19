@@ -6,7 +6,7 @@
     using LearningCenter.Data.Models;
     using LearningCenter.Services.Mapping;
 
-    public class ProfileViewModel : IMapFrom<ApplicationUser>
+    public class ProfileViewModel : PaginationViewModel, IMapFrom<ApplicationUser>
     {
         public string Id { get; set; }
 

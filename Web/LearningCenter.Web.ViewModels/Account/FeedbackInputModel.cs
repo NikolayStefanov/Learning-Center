@@ -1,15 +1,9 @@
-﻿using LearningCenter.Data.Models;
-using LearningCenter.Services.Mapping;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace LearningCenter.Web.ViewModels.Account
+﻿namespace LearningCenter.Web.ViewModels.Account
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class FeedbackInputModel
     {
-
         [Required]
         public string LecturerId { get; set; }
 

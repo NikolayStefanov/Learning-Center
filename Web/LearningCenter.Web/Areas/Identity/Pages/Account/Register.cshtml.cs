@@ -83,7 +83,7 @@
             public UserTypeEnum UserType { get; set; }
 
             [Required]
-            //[RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,20}$", ErrorMessage = "The password must contains at least 1 upper case character, 1 lower case character, 1 digit and must be long between 6 and 20 characters!")]
+            [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,20}$", ErrorMessage = "The password must contains at least 1 upper case character, 1 lower case character, 1 digit and must be long between 6 and 20 characters!")]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }

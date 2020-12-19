@@ -26,9 +26,9 @@
             const int itemsPerPage = 12;
             var lecturerId = id == null ? this.userManager.GetUserId(this.User) : id;
             var viewModel = this.accountsService.GetLecturerById<ProfileViewModel>(lecturerId);
-            viewModel.Lecturer.PageNumber = page;
-            viewModel.Lecturer.CoursesCount = this.coursesService.GetCountByAuthorId(id);
-            viewModel.Lecturer.ItemsPerPage = itemsPerPage;
+            viewModel.PageNumber = page;
+            viewModel.CoursesCount = this.coursesService.GetCountByAuthorId(id);
+            viewModel.ItemsPerPage = itemsPerPage;
             return this.View(viewModel);
         }
     }

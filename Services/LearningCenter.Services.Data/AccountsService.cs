@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using System.Threading.Tasks;
+
     using LearningCenter.Data.Common.Repositories;
     using LearningCenter.Data.Models;
     using LearningCenter.Services.Mapping;
@@ -23,7 +24,7 @@
         {
             var lecturer = this.userRepository.All().Include(x => x.Lecturer).Where(x => x.Id == inputModel.LecturerId).FirstOrDefault();
             var feedbackAuthor = this.userRepository.AllAsNoTracking().FirstOrDefault(x => x.Email == inputModel.AuthorEmail);
-            var feedback = new Feedback { AuthorId = feedbackAuthor.Id, LecturerId = lecturer.Lecturer.Id , Content = inputModel.Content };
+            var feedback = new Feedback { AuthorId = feedbackAuthor.Id, LecturerId = lecturer.Lecturer.Id, Content = inputModel.Content };
 
             await this.feedbacksRepository.AddAsync(feedback);
             await this.feedbacksRepository.SaveChangesAsync();

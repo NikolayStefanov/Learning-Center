@@ -5,7 +5,7 @@
     using LearningCenter.Data.Models;
     using LearningCenter.Services.Mapping;
 
-    public class LecturerViewModel : PaginationViewModel, IMapFrom<Lecturer>
+    public class LecturerViewModel : IMapFrom<Lecturer>
     {
         public string Id { get; set; }
 

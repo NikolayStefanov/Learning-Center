@@ -140,7 +140,7 @@
                                     <input type="hidden" id="lecturerFeedbackId" value="@Model.Id" />
                                     <div class="form-group text-center">
                                         <h3 class="white-text">Write Feedback to @Model.FullName</h3>
-                                        <label for="exampleFormControlInput1" class="white-text">Your email: <input type="email" class="form-control col-md-8" id="exampleFormControlInput1" readonly value="@this.User.Identity.Name" /></label>
+                                        <label for="exampleFormControlInput1" class="white-text hiddenListEl">Your email: <input type="email" class="form-control col-md-8" id="exampleFormControlInput1" readonly value="@this.User.Identity.Name" /></label>
 
                                     </div>
                                     <div class="form-group text-center white-text">
@@ -153,29 +153,40 @@
                                 <hr />
                             }
 
-                            @if (!this.Model.Lecturer.Feedbacks.Any())
+                            @if (!this.Model.Lecturer.Feedbacks.Any() && this.Model.Email == this.User.Identity.Name)
                             {
                                 <div class="text-center">
                                     <h1 class="white-text">You don't have any feedbacks yet!</h1>
                                 </div>
                             }
 
-                            <ul id="feedbacksList" class="list-unstyled">
-                                @foreach (var feedback in Model.Lecturer.Feedbacks.OrderByDescending(x => x.CreatedOn))
-                                {
-                                    <li id="feedback" class="media row">
-                                        <img id="feedbackPhoto" width="75px;" height="75px;" src="@feedback.AuthorProfilePictureUrl" class="" alt="feedbackAuthorPhoto">
+                        <ul id="feedbacksList" class="list-unstyled">
+                            <li id="feedback" class="media row hiddenListEl">
+                                <img id="feedbackPhoto" width="75px;" height="75px;" src="" class="" alt="feedbackAuthorPhoto">
 
-                                        <div id="feedbackContent" class="media-body white-text">
-                                            <h4 class="white-text"><i class="fas fa-user"></i> @feedback.AuthorFullName</h4>
-                                            <p>@feedback.Content</p>
-                                            <div>
-                                                <span id="createdOn" class="white-text"> <i class="far fa-clock"></i> <span id="createdOnIn">@feedback.CreatedOn.ToString("dd-MMM-y HH:mm:ss")</span></span>
-                                            </div>
+                                <div id="feedbackContent" class="media-body white-text">
+                                    <h4 class="white-text"><i class="fas fa-user"></i> </h4>
+                                    <p></p>
+                                    <div>
+                                        <span id="createdOn" class="white-text"> <i class="far fa-clock"></i> <span id="createdOnIn"></span></span>
+                                    </div>
+                                </div>
+                            </li>
+                            @foreach (var feedback in Model.Lecturer.Feedbacks.OrderByDescending(x => x.CreatedOn))
+                            {
+                                <li id="feedback" class="media row">
+                                    <img id="feedbackPhoto" width="75px;" height="75px;" src="@feedback.AuthorProfilePictureUrl" class="" alt="feedbackAuthorPhoto">
+
+                                    <div id="feedbackContent" class="media-body white-text">
+                                        <h4 class="white-text"><i class="fas fa-user"></i> @feedback.AuthorFullName</h4>
+                                        <p>@feedback.Content</p>
+                                        <div>
+                                            <span id="createdOn" class="white-text"> <i class="far fa-clock"></i> <span id="createdOnIn">@feedback.CreatedOn.ToString("dd-MMM-y HH:mm:ss")</span></span>
                                         </div>
-                                    </li>
-                                }
-                            </ul>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
                         </div>
                     }
 
@@ -218,6 +229,7 @@
 
                     var list = document.getElementById("feedback").cloneNode(true);
 
+                    list.style.display = "block";
                     list.querySelector("#feedbackPhoto").src = photoUrl;
                     list.querySelector("#createdOnIn").textContent = dateString;
                     list.querySelector("#feedbackContent h4").textContent = authorName;

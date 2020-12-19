@@ -12,7 +12,7 @@
     {
         [Required]
         [MinLength(3)]
-        [MaxLength(30)]
+        [MaxLength(60)]
         public string Title { get; set; }
 
         [Required]

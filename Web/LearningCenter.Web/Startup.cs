@@ -12,6 +12,7 @@
     using LearningCenter.Services.Data;
     using LearningCenter.Services.Mapping;
     using LearningCenter.Services.Messaging;
+    using LearningCenter.Web.Infrastructure;
     using LearningCenter.Web.ViewModels;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -47,6 +48,9 @@
                         options.CheckConsentNeeded = context => true;
                         options.MinimumSameSitePolicy = SameSiteMode.None;
                     });
+
+            //Add ReCaptcha
+            services.Configure<GoogleReCaptchaSettings>(this.configuration.GetSection("GoogleReCaptcha"));
 
             services.AddControllersWithViews(
                 options =>
@@ -101,7 +105,8 @@
 
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseExceptionHandler("/Home/Error");
+                //app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
             }
             else
@@ -110,7 +115,7 @@
                 app.UseHsts();
             }
 
-            //app.UseStatusCodePagesWithRedirects("/Home/StatusCodeError?errorCode={0}");
+            app.UseStatusCodePagesWithRedirects("/Home/StatusCodeError?errorCode={0}");
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
