@@ -7,6 +7,8 @@ build online courses based on their knowledge and experience. Using
 Learning Center development tools, they can upload videos, PowerPoint
 presentations, PDFs, ZIP files and live classes to create courses|
 
+|Students can give grades to courses and to post feedbacks for lecturers! Also every course has reviews by students.|
+
 Technologies Used This website is designed and runs using the main technologies below:
 
 ID:
@@ -19,9 +21,11 @@ Web Framework:
 
 Programming Languages:
 
-    -C#
+    -Back-end
+        -C#
 
-    -JavaScript
+    -Front-end
+        -JavaScript
 
 Database:
 
@@ -46,6 +50,32 @@ External APIs:
     -StyleCop Analyzers
 
     -SendGrid API
+
+Additionals:
+    
+    -ASP.NET CORE Areas
+
+    -ASP.NET CORE Identity System
+
+    -Partial Views
+
+    -AutoMapper
+
+    -Newtonsoft.Json
+
+    -Moq
+
+    -xUnit
+
+    -AJAX
+
+    -Font Awesome
+
+    -Google ReCaptcha
+
+    -Repository Pattern
+
+    -Dependency Injection
 
 ----------------------------------------------------------------------------------------
 
